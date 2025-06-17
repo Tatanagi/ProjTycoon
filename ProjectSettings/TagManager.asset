@@ -2,8 +2,40 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Community Chess
+  - Fish
+  - Fishery
+  - House
+  - Stone Quary
+  - 'Start '
+  - Blank Space
+  - House With Grass
+  - 'Wheat Field '
+  - Wishing Well With Rocks
+  - 'Lucky Loan Lender '
+  - Loan Lender
+  - Silk
+  - Bag
+  - 'Goats '
+  - Tree
+  - Royal Mint
+  - Wool
+  - 'Lettuce '
+  - 'Hat '
+  - Tile Branch
+  - Village Fair
+  - 'Turnips '
+  - Stabie
+  - 'Blank Space '
+  - Fish 2
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
   layers:
   - Default
   - TransparentFX
@@ -50,27 +82,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
