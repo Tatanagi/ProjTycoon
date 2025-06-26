@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
     public PlayerController[] players;
     public ResourceMarket resourceMarket;
     public RoyalDecreeManager decreeManager;
+    public CommunityChest communityChest;
+    public LuckyLoanLender loanLender;
 
     private int currentPlayer = 0;
     private int round = 1;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartRound();
@@ -20,19 +21,32 @@ public class GameManager : MonoBehaviour
     public void StartRound()
     {
         Debug.Log($"Round {round} begins!");
+
+        foreach (var player in players)
+            player.StartNewRound();
+
         decreeManager.GenerateNewDecree();
         resourceMarket.GenerateTokens(round);
+
         NextTurn();
     }
 
     public void NextTurn()
     {
         PlayerController player = players[currentPlayer];
-        int roll = Random.Range(1, 7);
-        Debug.Log($"Player {currentPlayer + 1} rolled {roll}");
-        player.MovePlayer(roll);
+        if (player.isInJail)
+        {
+            Debug.Log($"{player.name} is in jail and misses their turn.");
+        }
+        else
+        {
+            int roll = Random.Range(1, 7);
+            Debug.Log($"{player.name} rolled a {roll}");
+            player.MovePlayer(roll);
 
-        resourceMarket.GiveResourceToPlayer(player, roll);
+            if (!player.tokenGainBanned)
+                resourceMarket.GiveResourceToPlayer(player, roll);
+        }
 
         currentPlayer++;
         if (currentPlayer >= players.Length)
@@ -41,11 +55,5 @@ public class GameManager : MonoBehaviour
             round++;
             StartRound();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
