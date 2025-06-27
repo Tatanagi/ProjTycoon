@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 52313305}
   - component: {fileID: 52313308}
   - component: {fileID: 52313307}
-  - component: {fileID: 52313306}
   m_Layer: 0
   m_Name: Blank (4)
   m_TagString: 'Start '
@@ -153,21 +152,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &52313306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52313304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &52313307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -245,7 +229,6 @@ GameObject:
   - component: {fileID: 71605820}
   - component: {fileID: 71605823}
   - component: {fileID: 71605822}
-  - component: {fileID: 71605821}
   m_Layer: 0
   m_Name: Blank (16)
   m_TagString: 'Start '
@@ -268,21 +251,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &71605821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71605819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &71605822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -360,7 +328,6 @@ GameObject:
   - component: {fileID: 189994442}
   - component: {fileID: 189994445}
   - component: {fileID: 189994444}
-  - component: {fileID: 189994443}
   m_Layer: 0
   m_Name: Blank (2)
   m_TagString: 'Start '
@@ -383,21 +350,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &189994443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189994441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &189994444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -475,7 +427,6 @@ GameObject:
   - component: {fileID: 236727676}
   - component: {fileID: 236727679}
   - component: {fileID: 236727678}
-  - component: {fileID: 236727677}
   m_Layer: 0
   m_Name: Blank (14)
   m_TagString: 'Start '
@@ -498,21 +449,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &236727677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236727675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &236727678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -590,7 +526,6 @@ GameObject:
   - component: {fileID: 237844086}
   - component: {fileID: 237844089}
   - component: {fileID: 237844088}
-  - component: {fileID: 237844087}
   m_Layer: 0
   m_Name: Blank (35)
   m_TagString: 'Start '
@@ -613,21 +548,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &237844087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237844085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &237844088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -847,7 +767,6 @@ GameObject:
   - component: {fileID: 386885678}
   - component: {fileID: 386885681}
   - component: {fileID: 386885680}
-  - component: {fileID: 386885679}
   m_Layer: 0
   m_Name: Blank (9)
   m_TagString: 'Start '
@@ -870,21 +789,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &386885679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386885677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &386885680
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -994,7 +898,6 @@ GameObject:
   - component: {fileID: 398479099}
   - component: {fileID: 398479102}
   - component: {fileID: 398479101}
-  - component: {fileID: 398479100}
   m_Layer: 0
   m_Name: Blank (28)
   m_TagString: 'Start '
@@ -1017,21 +920,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &398479100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398479098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &398479101
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1230,7 +1118,6 @@ GameObject:
   - component: {fileID: 418821304}
   - component: {fileID: 418821307}
   - component: {fileID: 418821306}
-  - component: {fileID: 418821305}
   m_Layer: 0
   m_Name: Blank (11)
   m_TagString: 'Start '
@@ -1253,21 +1140,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &418821305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 418821303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &418821306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1345,7 +1217,6 @@ GameObject:
   - component: {fileID: 429772135}
   - component: {fileID: 429772138}
   - component: {fileID: 429772137}
-  - component: {fileID: 429772136}
   m_Layer: 0
   m_Name: Blank (19)
   m_TagString: 'Start '
@@ -1368,21 +1239,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &429772136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429772134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &429772137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1460,7 +1316,6 @@ GameObject:
   - component: {fileID: 431887231}
   - component: {fileID: 431887234}
   - component: {fileID: 431887233}
-  - component: {fileID: 431887232}
   m_Layer: 0
   m_Name: Blank (17)
   m_TagString: 'Start '
@@ -1483,21 +1338,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &431887232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431887230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &431887233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1595,7 +1435,6 @@ GameObject:
   - component: {fileID: 516898335}
   - component: {fileID: 516898338}
   - component: {fileID: 516898337}
-  - component: {fileID: 516898336}
   m_Layer: 0
   m_Name: Blank (1)
   m_TagString: 'Start '
@@ -1618,21 +1457,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &516898336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516898334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &516898337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1789,7 +1613,6 @@ GameObject:
   - component: {fileID: 638982018}
   - component: {fileID: 638982021}
   - component: {fileID: 638982020}
-  - component: {fileID: 638982019}
   m_Layer: 0
   m_Name: Blank (24)
   m_TagString: 'Start '
@@ -1812,21 +1635,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &638982019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638982017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &638982020
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1904,7 +1712,6 @@ GameObject:
   - component: {fileID: 654347245}
   - component: {fileID: 654347248}
   - component: {fileID: 654347247}
-  - component: {fileID: 654347246}
   m_Layer: 0
   m_Name: Blank (33)
   m_TagString: 'Start '
@@ -1927,21 +1734,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &654347246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654347244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &654347247
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2024,7 +1816,6 @@ GameObject:
   - component: {fileID: 825512713}
   - component: {fileID: 825512716}
   - component: {fileID: 825512715}
-  - component: {fileID: 825512714}
   m_Layer: 0
   m_Name: Blank (36)
   m_TagString: 'Start '
@@ -2047,21 +1838,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &825512714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825512712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &825512715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2188,7 +1964,6 @@ GameObject:
   - component: {fileID: 859056260}
   - component: {fileID: 859056263}
   - component: {fileID: 859056262}
-  - component: {fileID: 859056261}
   m_Layer: 0
   m_Name: Blank (25)
   m_TagString: 'Start '
@@ -2211,21 +1986,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &859056261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859056259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &859056262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2303,7 +2063,6 @@ GameObject:
   - component: {fileID: 884944920}
   - component: {fileID: 884944923}
   - component: {fileID: 884944922}
-  - component: {fileID: 884944921}
   m_Layer: 0
   m_Name: Blank (32)
   m_TagString: 'Start '
@@ -2326,21 +2085,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &884944921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884944919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &884944922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2418,7 +2162,6 @@ GameObject:
   - component: {fileID: 1014734293}
   - component: {fileID: 1014734296}
   - component: {fileID: 1014734295}
-  - component: {fileID: 1014734294}
   m_Layer: 0
   m_Name: Blank (38)
   m_TagString: 'Start '
@@ -2441,21 +2184,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1014734294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014734292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1014734295
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2533,7 +2261,6 @@ GameObject:
   - component: {fileID: 1058358159}
   - component: {fileID: 1058358162}
   - component: {fileID: 1058358161}
-  - component: {fileID: 1058358160}
   m_Layer: 0
   m_Name: Blank (5)
   m_TagString: 'Start '
@@ -2556,21 +2283,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1058358160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1058358158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1058358161
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2648,7 +2360,6 @@ GameObject:
   - component: {fileID: 1080795532}
   - component: {fileID: 1080795535}
   - component: {fileID: 1080795534}
-  - component: {fileID: 1080795533}
   m_Layer: 0
   m_Name: Blank (20)
   m_TagString: 'Start '
@@ -2671,21 +2382,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1080795533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080795531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1080795534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2763,7 +2459,6 @@ GameObject:
   - component: {fileID: 1144346347}
   - component: {fileID: 1144346350}
   - component: {fileID: 1144346349}
-  - component: {fileID: 1144346348}
   m_Layer: 0
   m_Name: Blank (22)
   m_TagString: 'Start '
@@ -2786,21 +2481,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1144346348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144346346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1144346349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2878,7 +2558,6 @@ GameObject:
   - component: {fileID: 1204098483}
   - component: {fileID: 1204098486}
   - component: {fileID: 1204098485}
-  - component: {fileID: 1204098484}
   m_Layer: 0
   m_Name: Blank (12)
   m_TagString: 'Start '
@@ -2901,21 +2580,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1204098484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204098482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1204098485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2998,7 +2662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1309549839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3006,7 +2670,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309549838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f679a99a3066dbb4f8375f9d7d206703, type: 3}
   m_Name: 
@@ -3047,7 +2711,6 @@ GameObject:
   - component: {fileID: 1404508118}
   - component: {fileID: 1404508121}
   - component: {fileID: 1404508120}
-  - component: {fileID: 1404508119}
   m_Layer: 0
   m_Name: Blank (6)
   m_TagString: 'Start '
@@ -3070,21 +2733,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1404508119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404508117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1404508120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3162,7 +2810,6 @@ GameObject:
   - component: {fileID: 1405498988}
   - component: {fileID: 1405498991}
   - component: {fileID: 1405498990}
-  - component: {fileID: 1405498989}
   m_Layer: 0
   m_Name: Blank (31)
   m_TagString: 'Start '
@@ -3185,21 +2832,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1405498989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405498987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1405498990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3277,7 +2909,6 @@ GameObject:
   - component: {fileID: 1442236242}
   - component: {fileID: 1442236245}
   - component: {fileID: 1442236244}
-  - component: {fileID: 1442236243}
   m_Layer: 0
   m_Name: Blank (7)
   m_TagString: 'Start '
@@ -3300,21 +2931,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1442236243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442236241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1442236244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3392,7 +3008,6 @@ GameObject:
   - component: {fileID: 1448550112}
   - component: {fileID: 1448550115}
   - component: {fileID: 1448550114}
-  - component: {fileID: 1448550113}
   m_Layer: 0
   m_Name: Blank (21)
   m_TagString: 'Start '
@@ -3415,21 +3030,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1448550113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448550111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1448550114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3539,7 +3139,6 @@ GameObject:
   - component: {fileID: 1481779303}
   - component: {fileID: 1481779306}
   - component: {fileID: 1481779305}
-  - component: {fileID: 1481779304}
   m_Layer: 0
   m_Name: Blank (37)
   m_TagString: 'Start '
@@ -3562,21 +3161,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1481779304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1481779302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1481779305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3654,7 +3238,6 @@ GameObject:
   - component: {fileID: 1513288228}
   - component: {fileID: 1513288231}
   - component: {fileID: 1513288230}
-  - component: {fileID: 1513288229}
   m_Layer: 0
   m_Name: Blank (29)
   m_TagString: 'Start '
@@ -3677,21 +3260,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1513288229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513288227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1513288230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3769,7 +3337,6 @@ GameObject:
   - component: {fileID: 1613873062}
   - component: {fileID: 1613873065}
   - component: {fileID: 1613873064}
-  - component: {fileID: 1613873063}
   m_Layer: 0
   m_Name: Blank (3)
   m_TagString: 'Start '
@@ -3792,21 +3359,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1613873063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613873061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1613873064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3916,7 +3468,6 @@ GameObject:
   - component: {fileID: 1733360166}
   - component: {fileID: 1733360169}
   - component: {fileID: 1733360168}
-  - component: {fileID: 1733360167}
   m_Layer: 0
   m_Name: Blank (13)
   m_TagString: 'Start '
@@ -3939,21 +3490,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1733360167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733360165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1733360168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4031,7 +3567,6 @@ GameObject:
   - component: {fileID: 1773536060}
   - component: {fileID: 1773536063}
   - component: {fileID: 1773536062}
-  - component: {fileID: 1773536061}
   m_Layer: 0
   m_Name: Blank (23)
   m_TagString: 'Start '
@@ -4054,21 +3589,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1773536061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773536059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1773536062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4146,7 +3666,6 @@ GameObject:
   - component: {fileID: 1824864740}
   - component: {fileID: 1824864743}
   - component: {fileID: 1824864742}
-  - component: {fileID: 1824864741}
   m_Layer: 0
   m_Name: Blank
   m_TagString: 'Start '
@@ -4169,21 +3688,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1824864741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824864739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1824864742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4261,7 +3765,6 @@ GameObject:
   - component: {fileID: 1851297626}
   - component: {fileID: 1851297629}
   - component: {fileID: 1851297628}
-  - component: {fileID: 1851297627}
   m_Layer: 0
   m_Name: Blank (34)
   m_TagString: 'Start '
@@ -4284,21 +3787,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1851297627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851297625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1851297628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4376,7 +3864,6 @@ GameObject:
   - component: {fileID: 1942328617}
   - component: {fileID: 1942328620}
   - component: {fileID: 1942328619}
-  - component: {fileID: 1942328618}
   m_Layer: 0
   m_Name: Blank (15)
   m_TagString: 'Start '
@@ -4399,21 +3886,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1942328618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942328616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1942328619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4491,7 +3963,6 @@ GameObject:
   - component: {fileID: 1968654088}
   - component: {fileID: 1968654091}
   - component: {fileID: 1968654090}
-  - component: {fileID: 1968654089}
   m_Layer: 0
   m_Name: Blank (27)
   m_TagString: 'Start '
@@ -4514,21 +3985,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1968654089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968654087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &1968654090
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4606,7 +4062,6 @@ GameObject:
   - component: {fileID: 2012095784}
   - component: {fileID: 2012095787}
   - component: {fileID: 2012095786}
-  - component: {fileID: 2012095785}
   m_Layer: 0
   m_Name: Blank (10)
   m_TagString: 'Start '
@@ -4629,21 +4084,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2012095785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012095783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &2012095786
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4721,7 +4161,6 @@ GameObject:
   - component: {fileID: 2012306106}
   - component: {fileID: 2012306109}
   - component: {fileID: 2012306108}
-  - component: {fileID: 2012306107}
   m_Layer: 0
   m_Name: Blank (18)
   m_TagString: 'Start '
@@ -4744,21 +4183,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2012306107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012306105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &2012306108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4836,7 +4260,6 @@ GameObject:
   - component: {fileID: 2022217724}
   - component: {fileID: 2022217727}
   - component: {fileID: 2022217726}
-  - component: {fileID: 2022217725}
   m_Layer: 0
   m_Name: Blank (8)
   m_TagString: 'Start '
@@ -4859,21 +4282,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2022217725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022217723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &2022217726
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4951,7 +4359,6 @@ GameObject:
   - component: {fileID: 2035173646}
   - component: {fileID: 2035173649}
   - component: {fileID: 2035173648}
-  - component: {fileID: 2035173647}
   m_Layer: 0
   m_Name: Blank (30)
   m_TagString: 'Start '
@@ -4974,21 +4381,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2035173647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035173645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &2035173648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5066,7 +4458,6 @@ GameObject:
   - component: {fileID: 2119855746}
   - component: {fileID: 2119855749}
   - component: {fileID: 2119855748}
-  - component: {fileID: 2119855747}
   m_Layer: 0
   m_Name: Blank (26)
   m_TagString: 'Start '
@@ -5089,21 +4480,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1312804346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2119855747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119855745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f422be8a524b3914ab4090ddd023140e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 5
-  silverAmount: 5
-  bronzeAmount: 5
 --- !u!65 &2119855748
 BoxCollider:
   m_ObjectHideFlags: 0
