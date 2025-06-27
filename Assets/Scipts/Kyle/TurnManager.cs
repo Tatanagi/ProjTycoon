@@ -8,7 +8,6 @@ public class TurnManager : ScriptableObject
 
     private void OnEnable()
     {
-        // Reset the player turn on game start
         currentPlayerIndex = 0;
     }
 
