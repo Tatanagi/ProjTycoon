@@ -4,24 +4,26 @@ using System.Collections;
 
 public class Dice : MonoBehaviour
 {
-    public Sprite[] diceSides;
-    public Button rollButton;
-    public TurnManager turnManager;
+    public Sprite[] diceSides;               // Dice sprites for 1-6
+    public Button rollButton;                // Button to trigger roll
+    public TurnManager turnManager;          // ScriptableObject managing turn logic
+    public Image diceImageDisplay;           // Image component for showing the result (optional)
 
     private PlayerController[] players;
     private bool coroutineAllowed = true;
 
     void Start()
     {
-        // Load all dice sprites from Resources/DiceSprites folder
+        // Load dice sprites from Resources/DiceSprites folder
         diceSides = Resources.LoadAll<Sprite>("DiceSprites");
 
-        // Automatically find and assign all players based on tags
+        // Auto-load players based on tags Player1–4
         players = new PlayerController[4];
         for (int i = 0; i < 4; i++)
         {
-            string tag = "Player" + (i + 1); // e.g., "Player1"
+            string tag = "Player" + (i + 1);
             GameObject playerObj = GameObject.FindGameObjectWithTag(tag);
+
             if (playerObj != null)
             {
                 players[i] = playerObj.GetComponent<PlayerController>();
@@ -32,7 +34,7 @@ public class Dice : MonoBehaviour
             }
         }
 
-        // Attach roll button listener
+        // Add listener to the Roll button
         if (rollButton != null)
         {
             rollButton.onClick.AddListener(() => StartCoroutine(RollDice()));
@@ -50,10 +52,10 @@ public class Dice : MonoBehaviour
 
         int currentPlayerIndex = turnManager.GetCurrentPlayerIndex();
 
-        // Index safety check
+        // Safety check
         if (currentPlayerIndex < 0 || currentPlayerIndex >= players.Length)
         {
-            Debug.LogError("Invalid player index from TurnManager: " + currentPlayerIndex);
+            Debug.LogError("Invalid player index from TurnManager.");
             coroutineAllowed = true;
             yield break;
         }
@@ -71,13 +73,19 @@ public class Dice : MonoBehaviour
         int diceRoll = Random.Range(1, 7);
         Debug.Log("Player " + (currentPlayerIndex + 1) + " rolled: " + diceRoll);
 
+        // Optional: update dice sprite visually
+        if (diceSides != null && diceSides.Length >= 6 && diceImageDisplay != null)
+        {
+            diceImageDisplay.sprite = diceSides[diceRoll - 1];
+        }
+
         // Move the player
         currentPlayer.MovePlayer(diceRoll);
 
-        // Wait until the player finishes moving
+        // Wait until finished moving
         yield return new WaitUntil(() => currentPlayer.IsFinishedMoving);
 
-        // Advance to the next turn
+        // Move to next player
         turnManager.NextTurn();
         coroutineAllowed = true;
     }
