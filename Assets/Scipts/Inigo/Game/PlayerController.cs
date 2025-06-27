@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Inventory")]
     public int gold = 0;
     public int silver = 0;
     public int bronze = 0;
@@ -11,17 +10,14 @@ public class PlayerController : MonoBehaviour
     public int turnips = 0;
     public int roundTurnips = 0;
 
-    [Header("Status Effects")]
     public bool hasLoan = false;
     public bool isInJail = false;
     public bool tokenGainBanned = false;
 
-    [Header("Movement")]
-    public BoardCell[] boardCells;
+    public Transform[] boardCells;
     public float moveSpeed = 2f;
     private int currentCellIndex = 0;
     public bool IsFinishedMoving { get; private set; } = true;
-    private BoardCell currentCell;
 
     public void MovePlayer(int steps)
     {
@@ -35,8 +31,11 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < steps; i++)
         {
-            int nextIndex = (currentCellIndex + 1) % boardCells.Length;
-            Vector3 nextPos = boardCells[nextIndex].transform.position;
+            int nextIndex = currentCellIndex + 1;
+            if (nextIndex >= boardCells.Length)
+                break;
+
+            Vector3 nextPos = boardCells[nextIndex].position;
 
             while (Vector3.Distance(transform.position, nextPos) > 0.01f)
             {
@@ -47,11 +46,6 @@ public class PlayerController : MonoBehaviour
             currentCellIndex = nextIndex;
             yield return new WaitForSeconds(0.1f);
         }
-
-        currentCell = boardCells[currentCellIndex];
-        Debug.Log($"{name} landed on: {currentCell.cellType}");
-
-        currentCell.OnPlayerLanded(this);
 
         IsFinishedMoving = true;
     }
@@ -67,14 +61,13 @@ public class PlayerController : MonoBehaviour
             {
                 shinyPennies -= payment;
                 hasLoan = false;
-                Debug.Log($"{name} repaid their loan of {payment} shiny pennies.");
             }
             else
             {
                 isInJail = true;
                 tokenGainBanned = true;
                 hasLoan = false;
-                Debug.Log($"{name} failed to repay their loan and is now in jail & banned from gaining tokens.");
+                Debug.Log($"{name} failed to repay their loan and is now in jail.");
             }
         }
         else
