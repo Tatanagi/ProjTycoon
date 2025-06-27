@@ -11,6 +11,7 @@ public class Dice : MonoBehaviour
 
     private PlayerController[] players;
     private bool coroutineAllowed = true;
+    public TurnUIController turnUIController;
 
     void Start()
     {
@@ -82,11 +83,17 @@ public class Dice : MonoBehaviour
         // Move the player
         currentPlayer.MovePlayer(diceRoll);
 
-        // Wait until finished moving
         yield return new WaitUntil(() => currentPlayer.IsFinishedMoving);
 
         // Move to next player
         turnManager.NextTurn();
+
+        // Update UI for next player's turn
+        if (turnUIController != null)
+        {
+            turnUIController.UpdateTurnUI();
+        }
+
         coroutineAllowed = true;
     }
 }
