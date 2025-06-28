@@ -9,11 +9,15 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     public GameObject CCPanel;
     public GameObject LOPanel;
+
+    [Header("Community Chest")]
     public TextMeshProUGUI cardTitleText;
     public TextMeshProUGUI cardDescriptionText;
+    public Button drawCardButton;
+
+    [Header("Lucky Loan Lender")]
     public TextMeshProUGUI loanTitleText;
     public TextMeshProUGUI loanDescriptionText;
-    public Button drawCardButton;
     public Button acceptLoanButton;
     public Button cancelLoanButton;
 
@@ -30,28 +34,24 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
 
-        // Hide UI at start
         CCPanel.SetActive(false);
         LOPanel.SetActive(false);
     }
 
     // --- COMMUNITY CHEST ---
 
-    public void ShowCommunityChestCard(string title, string description)
+    public void ShowCommunityChestCard(PlayerController player)
     {
-        CCPanel.SetActive(true);
         cardTitleText.text = "Community Chest";
         cardDescriptionText.text = $"Cost: X Shiny Pennies\nClick to draw a random effect!";
-    }
 
-    public void HideCommunityChestCard()
-    {
-        CCPanel.SetActive(false);
+        CCPanel.SetActive(true);
     }
 
     public void ShowDrawCard(PlayerController player)
     {
         currentPlayer = player;
+
         drawCardButton.onClick.RemoveAllListeners();
         drawCardButton.onClick.AddListener(() =>
         {
@@ -63,13 +63,22 @@ public class UIManager : MonoBehaviour
         CCPanel.SetActive(true);
     }
 
+    public void HideCommunityChestCard() => CCPanel.SetActive(false);
+
     // --- LUCKY LOAN LENDER ---
 
     public void ShowLoanOffer(PlayerController player)
     {
         currentPlayer = player;
+
         loanTitleText.text = "Lucky Loan Lender";
         loanDescriptionText.text = $"Would you like to take a loan worth 10% of your current shiny pennies?";
+
+        acceptLoanButton.onClick.RemoveAllListeners();
+        cancelLoanButton.onClick.RemoveAllListeners();
+
+        acceptLoanButton.onClick.AddListener(OnConfirmLoan);
+        cancelLoanButton.onClick.AddListener(HideLoanOffer);
 
         LOPanel.SetActive(true);
     }
@@ -77,11 +86,8 @@ public class UIManager : MonoBehaviour
     public void OnConfirmLoan()
     {
         GameManager.Instance.loanLender.OfferLoan(currentPlayer);
-        LOPanel.SetActive(false);
+        HideLoanOffer();
     }
 
-    public void HideLoanOffer()
-    {
-        LOPanel.SetActive(false);
-    }
+    public void HideLoanOffer() => LOPanel.SetActive(false);
 }

@@ -16,11 +16,12 @@ public class BoardCell : MonoBehaviour
         switch (cellType)
         {
             case CellType.CommunityChest:
-                GameManager.Instance.communityChest.DrawCard(player, GameManager.Instance.GetAllPlayers());
+                Debug.Log("Player landed on Community Chest.");
+                UIManager.Instance.ShowCommunityChestCard(player);
                 break;
 
             case CellType.LuckyLoanLender:
-                Debug.Log("Player landed on LuckyLoanLender."); // TEMP TEST
+                Debug.Log("Player landed on LuckyLoanLender.");
                 UIManager.Instance.ShowLoanOffer(player);
                 break;
 
