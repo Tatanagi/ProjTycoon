@@ -4,17 +4,14 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - 'Start '
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - Player1
-  - Player2
-  - Player3
-  - Player4
+  - Player 1
+  - Player 2
+  - Player 3
+  - Player 4
+  - Start
+  - Loan Lender
+  - Royal Mint
+  - Community Chest
   layers:
   - Default
   - TransparentFX

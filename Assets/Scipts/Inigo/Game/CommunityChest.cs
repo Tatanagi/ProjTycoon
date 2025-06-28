@@ -1,100 +1,40 @@
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
+/// <summary>
+/// Draw‑a‑card mechanic that lets a player pay a cost to trigger an effect.
+/// The deck is created at runtime in <see cref="Awake"/>.
+/// </summary>
 public class CommunityChest : MonoBehaviour
 {
-    [System.Serializable]
+    // ---------- Nested types ----------
+
+    [Serializable]
     public class CommunityCard
     {
         public string cardName;
         public string description;
-        public int cost;
+        public int cost;   // shiny‑penny cost to draw
         public Action<PlayerController, List<PlayerController>> effect;
     }
 
-    public List<CommunityCard> deck = new List<CommunityCard>();
+    // ---------- Fields ----------
 
-    public void InitializeDeck()
+    private readonly List<CommunityCard> _deck = new();   // run‑time deck
+
+    // ---------- Unity ----------
+
+    private void Awake() => InitialiseDeck();
+
+    // ---------- Public API ----------
+
+    /// <summary>Draws (and immediately resolves) a random card, if the player can afford the cost.</summary>
+    public void DrawCard(PlayerController player, IReadOnlyList<PlayerController> allPlayers)
     {
-        deck = new List<CommunityCard>()
-        {
-            new CommunityCard
-            {
-                cardName = "Steal Gold",
-                description = "Pick a player and decrease 2 gold.",
-                cost = 8,
-                effect = (player, others) =>
-                {
-                    var target = ChooseTarget(others);
-                    target.gold = Mathf.Max(0, target.gold - 2);
-                }
-            },
-            new CommunityCard
-            {
-                cardName = "Steal Silver",
-                description = "Pick a player and decrease 5 silver.",
-                cost = 5,
-                effect = (player, others) =>
-                {
-                    var target = ChooseTarget(others);
-                    target.silver = Mathf.Max(0, target.silver - 5);
-                }
-            },
-            new CommunityCard
-            {
-                cardName = "Steal Bronze",
-                description = "Pick a player and decrease 10 bronze.",
-                cost = 1,
-                effect = (player, others) =>
-                {
-                    var target = ChooseTarget(others);
-                    target.bronze = Mathf.Max(0, target.bronze - 10);
-                }
-            },
-            new CommunityCard
-            {
-                cardName = "Steal Shiny Pennies",
-                description = "Pick a player and decrease 5 shiny pennies.",
-                cost = 12,
-                effect = (player, others) =>
-                {
-                    var target = ChooseTarget(others);
-                    int stolen = Mathf.Min(5, target.shinyPennies);
-                    target.shinyPennies -= stolen;
-                    player.shinyPennies += stolen;
-                }
-            },
-            new CommunityCard
-            {
-                cardName = "Gain Extra Pennies",
-                description = "Gain 10 shiny pennies.",
-                cost = 5,
-                effect = (player, others) =>
-                {
-                    player.shinyPennies += 10;
-                }
-            },
-            new CommunityCard
-            {
-                cardName = "Gain Turnips",
-                description = "All players gain 25 turnips this round only.",
-                cost = 4,
-                effect = (player, others) =>
-                {
-                    foreach (var p in others)
-                        p.roundTurnips += 25;
-                    player.roundTurnips += 25;
-                }
-            }
-        };
-    }
+        if (_deck.Count == 0) return;
 
-    public void DrawCard(PlayerController player, List<PlayerController> allPlayers)
-    {
-        if (deck.Count == 0) return;
-
-        var card = deck[UnityEngine.Random.Range(0, deck.Count)];
+        CommunityCard card = _deck[UnityEngine.Random.Range(0, _deck.Count)];
 
         if (player.shinyPennies < card.cost)
         {
@@ -103,13 +43,52 @@ public class CommunityChest : MonoBehaviour
         }
 
         player.shinyPennies -= card.cost;
-        card.effect.Invoke(player, allPlayers.FindAll(p => p != player));
+        card.effect.Invoke(player, new List<PlayerController>(allPlayers).FindAll(p => p != player));
 
-        Debug.Log($"{player.name} drew a Community Card: {card.cardName} - {card.description}");
+        Debug.Log($"{player.name} drew Community Card: {card.cardName} – {card.description}");
     }
 
-    private PlayerController ChooseTarget(List<PlayerController> players)
+    // ---------- Private helpers ----------
+
+    private void InitialiseDeck()
     {
-        return players[UnityEngine.Random.Range(0, players.Count)];
+        _deck.Clear();
+        _deck.AddRange(new[]
+        {
+            NewCard("Steal Gold",   "Pick a player and decrease 2 gold.",           8,
+                (self, others) => ChooseTarget(others).gold   = Mathf.Max(0, ChooseTarget(others).gold   - 2)),
+
+            NewCard("Steal Silver", "Pick a player and decrease 5 silver.",         5,
+                (self, others) => ChooseTarget(others).silver = Mathf.Max(0, ChooseTarget(others).silver - 5)),
+
+            NewCard("Steal Bronze", "Pick a player and decrease 10 bronze.",        1,
+                (self, others) => ChooseTarget(others).bronze = Mathf.Max(0, ChooseTarget(others).bronze - 10)),
+
+            NewCard("Steal Shiny Pennies", "Pick a player and decrease 5 shiny pennies.", 12,
+                (self, others) =>
+                {
+                    PlayerController target = ChooseTarget(others);
+                    int stolen = Mathf.Min(5, target.shinyPennies);
+                    target.shinyPennies -= stolen;
+                    self.shinyPennies   += stolen;
+                }),
+
+            NewCard("Gain Extra Pennies", "Gain 10 shiny pennies.", 5,
+                (self, _) => self.shinyPennies += 10),
+
+            NewCard("Gain Turnips", "All players gain 25 turnips this round only.", 4,
+                (self, others) =>
+                {
+                    foreach (var p in others) p.roundTurnips += 25;
+                    self.roundTurnips += 25;
+                })
+        });
     }
+
+    private static CommunityCard NewCard(string name, string desc, int cost,
+        Action<PlayerController, List<PlayerController>> effect) =>
+        new() { cardName = name, description = desc, cost = cost, effect = effect };
+
+    private static PlayerController ChooseTarget(IReadOnlyList<PlayerController> players) =>
+        players[UnityEngine.Random.Range(0, players.Count)];
 }

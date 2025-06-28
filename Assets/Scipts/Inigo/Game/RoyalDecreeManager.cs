@@ -1,16 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Each round, one resource type is worth extra value when exchanged.
+/// </summary>
 public class RoyalDecreeManager : MonoBehaviour
 {
-    public ResourceType favoredType;
-    public int multiplier = 3;
+    public ResourceType favoredType { get; private set; }
+    public int multiplier { get; private set; } = 3;
+
+    // ---------- Public API ----------
 
     public void GenerateNewDecree()
     {
         favoredType = (ResourceType)Random.Range(0, 3);
         multiplier = Random.Range(2, 5);
+
         Debug.Log($"Royal Decree: {favoredType} is worth x{multiplier}!");
     }
 
@@ -24,20 +28,7 @@ public class RoyalDecreeManager : MonoBehaviour
             _ => 0
         };
 
-        if (type == favoredType)
-            baseValue *= multiplier;
+        if (type == favoredType) baseValue *= multiplier;
         return baseValue * amount;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

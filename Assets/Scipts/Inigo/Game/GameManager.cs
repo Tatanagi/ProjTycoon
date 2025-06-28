@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>Singleton that coordinates the overall game flow.</summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [Header("References")]
     public PlayerController[] players;
     public ResourceMarket resourceMarket;
     public RoyalDecreeManager decreeManager;
@@ -13,46 +15,39 @@ public class GameManager : MonoBehaviour
 
     public int round = 1;
 
+    // ---------- Unity ----------
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
-        else
-        {
-            Instance = this;
-        }
+        Instance = this;
     }
 
-    void Start()
-    {
-        StartRound();
-    }
+    private void Start() => StartRound();
+
+    // ---------- Round management ----------
 
     public void StartRound()
     {
         Debug.Log($"Round {round} begins!");
 
-        foreach (var player in players)
-        {
-            player.StartNewRound();
-        }
+        foreach (PlayerController p in players) p.StartNewRound();
 
         decreeManager.GenerateNewDecree();
         resourceMarket.GenerateTokens(round);
     }
 
+    // ---------- Public helpers ----------
+
     public void OnPlayerFinishMove(PlayerController player, int rollResult)
     {
         if (!player.tokenGainBanned)
-        {
             resourceMarket.GiveResourceToPlayer(player, rollResult);
-        }
     }
 
-    public List<PlayerController> GetAllPlayers()
-    {
-        return new List<PlayerController>(players);
-    }
+    public List<PlayerController> GetAllPlayers() => new(players);
 }
