@@ -1202,6 +1202,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+--- !u!114 &694930111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1050588381098479536, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
+  m_PrefabInstance: {fileID: 8997649176046392310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &741935132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
+  m_PrefabInstance: {fileID: 8997649176046392310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &741935137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741935132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324c55167ac0b2044afe12d1d415a0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldNumTextCoin: {fileID: 1904308197}
+  silverNumTextCoin: {fileID: 694930111}
+  bronzeNumTextCoin: {fileID: 930270800}
+  turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
 --- !u!1 &796060843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2439597639870798798, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -1377,6 +1409,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+--- !u!114 &930270800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2448456529598985237, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
+  m_PrefabInstance: {fileID: 8997649176046392310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &930453040 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9191650484850324870, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -2769,6 +2812,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+--- !u!114 &1904308197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 480253490234275944, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
+  m_PrefabInstance: {fileID: 8997649176046392310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1907041195 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 787896543664833015, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -4682,9 +4736,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1117549454311375177, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
+      propertyPath: m_Name
+      value: GoldText (TMP) (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
       propertyPath: m_Name
       value: Coins
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358238445656544917, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
+      propertyPath: m_Name
+      value: SilverText (TMP) (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
       propertyPath: m_Pivot.x
@@ -4766,10 +4828,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8493935861749255195, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
+      propertyPath: m_Name
+      value: BronzeText (TMP)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 741935137}
   m_SourcePrefab: {fileID: 100100000, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
