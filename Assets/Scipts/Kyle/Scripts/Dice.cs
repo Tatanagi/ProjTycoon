@@ -8,10 +8,15 @@ public class Dice : MonoBehaviour
     public Button rollButton;                // Button to trigger roll
     public TurnManager turnManager;          // ScriptableObject managing turn logic
     public Image diceImageDisplay;           // Image component for showing the result (optional)
+    public TurnUIController turnUIController;
 
     private PlayerController[] players;
     private bool coroutineAllowed = true;
-    public TurnUIController turnUIController;
+
+    [Header("Testing Options")]
+    public bool testMode = false;            // Toggle for test mode
+    [Range(1, 6)]
+    public int testDiceNumber = 1;           // Number to use when test mode is enabled
 
     void Start()
     {
@@ -53,7 +58,6 @@ public class Dice : MonoBehaviour
 
         int currentPlayerIndex = turnManager.GetCurrentPlayerIndex();
 
-        // Safety check
         if (currentPlayerIndex < 0 || currentPlayerIndex >= players.Length)
         {
             Debug.LogError("Invalid player index from TurnManager.");
@@ -70,11 +74,11 @@ public class Dice : MonoBehaviour
             yield break;
         }
 
-        // Roll the dice (1 to 6)
-        int diceRoll = Random.Range(1, 7);
-        Debug.Log("Player " + (currentPlayerIndex + 1) + " rolled: " + diceRoll);
+        // Choose dice roll
+        int diceRoll = testMode ? testDiceNumber : Random.Range(1, 7);
+        Debug.Log("Player " + (currentPlayerIndex + 1) + " rolled: " + diceRoll + (testMode ? " (TEST MODE)" : ""));
 
-        // Optional: update dice sprite visually
+        // Update dice sprite visually
         if (diceSides != null && diceSides.Length >= 6 && diceImageDisplay != null)
         {
             diceImageDisplay.sprite = diceSides[diceRoll - 1];
@@ -83,12 +87,13 @@ public class Dice : MonoBehaviour
         // Move the player
         currentPlayer.MovePlayer(diceRoll);
 
+        // Wait for movement to complete
         yield return new WaitUntil(() => currentPlayer.IsFinishedMoving);
 
-        // Move to next player
+        // Advance turn
         turnManager.NextTurn();
 
-        // Update UI for next player's turn
+        // Update UI
         if (turnUIController != null)
         {
             turnUIController.UpdateTurnUI();
