@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>Singleton that coordinates the overall game flow.</summary>
+/// <summary>
+/// Singleton that coordinates the overall game flow.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -15,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public int round = 1;
 
-    // ---------- Unity ----------
+    // ---------- Unity Lifecycle ----------
 
     private void Awake()
     {
@@ -24,30 +26,59 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
     }
 
-    private void Start() => StartRound();
+    private void Start()
+    {
+        StartRound();
+    }
 
-    // ---------- Round management ----------
+    // ---------- Round Management ----------
 
     public void StartRound()
     {
         Debug.Log($"Round {round} begins!");
 
-        foreach (PlayerController p in players) p.StartNewRound();
+        foreach (PlayerController p in players)
+        {
+            p.StartNewRound();
+        }
 
         decreeManager.GenerateNewDecree();
         resourceMarket.GenerateTokens(round);
     }
 
-    // ---------- Public helpers ----------
+    // ---------- Game Events ----------
 
+    /// <summary>
+    /// Called when a player finishes movement and is eligible for resources.
+    /// </summary>
     public void OnPlayerFinishMove(PlayerController player, int rollResult)
     {
         if (!player.tokenGainBanned)
+        {
             resourceMarket.GiveResourceToPlayer(player, rollResult);
+        }
     }
 
-    public List<PlayerController> GetAllPlayers() => new(players);
+    // ---------- Public Utilities ----------
+
+    /// <summary>
+    /// Gives 5 gold, silver, and bronze to a player — used for Start tile and ResourceTokens cells.
+    /// </summary>
+    public void GiveStartTileBonus(PlayerController player)
+    {
+        player.gold += 5;
+        player.silver += 5;
+        player.bronze += 5;
+
+        Debug.Log($"{player.name} received +5 gold, silver, and bronze.");
+    }
+
+    public List<PlayerController> GetAllPlayers()
+    {
+        return new List<PlayerController>(players);
+    }
 }

@@ -4,7 +4,8 @@ public enum CellType
 {
     Normal,
     CommunityChest,
-    LuckyLoanLender
+    LuckyLoanLender,
+    ResourceTokens
 }
 
 public class BoardCell : MonoBehaviour
@@ -25,8 +26,12 @@ public class BoardCell : MonoBehaviour
                 UIManager.Instance.ShowLoanOffer(player);
                 break;
 
-            case CellType.Normal:
+            case CellType.ResourceTokens:
+                Debug.Log("Player landed on Resource Token Cell.");
+                GameManager.Instance.GiveStartTileBonus(player); // Bonus on resource tile
+                break;
 
+            case CellType.Normal:
             default:
                 break;
         }

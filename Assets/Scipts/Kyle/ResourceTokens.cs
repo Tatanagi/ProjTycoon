@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Trigger on the Start tile that grants bonus only after Round 1.
+/// Trigger on the Start tile that grants +5 gold, silver, and bronze on any round.
 /// </summary>
 public class StartTileBonus : MonoBehaviour
 {
@@ -10,13 +10,12 @@ public class StartTileBonus : MonoBehaviour
         if (other.CompareTag("Player1") || other.CompareTag("Player2") ||
             other.CompareTag("Player3") || other.CompareTag("Player4"))
         {
-            if (GameManager.Instance.round < 2) return;
-
             PlayerController player = other.GetComponent<PlayerController>();
 
             if (player != null)
             {
-                GameManager.Instance.resourceMarket.GiveStartTileBonus(player);
+                GameManager.Instance.GiveStartTileBonus(player);
+                Debug.Log($"{player.name} landed on Start and received +5 gold, silver, and bronze!");
             }
         }
     }

@@ -3809,7 +3809,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1208865212473898725, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: m_TagString
-      value: Player 1
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 3391118150927613257, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: m_Name
@@ -4313,7 +4313,7 @@ PrefabInstance:
       objectReference: {fileID: 1784339229}
     - target: {fileID: 7130281545379948815, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: m_TagString
-      value: Player 4
+      value: Player4
       objectReference: {fileID: 0}
     - target: {fileID: 7542285004681042791, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4521,11 +4521,11 @@ PrefabInstance:
       objectReference: {fileID: 1784339229}
     - target: {fileID: 7930777333754992855, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: m_TagString
-      value: Player 3
+      value: Player3
       objectReference: {fileID: 0}
     - target: {fileID: 8013899966655616666, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: m_TagString
-      value: Player 2
+      value: Player2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4544,7 +4544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 3
 --- !u!1001 &6739781501371348835
 PrefabInstance:
   m_ObjectHideFlags: 0
