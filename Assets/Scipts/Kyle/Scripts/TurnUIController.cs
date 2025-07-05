@@ -4,16 +4,26 @@ using System.Collections;
 
 public class TurnUIController : MonoBehaviour
 {
+    public static TurnUIController Instance { get; private set; }
+
     public GameObject turnBasedUI;        // UI panel to show/hide
     public TMP_Text turnTMPText;          // TextMeshPro text component
     public TurnManager turnManager;       // Reference to TurnManager ScriptableObject
 
     private Coroutine hideCoroutine;
 
-    private void OnEnable()
+    private void Awake()
     {
-        UpdateTurnUI();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
     }
+
+    private void OnEnable() => UpdateTurnUI();
 
     public void UpdateTurnUI()
     {
@@ -36,11 +46,7 @@ public class TurnUIController : MonoBehaviour
     private IEnumerator HideAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        HideTurnUI();
-    }
 
-    public void HideTurnUI()
-    {
         if (turnBasedUI != null)
             turnBasedUI.SetActive(false);
     }

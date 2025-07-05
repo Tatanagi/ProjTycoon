@@ -7,7 +7,6 @@ public class Dice : MonoBehaviour
     public GameObject diceObject;            // 3D dice object
     public Button rollButton;                // Button to trigger roll
     public TurnManager turnManager;          // ScriptableObject managing turn logic
-    public TurnUIController turnUIController;
 
     private PlayerController[] players;
     private bool coroutineAllowed = true;
@@ -95,14 +94,12 @@ public class Dice : MonoBehaviour
         // Wait for movement to complete
         yield return new WaitUntil(() => currentPlayer.IsFinishedMoving);
 
+        // Award resource, then resolve tile
+        GameManager.Instance.OnPlayerFinishMove(currentPlayer, diceRoll);
+        GameManager.Instance.ResolveLanding(currentPlayer);   // decides UI
+
         // Advance turn
         turnManager.NextTurn();
-
-        // Update UI
-        if (turnUIController != null)
-        {
-            turnUIController.UpdateTurnUI();
-        }
 
         coroutineAllowed = true;
     }

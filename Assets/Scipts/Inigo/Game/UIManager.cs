@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     public Button acceptLoanButton;
     public Button cancelLoanButton;
 
+    [Header("Turn UI Controller")]
+    public TurnUIController turnController;
+
     private PlayerController currentPlayer;
 
     void Awake()
@@ -33,6 +36,9 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        if (turnController == null)
+            turnController = FindFirstObjectByType<TurnUIController>();
 
         CCPanel.SetActive(false);
         LOPanel.SetActive(false);
@@ -63,11 +69,17 @@ public class UIManager : MonoBehaviour
         CCPanel.SetActive(true);
     }
 
-    public void HideCommunityChestCard() => CCPanel.SetActive(false);
+    public void HideCommunityChestCard()
+    {
+        CCPanel.SetActive(false);
 
-    // --- LUCKY LOAN LENDER ---
+        if (turnController != null) 
+            turnController.UpdateTurnUI();
+    }
 
-    public void ShowLoanOffer(PlayerController player)
+        // --- LUCKY LOAN LENDER ---
+
+        public void ShowLoanOffer(PlayerController player)
     {
         currentPlayer = player;
 
@@ -89,5 +101,11 @@ public class UIManager : MonoBehaviour
         HideLoanOffer();
     }
 
-    public void HideLoanOffer() => LOPanel.SetActive(false);
+    public void HideLoanOffer() 
+    { 
+        LOPanel.SetActive(false);
+
+        if (turnController != null)
+            turnController.UpdateTurnUI();
+    }
 }

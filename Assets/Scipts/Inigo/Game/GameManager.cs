@@ -81,4 +81,27 @@ public class GameManager : MonoBehaviour
     {
         return new List<PlayerController>(players);
     }
+
+    public void ResolveLanding(PlayerController player)
+    {
+        BoardCell cell = player.GetCurrentCell();
+
+        // EXAMPLE: Replace this with your actual tile type or tag check
+        switch (cell.cellType)
+        {
+            case CellType.CommunityChest:
+                UIManager.Instance.ShowDrawCard(player); // TurnUIController will be triggered *after* the panel is hidden
+                break;
+
+            case CellType.LuckyLoanLender:
+                UIManager.Instance.ShowLoanOffer(player);
+                break;
+
+            case CellType.Normal:
+
+            default:
+                TurnUIController.Instance.UpdateTurnUI(); // Nothing special — show turn banner immediately
+                break;
+        }
+    }
 }

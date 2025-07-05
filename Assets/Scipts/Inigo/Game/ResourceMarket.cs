@@ -39,7 +39,7 @@ public class ResourceMarket : MonoBehaviour
                 player.bronze += 2;
                 Debug.Log($"{player.name} gained Bronze x2.");
                 break;
-            case <= 4:
+            case <= 5: // Change to 5
                 player.silver += 1;
                 Debug.Log($"{player.name} gained Silver x1.");
                 break;

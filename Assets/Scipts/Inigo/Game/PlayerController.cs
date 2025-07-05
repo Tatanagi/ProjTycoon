@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
     public bool IsFinishedMoving { get; private set; } = true;
     private BoardCell currentCell;
 
+    public BoardCell GetCurrentCell()
+    {
+        return currentCell;
+    }
+
     public void MovePlayer(int steps)
     {
         if (IsFinishedMoving)
