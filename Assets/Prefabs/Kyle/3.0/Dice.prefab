@@ -126,6 +126,8 @@ MonoBehaviour:
   turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
   diceImageDisplay: {fileID: 0}
   turnUIController: {fileID: 0}
+  testMode: 0
+  testDiceNumber: 1
 --- !u!1 &2233652545219737482
 GameObject:
   m_ObjectHideFlags: 0

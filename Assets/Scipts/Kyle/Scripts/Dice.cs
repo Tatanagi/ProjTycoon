@@ -4,10 +4,9 @@ using System.Collections;
 
 public class Dice : MonoBehaviour
 {
-    public Sprite[] diceSides;               // Dice sprites for 1-6
+    public GameObject diceObject;            // 3D dice object
     public Button rollButton;                // Button to trigger roll
     public TurnManager turnManager;          // ScriptableObject managing turn logic
-    public Image diceImageDisplay;           // Image component for showing the result (optional)
     public TurnUIController turnUIController;
 
     private PlayerController[] players;
@@ -18,10 +17,19 @@ public class Dice : MonoBehaviour
     [Range(1, 6)]
     public int testDiceNumber = 1;           // Number to use when test mode is enabled
 
+    [Header("Face Transforms")]
+    public Transform[] faceTransforms = new Transform[6]; // Index 0 = Face 1, ..., Index 5 = Face 6
+
     void Start()
     {
-        // Load dice sprites from Resources/DiceSprites folder
-        diceSides = Resources.LoadAll<Sprite>("DiceSprites");
+        // Validate faceTransforms assignment
+        for (int i = 0; i < faceTransforms.Length; i++)
+        {
+            if (faceTransforms[i] == null)
+            {
+                Debug.LogError($"Missing transform for dice face value {i + 1}. Please assign all 6 face transforms in the inspector.");
+            }
+        }
 
         // Auto-load players based on tags Player1–4
         players = new PlayerController[4];
@@ -78,11 +86,8 @@ public class Dice : MonoBehaviour
         int diceRoll = testMode ? testDiceNumber : Random.Range(1, 7);
         Debug.Log("Player " + (currentPlayerIndex + 1) + " rolled: " + diceRoll + (testMode ? " (TEST MODE)" : ""));
 
-        // Update dice sprite visually
-        if (diceSides != null && diceSides.Length >= 6 && diceImageDisplay != null)
-        {
-            diceImageDisplay.sprite = diceSides[diceRoll - 1];
-        }
+        // Animate the dice roll
+        yield return StartCoroutine(AnimateDiceRoll(diceRoll));
 
         // Move the player
         currentPlayer.MovePlayer(diceRoll);
@@ -101,4 +106,51 @@ public class Dice : MonoBehaviour
 
         coroutineAllowed = true;
     }
+
+    private IEnumerator AnimateDiceRoll(int diceRoll)
+    {
+        // Reset dice rotation
+        diceObject.transform.rotation = Quaternion.identity;
+
+        // Roll animation with random rotations
+        float rollDuration = 1f;
+        float interval = 0.1f;
+        int steps = Mathf.FloorToInt(rollDuration / interval);
+
+        Debug.Log("Starting dice roll animation...");
+
+        for (int i = 0; i < steps; i++)
+        {
+            Vector3 randomRotation = new Vector3(
+                Random.Range(-90, 90),
+                Random.Range(-90, 90),
+                Random.Range(-90, 90)
+            );
+
+            diceObject.transform.Rotate(randomRotation, Space.World);
+            Debug.Log($"Roll Step {i + 1}/{steps} - Rotation Applied: {randomRotation} | Current Rotation: {diceObject.transform.rotation.eulerAngles}");
+
+            yield return new WaitForSeconds(interval);
+        }
+
+        // Snap the dice to the correct rotation using transform reference
+        Quaternion finalRotation;
+
+        if (diceRoll >= 1 && diceRoll <= 6 && faceTransforms[diceRoll - 1] != null)
+        {
+            finalRotation = faceTransforms[diceRoll - 1].rotation;
+        }
+        else
+        {
+            Debug.LogWarning("Missing or invalid transform for dice face " + diceRoll + ". Using identity rotation.");
+            finalRotation = Quaternion.identity;
+        }
+
+        diceObject.transform.rotation = finalRotation;
+
+        Debug.Log($"Final dice result: {diceRoll} | Final rotation set to: {finalRotation.eulerAngles}");
+
+        yield return new WaitForSeconds(0.5f);
+    }
+
 }

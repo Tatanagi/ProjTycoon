@@ -500,6 +500,9 @@ MonoBehaviour:
     quantity: 0
   - type: 2
     quantity: 0
+  startGold: 5
+  startSilver: 5
+  startBronze: 5
 --- !u!4 &269597506
 Transform:
   m_ObjectHideFlags: 0
@@ -1075,8 +1078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2cf1fd3592af44ab88f0f92fc38475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  favoredType: 0
-  multiplier: 3
 --- !u!4 &707801548
 Transform:
   m_ObjectHideFlags: 0

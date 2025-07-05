@@ -8,15 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Kyle/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/WorkSpaces/Inigo/MainMenu.unity
     guid: 864321378ca166f43821291871a3a90e
   - enabled: 1
     path: Assets/WorkSpaces/Inigo/Game.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: 9869f8712982cb34f95b1e17f2bbd4ca
   - enabled: 1
     path: Assets/WorkSpaces/Ken/Game Workspace.unity
     guid: df3ccf556a371e1468b62bc66ed5f29d
+  - enabled: 1
+    path: Assets/WorkSpaces/MASTER.unity
+    guid: 5d283a7cb7351c14880d45e1b1b3fd22
   - enabled: 1
     path: Assets/WorkSpaces/Ken/Main Menu Workspace.unity
     guid: 8aebc29ca25001443b80066f8e8a2918
