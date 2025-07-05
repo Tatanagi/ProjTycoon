@@ -5,6 +5,7 @@ public enum CellType
     Normal,
     CommunityChest,
     LuckyLoanLender,
+    RoyalMint,
     ResourceTokens
 }
 
@@ -24,6 +25,11 @@ public class BoardCell : MonoBehaviour
             case CellType.LuckyLoanLender:
                 Debug.Log("Player landed on LuckyLoanLender.");
                 UIManager.Instance.ShowLoanOffer(player);
+                break;
+
+            case CellType.RoyalMint:
+                Debug.Log("Player landed on Royal Fickle Mint.");
+                UIManager.Instance.ShowExchange(player);
                 break;
 
             case CellType.ResourceTokens:

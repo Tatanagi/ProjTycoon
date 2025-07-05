@@ -5,7 +5,10 @@ using UnityEngine;
 /// </summary>
 public class RoyalDecreeManager : MonoBehaviour
 {
+    public static RoyalDecreeManager Instance { get; private set; }
+
     public ResourceType favoredType { get; private set; }
+
     public int multiplier { get; private set; } = 3;
 
     // ---------- Public API ----------

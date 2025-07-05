@@ -12,7 +12,6 @@ TagManager:
   - Player4
   - Player3
   - Player2
-  - 'Lucky Loan Lender '
   layers:
   - Default
   - TransparentFX

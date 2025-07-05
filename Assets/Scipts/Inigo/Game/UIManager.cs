@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     public GameObject CCPanel;
     public GameObject LOPanel;
+    public GameObject REPanel;
 
     [Header("Community Chest")]
     public TextMeshProUGUI cardTitleText;
@@ -21,10 +22,20 @@ public class UIManager : MonoBehaviour
     public Button acceptLoanButton;
     public Button cancelLoanButton;
 
+    [Header("Royal Fickle Mint")]
+    public TextMeshProUGUI exchangeTitleText;
+    public TextMeshProUGUI bronzeInput;
+    public TextMeshProUGUI silverInput;
+    public TextMeshProUGUI goldInput;
+    public Button confirmExchangeButton;
+    public Button cancelExchangeButton;
+
     [Header("Turn UI Controller")]
     public TurnUIController turnController;
 
     private PlayerController currentPlayer;
+
+    private PlayerController mintingPlayer;
 
     void Awake()
     {
@@ -42,6 +53,7 @@ public class UIManager : MonoBehaviour
 
         CCPanel.SetActive(false);
         LOPanel.SetActive(false);
+        REPanel.SetActive(false);
     }
 
     // --- COMMUNITY CHEST ---
@@ -105,6 +117,57 @@ public class UIManager : MonoBehaviour
     { 
         LOPanel.SetActive(false);
 
+        if (turnController != null)
+            turnController.UpdateTurnUI();
+    }
+
+        // --- ROYAL FICKLE MINT ---
+    public void ShowExchange(PlayerController player)
+    {
+        mintingPlayer = player;
+
+        exchangeTitleText.text = "Royal Fickle Mint";
+        bronzeInput.text = "0";
+        silverInput.text = "0";
+        goldInput.text = "0";
+
+        confirmExchangeButton.onClick.RemoveAllListeners();
+        cancelExchangeButton.onClick.RemoveAllListeners();
+
+        confirmExchangeButton.onClick.AddListener(ConfirmExchange);
+        cancelExchangeButton.onClick.AddListener(HideExchange);
+
+        REPanel.SetActive(true);
+    }
+
+    private void ConfirmExchange()
+    {
+        int bronze = int.Parse(bronzeInput.text);
+        int silver = int.Parse(silverInput.text);
+        int gold = int.Parse(goldInput.text);
+
+        RoyalDecreeManager decree = RoyalDecreeManager.Instance;
+
+        int bronzeValue = decree.GetValueExchange(ResourceType.Bronze, Mathf.Min(bronze, mintingPlayer.bronze));
+        int silverValue = decree.GetValueExchange(ResourceType.Silver, Mathf.Min(silver, mintingPlayer.silver));
+        int goldValue = decree.GetValueExchange(ResourceType.Silver, Mathf.Min(gold, mintingPlayer.gold));
+
+        int total = bronzeValue + silverValue + goldValue;
+
+        mintingPlayer.bronze -= Mathf.Min(bronze, mintingPlayer.bronze);
+        mintingPlayer.silver -= Mathf.Min(silver, mintingPlayer.silver);
+        mintingPlayer.gold -= Mathf.Min(gold, mintingPlayer.gold);
+
+        mintingPlayer.shinyPennies += total;
+
+        Debug.Log($"{mintingPlayer.name} exchanged resources for {total} shiny pennies.");
+
+        HideExchange();
+    }
+
+    public void HideExchange()
+    {
+        REPanel.SetActive(false);
         if (turnController != null)
             turnController.UpdateTurnUI();
     }
