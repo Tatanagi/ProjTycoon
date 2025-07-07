@@ -3,15 +3,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    /* -------- Status -------- */
     public bool hasLoan = false;
     public bool isInJail = false;
     public bool tokenGainBanned = false;
 
-    /* -------- Inventory (new component) -------- */
     public PlayerInventory inventory { get; private set; }
 
-    /* -------- Movement fields unchanged -------- */
     [Header("Movement")]
     public BoardCell[] boardCells;
     public float moveSpeed = 2f;
@@ -19,19 +16,25 @@ public class PlayerController : MonoBehaviour
     public bool IsFinishedMoving { get; private set; } = true;
     public BoardCell currentCell { get; private set; }
 
+    private void Awake()
+    {
+        inventory = GetComponent<PlayerInventory>();
+        if (!inventory)
+        {
+            Debug.LogError($"{name} is missing PlayerInventory!");
+        }
+    }
+
     public BoardCell GetCurrentCell()
     {
         return currentCell;
     }
 
-    private void Awake()
+    public void MovePlayer(int steps)
     {
-        inventory = GetComponent<PlayerInventory>();
-        if (!inventory)
-            Debug.LogError($"{name} is missing PlayerInventory!");
+        if (IsFinishedMoving)
+            StartCoroutine(MoveSteps(steps));
     }
-
-    /* ------- MovePlayer code unchanged except final lines ------- */
 
     private IEnumerator MoveSteps(int steps)
     {
@@ -59,18 +62,11 @@ public class PlayerController : MonoBehaviour
         IsFinishedMoving = true;
     }
 
-    public void MovePlayer(int steps)
-    {
-        if (IsFinishedMoving)
-            StartCoroutine(MoveSteps(steps));
-    }
-
-    /* -------- Round reset (loan logic)  -------- */
     public void StartNewRound()
     {
         if (hasLoan)
         {
-            int payment = Mathf.RoundToInt(inventory.ShinyPennies * 0.2f);  // 20 % repayment
+            int payment = Mathf.RoundToInt(inventory.ShinyPennies * 0.2f);
             if (inventory.Spend(ResourceType.ShinyPennies, payment))
             {
                 hasLoan = false;
@@ -81,7 +77,7 @@ public class PlayerController : MonoBehaviour
                 isInJail = true;
                 tokenGainBanned = true;
                 hasLoan = false;
-                Debug.Log($"{name} failed to repay loan → jailed & token‑banned.");
+                Debug.Log($"{name} failed to repay loan → jailed & token-banned.");
             }
         }
         else

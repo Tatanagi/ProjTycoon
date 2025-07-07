@@ -13,7 +13,7 @@ public class Dice : MonoBehaviour
 
     [Header("Testing Options")]
     public bool testMode = false;            // Toggle for test mode
-    [Range(1, 6)]
+    [Range(1, 40)]
     public int testDiceNumber = 1;           // Number to use when test mode is enabled
 
     [Header("Face Transforms")]

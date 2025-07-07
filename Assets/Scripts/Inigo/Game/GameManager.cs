@@ -1,9 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
-/// <summary>
-/// Singleton that coordinates the overall game flow.
-/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -14,10 +11,10 @@ public class GameManager : MonoBehaviour
     public RoyalDecreeManager decreeManager;
     public CommunityChest communityChest;
     public LuckyLoanLender loanLender;
+    public SuddenShortage suddenShortage;
+    public TurnManager turnManager;
 
     public int round = 1;
-
-    // ---------- Unity Lifecycle ----------
 
     private void Awake()
     {
@@ -26,7 +23,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
     }
 
@@ -34,8 +30,6 @@ public class GameManager : MonoBehaviour
     {
         StartRound();
     }
-
-    // ---------- Round Management ----------
 
     public void StartRound()
     {
@@ -50,11 +44,6 @@ public class GameManager : MonoBehaviour
         resourceMarket.GenerateTokens(round);
     }
 
-    // ---------- Game Events ----------
-
-    /// <summary>
-    /// Called when a player finishes movement and is eligible for resources.
-    /// </summary>
     public void OnPlayerFinishMove(PlayerController player, int rollResult)
     {
         if (!player.tokenGainBanned)
@@ -63,17 +52,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ---------- Public Utilities ----------
-
-    /// <summary>
-    /// Gives 5 gold, silver, and bronze to a player — used for Start tile and ResourceTokens cells.
-    /// </summary>
     public void GiveStartTileBonus(PlayerController player)
     {
         player.inventory.Add(ResourceType.Gold, 5);
         player.inventory.Add(ResourceType.Silver, 5);
         player.inventory.Add(ResourceType.Bronze, 5);
-
         Debug.Log($"{player.name} received +5 gold, silver, and bronze.");
     }
 
@@ -86,21 +69,26 @@ public class GameManager : MonoBehaviour
     {
         BoardCell cell = player.GetCurrentCell();
 
-        // EXAMPLE: Replace this with your actual tile type or tag check
         switch (cell.cellType)
         {
             case CellType.CommunityChest:
-                UIManager.Instance.ShowDrawCard(player); // TurnUIController will be triggered *after* the panel is hidden
+                UIManager.Instance.ShowCommunityChestCard(player);
                 break;
-
             case CellType.LuckyLoanLender:
                 UIManager.Instance.ShowLoanOffer(player);
                 break;
-
+            case CellType.RoyalMint:
+                UIManager.Instance.ShowExchange(player);
+                break;
+            case CellType.ResourceTokens:
+                GiveStartTileBonus(player);
+                break;
+            case CellType.SuddenShortage:
+                suddenShortage.TryTriggerShortage();
+                break;
             case CellType.Normal:
-
             default:
-                TurnUIController.Instance.UpdateTurnUI(); // Nothing special — show turn banner immediately
+                TurnUIController.Instance.UpdateTurnUI();
                 break;
         }
     }

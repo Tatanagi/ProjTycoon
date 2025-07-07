@@ -1,24 +1,37 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// Keeps all resource counts for one player and notifies listeners when they change.
-/// </summary>
 public class PlayerInventory : MonoBehaviour
 {
-    public int Gold { get; private set; }
-    public int Silver { get; private set; }
-    public int Bronze { get; private set; }
-    public int ShinyPennies { get; private set; }
-    public int Turnips { get; set; } = 0;
-    public int RoundTurnips { get; set; } = 0;
+    [Header("Resource Counts")]
+    [SerializeField] public int Gold;
+    [SerializeField] public int Silver;
+    [SerializeField] public int Bronze;
+    [SerializeField] public int ShinyPennies;
+
+    [Header("Turnip Stats")]
+    [SerializeField] public int Turnips = 0;
+    [SerializeField] public int RoundTurnips = 0;
+
+    [Header("Shortage Settings")]
+    [SerializeField] public bool isInShortage = false;
+
+    private int shortageResourceGainedThisRound = 0;
+    private const int shortageResourceLimit = 20;
 
     public event Action OnChanged;
 
-    /* ------------ Public API ------------ */
-
     public void Add(ResourceType type, int amount)
     {
+        if (isInShortage && IsMetal(type))
+        {
+            int allowed = shortageResourceLimit - shortageResourceGainedThisRound;
+            if (allowed <= 0) return;
+
+            amount = Mathf.Min(amount, allowed);
+            shortageResourceGainedThisRound += amount;
+        }
+
         switch (type)
         {
             case ResourceType.Gold: Gold += amount; break;
@@ -26,6 +39,7 @@ public class PlayerInventory : MonoBehaviour
             case ResourceType.Bronze: Bronze += amount; break;
             case ResourceType.ShinyPennies: ShinyPennies += amount; break;
         }
+
         OnChanged?.Invoke();
     }
 
@@ -45,6 +59,11 @@ public class PlayerInventory : MonoBehaviour
             ResourceType.ShinyPennies => ShinyPennies >= amount,
             _ => false
         };
+
+    public void ResetShortageLimit() => shortageResourceGainedThisRound = 0;
+
+    private bool IsMetal(ResourceType type) =>
+        type == ResourceType.Gold || type == ResourceType.Silver || type == ResourceType.Bronze;
 
     public void Notify() => OnChanged?.Invoke();
 }

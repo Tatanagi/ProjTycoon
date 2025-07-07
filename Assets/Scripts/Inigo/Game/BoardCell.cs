@@ -6,7 +6,8 @@ public enum CellType
     CommunityChest,
     LuckyLoanLender,
     RoyalMint,
-    ResourceTokens
+    ResourceTokens,
+    SuddenShortage
 }
 
 public class BoardCell : MonoBehaviour
@@ -28,13 +29,18 @@ public class BoardCell : MonoBehaviour
                 break;
 
             case CellType.RoyalMint:
-                Debug.Log("Player landed on Royal Fickle Mint.");
+                Debug.Log("Player landed on Royal Mint.");
                 UIManager.Instance.ShowExchange(player);
                 break;
 
             case CellType.ResourceTokens:
-                Debug.Log("Player landed on Resource Token Cell.");
-                GameManager.Instance.GiveStartTileBonus(player); // Bonus on resource tile
+                Debug.Log("Player landed on Resource Tokens.");
+                GameManager.Instance.GiveStartTileBonus(player);
+                break;
+
+            case CellType.SuddenShortage:
+                Debug.Log("Player landed on Sudden Shortage!");
+                GameManager.Instance.suddenShortage.TryTriggerShortage();
                 break;
 
             case CellType.Normal:

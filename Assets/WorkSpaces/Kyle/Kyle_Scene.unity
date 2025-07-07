@@ -1830,6 +1830,43 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &371359725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371359726}
+  m_Layer: 0
+  m_Name: Faces Dice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &371359726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371359725}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.018, y: -0.061806142, z: 0.72927284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 772480628}
+  - {fileID: 1065513256}
+  - {fileID: 509756057}
+  - {fileID: 1899159782}
+  - {fileID: 1125797974}
+  - {fileID: 1296929166}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &372771440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8186219228535007123, guid: 68986c470fbbac449a30c616e1a18dc7, type: 3}
@@ -1856,6 +1893,8 @@ MonoBehaviour:
   decreeManager: {fileID: 1346314463}
   communityChest: {fileID: 1879414183}
   loanLender: {fileID: 844036734}
+  suddenShortage: {fileID: 632376663}
+  turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
   round: 1
 --- !u!4 &372771443 stripped
 Transform:
@@ -2567,11 +2606,11 @@ Transform:
   m_GameObject: {fileID: 509756055}
   serializedVersion: 2
   m_LocalRotation: {x: 0.715712, y: -0.6983462, z: -0.005799822, w: 0.0059393053}
-  m_LocalPosition: {x: -5.703, y: 0.768057, z: 0.6184023}
+  m_LocalPosition: {x: -0.68499994, y: 0.82986313, z: -0.11087054}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 371359726}
   m_LocalEulerAnglesHint: {x: -180.023, y: 0.951004, z: -271.407}
 --- !u!1 &517384931
 GameObject:
@@ -2856,6 +2895,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+--- !u!1 &632376661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632376662}
+  - component: {fileID: 632376663}
+  m_Layer: 0
+  m_Name: Sudden Shortage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632376662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632376661}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1587119922}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &632376663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632376661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d81a9ff336bacf40863f5d75421cce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxShortageRounds: 1
 --- !u!114 &632880177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2868,6 +2952,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gold: 40
+  Silver: 40
+  Bronze: 40
+  ShinyPennies: 0
+  Turnips: 0
+  RoundTurnips: 0
+  isInShortage: 0
 --- !u!1 &649550211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,11 +3741,11 @@ Transform:
   m_GameObject: {fileID: 772480626}
   serializedVersion: 2
   m_LocalRotation: {x: -0.68621296, y: -0, z: -0, w: 0.7274007}
-  m_LocalPosition: {x: -4.94, y: 1.2730494, z: 0.70194644}
+  m_LocalPosition: {x: 0.07800007, y: 1.3348556, z: -0.027326405}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 371359726}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773508433
 GameObject:
@@ -4912,6 +5003,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gold: 40
+  Silver: 40
+  Bronze: 40
+  ShinyPennies: 0
+  Turnips: 0
+  RoundTurnips: 0
+  isInShortage: 0
 --- !u!1 &1065513254
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,11 +5059,11 @@ Transform:
   m_GameObject: {fileID: 1065513254}
   serializedVersion: 2
   m_LocalRotation: {x: -0.028039103, y: -0.9995724, z: -0.0082998825, w: -0.00022964222}
-  m_LocalPosition: {x: -4.94, y: 0.67848575, z: -0.009878695}
+  m_LocalPosition: {x: 0.07800007, y: 0.7402919, z: -0.73915154}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 371359726}
   m_LocalEulerAnglesHint: {x: -179.05, y: -0.05297852, z: -176.786}
 --- !u!114 &1080795535
 MonoBehaviour:
@@ -5468,12 +5566,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125797972}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.9999656, y: 0, z: 0, w: -0.008298794}
-  m_LocalPosition: {x: -4.783, y: 0.6894729, z: 1.2959764}
+  m_LocalRotation: {x: -0.9999656, y: 0, z: -0, w: -0.008298794}
+  m_LocalPosition: {x: 0.23500013, y: 0.75127906, z: 0.56670356}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 371359726}
   m_LocalEulerAnglesHint: {x: -180.951, y: 0, z: 0}
 --- !u!1 &1137873054
 GameObject:
@@ -5623,6 +5721,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gold: 40
+  Silver: 40
+  Bronze: 40
+  ShinyPennies: 0
+  Turnips: 0
+  RoundTurnips: 0
+  isInShortage: 0
 --- !u!1 &1164953554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8825560305697457990, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -6293,11 +6398,11 @@ Transform:
   m_GameObject: {fileID: 1296929164}
   serializedVersion: 2
   m_LocalRotation: {x: 0.4796798, y: -0.47658774, z: 0.510481, w: 0.5312067}
-  m_LocalPosition: {x: -5.018, y: -0.061806142, z: 0.72927284}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 371359726}
   m_LocalEulerAnglesHint: {x: -265.001, y: 169.019, z: -102.347}
 --- !u!1 &1303649604 stripped
 GameObject:
@@ -7019,6 +7124,7 @@ Transform:
   - {fileID: 1116571571}
   - {fileID: 1879414182}
   - {fileID: 844036733}
+  - {fileID: 632376662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1597050134
@@ -7690,7 +7796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 5
 --- !u!1 &1844122918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6836080878760381583, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -7801,12 +7907,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899159780}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.71782357, y: -0.6961755, z: -0.005781144, w: -0.005959223}
-  m_LocalPosition: {x: -4.206, y: 0.6126212, z: 0.6213573}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0.7178236, y: -0.6961756, z: -0.0057811444, w: -0.0059592235}
+  m_LocalPosition: {x: 0.8120003, y: 0.67442733, z: -0.10791552}
+  m_LocalScale: {x: 0.49999988, y: 0.49999994, z: 0.49999973}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 371359726}
   m_LocalEulerAnglesHint: {x: -180.029, y: -0.9509888, z: -88.246}
 --- !u!1 &1902277729 stripped
 GameObject:
@@ -9461,6 +9567,10 @@ PrefabInstance:
       value: Royal Mint
       objectReference: {fileID: 0}
     - target: {fileID: 6897374805845516819, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Sudden Shortage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897374805845516819, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -10907,7 +11017,7 @@ MonoBehaviour:
   targetDropdown: {fileID: 1408885846}
   resourceTypeDropdown: {fileID: 1964321384}
   amountInput: {fileID: 2027681555}
-  cooldownTurns: 4
+  cooldownTurns: 0
 --- !u!114 &4660163167450345283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10920,6 +11030,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gold: 40
+  Silver: 40
+  Bronze: 40
+  ShinyPennies: 0
+  Turnips: 0
+  RoundTurnips: 0
+  isInShortage: 0
 --- !u!114 &5748248231022275741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11242,12 +11359,7 @@ SceneRoots:
   - {fileID: 546709271}
   - {fileID: 517384934}
   - {fileID: 352301162}
-  - {fileID: 772480628}
-  - {fileID: 1065513256}
-  - {fileID: 509756057}
-  - {fileID: 1899159782}
-  - {fileID: 1125797974}
-  - {fileID: 1296929166}
+  - {fileID: 371359726}
   - {fileID: 111952267}
   - {fileID: 553896558}
   - {fileID: 77985198}

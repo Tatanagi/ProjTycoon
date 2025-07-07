@@ -12,6 +12,30 @@ TagManager:
   - Player4
   - Player3
   - Player2
+  - 'Start '
+  - Fish 2
+  - Community Chess
+  - House With Grass
+  - Tile Branch
+  - Village Fair
+  - 'Turnips '
+  - Silk
+  - 'Hat '
+  - Blank Space
+  - House
+  - Bag
+  - 'Wheat Field '
+  - Stone Quary
+  - Wool
+  - Stabie
+  - Tree
+  - 'Goats '
+  - Fish
+  - 'Lucky Loan Lender '
+  - Fishery
+  - 'Lettuce '
+  - Wishing Well With Rocks
+  - SuddenShortage
   layers:
   - Default
   - TransparentFX
