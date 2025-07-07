@@ -70,9 +70,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GiveStartTileBonus(PlayerController player)
     {
-        player.gold += 5;
-        player.silver += 5;
-        player.bronze += 5;
+        player.inventory.Add(ResourceType.Gold, 5);
+        player.inventory.Add(ResourceType.Silver, 5);
+        player.inventory.Add(ResourceType.Bronze, 5);
 
         Debug.Log($"{player.name} received +5 gold, silver, and bronze.");
     }

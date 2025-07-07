@@ -36,13 +36,13 @@ public class CommunityChest : MonoBehaviour
 
         CommunityCard card = _deck[UnityEngine.Random.Range(0, _deck.Count)];
 
-        if (player.shinyPennies < card.cost)
+        if (!player.inventory.CanAfford(ResourceType.ShinyPennies, card.cost))
         {
             Debug.Log($"{player.name} doesn't have enough shiny pennies.");
             return;
         }
 
-        player.shinyPennies -= card.cost;
+        player.inventory.Spend(ResourceType.ShinyPennies, card.cost);
         card.effect.Invoke(player, new List<PlayerController>(allPlayers).FindAll(p => p != player));
 
         Debug.Log($"{player.name} drew Community Card: {card.cardName} – {card.description}");
@@ -55,34 +55,52 @@ public class CommunityChest : MonoBehaviour
         _deck.Clear();
         _deck.AddRange(new[]
         {
-            NewCard("Steal Gold",   "Pick a player and decrease 2 gold.",           8,
-                (self, others) => ChooseTarget(others).gold   = Mathf.Max(0, ChooseTarget(others).gold   - 2)),
+        NewCard("Steal Gold", "Pick a player and decrease 2 gold.", 8,
+            (self, others) =>
+            {
+                var target = ChooseTarget(others);
+                int lost = Mathf.Min(2, target.inventory.Gold);
+                target.inventory.Spend(ResourceType.Gold, lost);
+            }),
 
-            NewCard("Steal Silver", "Pick a player and decrease 5 silver.",         5,
-                (self, others) => ChooseTarget(others).silver = Mathf.Max(0, ChooseTarget(others).silver - 5)),
+        NewCard("Steal Silver", "Pick a player and decrease 5 silver.", 5,
+            (self, others) =>
+            {
+                var target = ChooseTarget(others);
+                int lost = Mathf.Min(5, target.inventory.Silver);
+                target.inventory.Spend(ResourceType.Silver, lost);
+            }),
 
-            NewCard("Steal Bronze", "Pick a player and decrease 10 bronze.",        1,
-                (self, others) => ChooseTarget(others).bronze = Mathf.Max(0, ChooseTarget(others).bronze - 10)),
+        NewCard("Steal Bronze", "Pick a player and decrease 10 bronze.", 1,
+            (self, others) =>
+            {
+                var target = ChooseTarget(others);
+                int lost = Mathf.Min(10, target.inventory.Bronze);
+                target.inventory.Spend(ResourceType.Bronze, lost);
+            }),
 
-            NewCard("Steal Shiny Pennies", "Pick a player and decrease 5 shiny pennies.", 12,
-                (self, others) =>
-                {
-                    PlayerController target = ChooseTarget(others);
-                    int stolen = Mathf.Min(5, target.shinyPennies);
-                    target.shinyPennies -= stolen;
-                    self.shinyPennies   += stolen;
-                }),
+        NewCard("Steal Shiny Pennies", "Pick a player and decrease 5 shiny pennies.", 12,
+            (self, others) =>
+            {
+                var target = ChooseTarget(others);
+                int stolen = Mathf.Min(5, target.inventory.ShinyPennies);
+                target.inventory.Spend(ResourceType.ShinyPennies, stolen);
+                self.inventory.Add(ResourceType.ShinyPennies, stolen);
+            }),
 
-            NewCard("Gain Extra Pennies", "Gain 10 shiny pennies.", 5,
-                (self, _) => self.shinyPennies += 10),
+        NewCard("Gain Extra Pennies", "Gain 10 shiny pennies.", 5,
+            (self, _) =>
+            {
+                self.inventory.Add(ResourceType.ShinyPennies, 10);
+            }),
 
-            NewCard("Gain Turnips", "All players gain 25 turnips this round only.", 4,
-                (self, others) =>
-                {
-                    foreach (var p in others) p.roundTurnips += 25;
-                    self.roundTurnips += 25;
-                })
-        });
+        NewCard("Gain Turnips", "All players gain 25 turnips this round only.", 4,
+            (self, others) =>
+            {
+                foreach (var p in others) p.inventory.RoundTurnips += 25;
+                self.inventory.RoundTurnips += 25;
+            })
+    });
     }
 
     private static CommunityCard NewCard(string name, string desc, int cost,

@@ -43,9 +43,9 @@ public class CoinDisplayByTurn : MonoBehaviour
 
             if (currentPlayer != null)
             {
-                goldNumTextCoin.text = currentPlayer.gold.ToString();
-                silverNumTextCoin.text = currentPlayer.silver.ToString();
-                bronzeNumTextCoin.text = currentPlayer.bronze.ToString();
+                goldNumTextCoin.text = currentPlayer.inventory.Gold.ToString();
+                silverNumTextCoin.text = currentPlayer.inventory.Silver.ToString();
+                bronzeNumTextCoin.text = currentPlayer.inventory.Bronze.ToString();
             }
         }
     }

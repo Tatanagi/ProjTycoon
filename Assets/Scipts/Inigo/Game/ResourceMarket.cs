@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ResourceType { Bronze, Silver, Gold }
+public enum ResourceType { Bronze, Silver, Gold, ShinyPennies }
 
 [System.Serializable]
 public class ResourceToken
@@ -36,15 +36,15 @@ public class ResourceMarket : MonoBehaviour
         switch (roll)
         {
             case <= 2:
-                player.bronze += 2;
+                player.inventory.Add(ResourceType.Bronze, 2);
                 Debug.Log($"{player.name} gained Bronze x2.");
                 break;
             case <= 5: // Change to 5
-                player.silver += 1;
+                player.inventory.Add(ResourceType.Silver, 1);
                 Debug.Log($"{player.name} gained Silver x1.");
                 break;
             default:
-                player.gold += 1;
+                player.inventory.Add(ResourceType.Gold, 1);
                 Debug.Log($"{player.name} gained Gold x1.");
                 break;
         }
@@ -52,9 +52,9 @@ public class ResourceMarket : MonoBehaviour
 
     public void GiveStartTileBonus(PlayerController player)
     {
-        player.gold += startGold;
-        player.silver += startSilver;
-        player.bronze += startBronze;
+        player.inventory.Add(ResourceType.Gold, startGold);
+        player.inventory.Add(ResourceType.Silver, startSilver);
+        player.inventory.Add(ResourceType.Bronze, startBronze);
 
         Debug.Log($"{player.name} gained {startGold} Gold, {startSilver} Silver, {startBronze} Bronze for passing Start.");
     }

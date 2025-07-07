@@ -6,9 +6,12 @@ public class LuckyLoanLender : MonoBehaviour
     {
         if (!player.hasLoan)
         {
-            int loanAmount = Mathf.CeilToInt(player.shinyPennies * 0.1f);
-            player.shinyPennies += loanAmount;
+            int currentPennies = player.inventory.ShinyPennies;
+            int loanAmount = Mathf.CeilToInt(currentPennies * 0.1f);
+
+            player.inventory.Add(ResourceType.ShinyPennies, loanAmount);
             player.hasLoan = true;
+
             Debug.Log($"{player.name} took a loan of {loanAmount} shiny pennies.");
         }
         else

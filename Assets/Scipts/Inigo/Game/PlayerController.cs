@@ -1,38 +1,37 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Inventory")]
-    public int gold = 0;
-    public int silver = 0;
-    public int bronze = 0;
-    public int shinyPennies = 0;
-    public int turnips = 0;
-    public int roundTurnips = 0;
-
-    [Header("Status Effects")]
+    /* -------- Status -------- */
     public bool hasLoan = false;
     public bool isInJail = false;
     public bool tokenGainBanned = false;
 
+    /* -------- Inventory (new component) -------- */
+    public PlayerInventory inventory { get; private set; }
+
+    /* -------- Movement fields unchanged -------- */
     [Header("Movement")]
     public BoardCell[] boardCells;
     public float moveSpeed = 2f;
     private int currentCellIndex = 0;
     public bool IsFinishedMoving { get; private set; } = true;
-    private BoardCell currentCell;
+    public BoardCell currentCell { get; private set; }
 
     public BoardCell GetCurrentCell()
     {
         return currentCell;
     }
 
-    public void MovePlayer(int steps)
+    private void Awake()
     {
-        if (IsFinishedMoving)
-            StartCoroutine(MoveSteps(steps));
+        inventory = GetComponent<PlayerInventory>();
+        if (!inventory)
+            Debug.LogError($"{name} is missing PlayerInventory!");
     }
+
+    /* ------- MovePlayer code unchanged except final lines ------- */
 
     private IEnumerator MoveSteps(int steps)
     {
@@ -55,31 +54,34 @@ public class PlayerController : MonoBehaviour
 
         currentCell = boardCells[currentCellIndex];
         Debug.Log($"{name} landed on: {currentCell.cellType}");
-
         currentCell.OnPlayerLanded(this);
 
         IsFinishedMoving = true;
     }
 
+    public void MovePlayer(int steps)
+    {
+        if (IsFinishedMoving)
+            StartCoroutine(MoveSteps(steps));
+    }
+
+    /* -------- Round reset (loan logic)  -------- */
     public void StartNewRound()
     {
-        roundTurnips = 0;
-
         if (hasLoan)
         {
-            int payment = shinyPennies * 2;
-            if (shinyPennies >= payment)
+            int payment = Mathf.RoundToInt(inventory.ShinyPennies * 0.2f);  // 20 % repayment
+            if (inventory.Spend(ResourceType.ShinyPennies, payment))
             {
-                shinyPennies -= payment;
                 hasLoan = false;
-                Debug.Log($"{name} repaid their loan of {payment} shiny pennies.");
+                Debug.Log($"{name} repaid loan of {payment} shiny pennies.");
             }
             else
             {
                 isInJail = true;
                 tokenGainBanned = true;
                 hasLoan = false;
-                Debug.Log($"{name} failed to repay their loan and is now in jail & banned from gaining tokens.");
+                Debug.Log($"{name} failed to repay loan → jailed & token‑banned.");
             }
         }
         else

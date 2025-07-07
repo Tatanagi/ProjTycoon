@@ -142,28 +142,31 @@ public class UIManager : MonoBehaviour
 
     private void ConfirmExchange()
     {
-        int bronze = int.Parse(bronzeInput.text);
-        int silver = int.Parse(silverInput.text);
-        int gold = int.Parse(goldInput.text);
+        int b = int.Parse(bronzeInput.text);
+        int s = int.Parse(silverInput.text);
+        int g = int.Parse(goldInput.text);
 
-        RoyalDecreeManager decree = RoyalDecreeManager.Instance;
+        var inv = mintingPlayer.inventory;
+        var decree = RoyalDecreeManager.Instance;
 
-        int bronzeValue = decree.GetValueExchange(ResourceType.Bronze, Mathf.Min(bronze, mintingPlayer.bronze));
-        int silverValue = decree.GetValueExchange(ResourceType.Silver, Mathf.Min(silver, mintingPlayer.silver));
-        int goldValue = decree.GetValueExchange(ResourceType.Silver, Mathf.Min(gold, mintingPlayer.gold));
+        int bronzeSpent = Mathf.Min(b, inv.Bronze);
+        int silverSpent = Mathf.Min(s, inv.Silver);
+        int goldSpent = Mathf.Min(g, inv.Gold);
 
-        int total = bronzeValue + silverValue + goldValue;
+        int totalPennies =
+              decree.GetValueExchange(ResourceType.Bronze, bronzeSpent)
+            + decree.GetValueExchange(ResourceType.Silver, silverSpent)
+            + decree.GetValueExchange(ResourceType.Gold, goldSpent);
 
-        mintingPlayer.bronze -= Mathf.Min(bronze, mintingPlayer.bronze);
-        mintingPlayer.silver -= Mathf.Min(silver, mintingPlayer.silver);
-        mintingPlayer.gold -= Mathf.Min(gold, mintingPlayer.gold);
+        inv.Spend(ResourceType.Bronze, bronzeSpent);
+        inv.Spend(ResourceType.Silver, silverSpent);
+        inv.Spend(ResourceType.Gold, goldSpent);
+        inv.Add(ResourceType.ShinyPennies, totalPennies);
 
-        mintingPlayer.shinyPennies += total;
-
-        Debug.Log($"{mintingPlayer.name} exchanged resources for {total} shiny pennies.");
-
+        Debug.Log($"{mintingPlayer.name} exchanged for {totalPennies} shiny pennies.");
         HideExchange();
     }
+
 
     public void HideExchange()
     {
