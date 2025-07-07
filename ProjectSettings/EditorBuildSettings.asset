@@ -17,12 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WorkSpaces/Ken/Game Workspace.unity
     guid: df3ccf556a371e1468b62bc66ed5f29d
-  - enabled: 1
+  - enabled: 0
     path: Assets/WorkSpaces/MASTER.unity
     guid: 5d283a7cb7351c14880d45e1b1b3fd22
   - enabled: 1
     path: Assets/WorkSpaces/Ken/Main Menu Workspace.unity
     guid: 8aebc29ca25001443b80066f8e8a2918
+  - enabled: 1
+    path: Assets/WorkSpaces/Kyle/Kyle_Scene.unity
+    guid: 75c3fcd6a4441584cabec4fe049bbee0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
