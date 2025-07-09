@@ -3,9 +3,9 @@ using UnityEngine;
 /// <summary>
 /// Each round, one resource type is worth extra value when exchanged.
 /// </summary>
-public class RoyalDecreeManager : MonoBehaviour
+public class RoyalDecree : MonoBehaviour
 {
-    public static RoyalDecreeManager Instance { get; private set; }
+    public static RoyalDecree Instance { get; private set; }
 
     public ResourceType favoredType { get; private set; }
 

@@ -147,7 +147,7 @@ public class UIManager : MonoBehaviour
         int g = int.Parse(goldInput.text);
 
         var inv = mintingPlayer.inventory;
-        var decree = RoyalDecreeManager.Instance;
+        var decree = RoyalDecree.Instance;
 
         int bronzeSpent = Mathf.Min(b, inv.Bronze);
         int silverSpent = Mathf.Min(s, inv.Silver);

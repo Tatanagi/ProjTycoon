@@ -7,7 +7,13 @@ public enum CellType
     LuckyLoanLender,
     RoyalMint,
     ResourceTokens,
-    SuddenShortage
+    SuddenShortage,
+    Stables,
+    Quarry,
+    Fishery,
+    WheatField,
+    MiningShaft,
+    Thief
 }
 
 public class BoardCell : MonoBehaviour
@@ -41,6 +47,36 @@ public class BoardCell : MonoBehaviour
             case CellType.SuddenShortage:
                 Debug.Log("Player landed on Sudden Shortage!");
                 GameManager.Instance.suddenShortage.TryTriggerShortage();
+                break;
+
+            case CellType.Stables:
+                Debug.Log("Player landed on Stables!");
+                Stables.Execute(player);
+                break;
+
+            case CellType.Quarry:
+                Debug.Log("Player landed on Quarry!");
+                Quarry.Execute(player);
+                break;
+
+            case CellType.Fishery:
+                Debug.Log("Player landed on Fishery!");
+                Fishery.Execute(player);
+                break;
+
+            case CellType.WheatField:
+                Debug.Log("Player landed on Wheat Field!");
+                WheatField.Execute(player);
+                break;
+
+            case CellType.MiningShaft:
+                Debug.Log("Player landed on Mining Shaft!");
+                MiningShaft.Execute(player);
+                break;
+
+            case CellType.Thief:
+                Debug.Log("Player landed on Thief!");
+                Thief.Execute(player);
                 break;
 
             case CellType.Normal:

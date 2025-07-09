@@ -4,11 +4,10 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
     [Header("References")]
     public PlayerController[] players;
     public ResourceMarket resourceMarket;
-    public RoyalDecreeManager decreeManager;
+    public RoyalDecree royalDecree;
     public CommunityChest communityChest;
     public LuckyLoanLender loanLender;
     public SuddenShortage suddenShortage;
@@ -40,7 +39,7 @@ public class GameManager : MonoBehaviour
             p.StartNewRound();
         }
 
-        decreeManager.GenerateNewDecree();
+        royalDecree.GenerateNewDecree();
         resourceMarket.GenerateTokens(round);
     }
 
