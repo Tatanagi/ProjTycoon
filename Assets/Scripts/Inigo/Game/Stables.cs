@@ -21,6 +21,11 @@ public static class Stables
         }
 
         Debug.Log($"{player.name} visited the Stables: +1 shiny penny and 1 random resource ({randomType})");
-        UIManager.Instance.ShowNotification($"{player.name} gained 1 shiny penny and 1 {randomType}!");
+        UIManager.Instance.ShowCellAction
+        (
+            "Stables",
+            $"{player.name} gained 1 shiny penny and 1 {randomType}!",
+            player
+        );
     }
 }

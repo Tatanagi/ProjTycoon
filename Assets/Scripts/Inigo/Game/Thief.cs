@@ -15,8 +15,11 @@ public static class Thief
         inv.Gold = Mathf.Max(0, inv.Gold - stolenGold);
 
         Debug.Log($"{player.name} was robbed! Lost {stolenBronze} 🟤, {stolenSilver} ⚪, {stolenGold} 🟡");
-        UIManager.Instance.ShowNotification(
-            $"{player.name} was robbed!\nLost {stolenBronze} Bronze, {stolenSilver} Silver, {stolenGold} Gold."
+        UIManager.Instance.ShowCellAction
+        (
+            "Thief",
+            $"{player.name} was robbed!\nLost {stolenBronze} Bronze, {stolenSilver} Silver, {stolenGold} Gold.",
+            player
         );
     }
 }

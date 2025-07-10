@@ -6,7 +6,7 @@ public static class WheatField
     {
         int turnips = 5;
 
-        if (TurnipCraze.Instance != null && TurnipCraze.Instance.IsTurnipCrazeActive)
+        if (TurnipCraze.Instance != null && TurnipCraze.Instance.isCrazeActive)
         {
             turnips *= 2;
             Debug.Log($"{player.name} gained double turnips due to the Turnip Craze!");
@@ -15,6 +15,11 @@ public static class WheatField
         player.inventory.Turnips += turnips;
 
         Debug.Log($"{player.name} harvested at the Wheat Field: +{turnips} Turnips.");
-        UIManager.Instance.ShowNotification($"{player.name} gained {turnips} Turnips!");
+        UIManager.Instance.ShowCellAction
+        (
+            "Wheat Field",
+            $"{player.name} gained {turnips} Turnips!",
+            player
+        );
     }
 }

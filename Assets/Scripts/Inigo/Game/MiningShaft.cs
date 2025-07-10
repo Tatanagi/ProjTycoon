@@ -7,6 +7,11 @@ public static class MiningShaft
         player.inventory.Gold += 1;
 
         Debug.Log($"{player.name} mined at the Shaft: +1 Gold Token.");
-        UIManager.Instance.ShowNotification($"{player.name} gained 1 Gold Token!");
+        UIManager.Instance.ShowCellAction
+        (
+            "Mining Shaft",
+            $"{player.name} gained 1 Gold Token!",
+            player
+        );
     }
 }

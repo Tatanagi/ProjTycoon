@@ -7,6 +7,11 @@ public static class Fishery
         player.inventory.Silver += 1;
 
         Debug.Log($"{player.name} visited the Fishery: +1 Silver Token.");
-        UIManager.Instance.ShowNotification($"{player.name} gained 1 Silver Token!");
+        UIManager.Instance.ShowCellAction
+        (
+            "Fishery",
+            $"{player.name} gained 1 Silver Token!",
+            player
+        );
     }
 }

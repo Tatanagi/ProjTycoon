@@ -7,9 +7,15 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [Header("Panels")]
+    public GameObject CAPanel;
     public GameObject CCPanel;
     public GameObject LOPanel;
     public GameObject REPanel;
+
+    [Header("Cell Action Panel")]
+    public TextMeshProUGUI cellTitleText;
+    public TextMeshProUGUI cellDescriptionText;
+    public Button cellConfirmButton;
 
     [Header("Community Chest")]
     public TextMeshProUGUI cardTitleText;
@@ -33,6 +39,9 @@ public class UIManager : MonoBehaviour
     [Header("Turn UI Controller")]
     public TurnUIController turnController;
 
+    [Header("Fields")]
+    private PlayerController popupPlayer;
+
     private PlayerController currentPlayer;
 
     private PlayerController mintingPlayer;
@@ -54,6 +63,34 @@ public class UIManager : MonoBehaviour
         CCPanel.SetActive(false);
         LOPanel.SetActive(false);
         REPanel.SetActive(false);
+    }
+
+    // --- CELL ACTION ---
+    public void ShowCellAction(string title, string description, PlayerController player = null)
+    {
+        popupPlayer = player;
+
+        cellTitleText.text = title;
+        cellDescriptionText.text = description;
+
+        cellConfirmButton.onClick.RemoveAllListeners();
+        cellConfirmButton.onClick.AddListener(() => HideCellAction());
+
+        CAPanel.SetActive(true);
+    }
+
+    public void HideCellAction()
+    {
+        CAPanel.SetActive(false);
+
+        if (popupPlayer != null)
+        {
+            TurnUIController controller = FindFirstObjectByType<TurnUIController>();
+            if (controller != null)
+                controller.UpdateTurnUI();
+        }
+
+        popupPlayer = null;
     }
 
     // --- COMMUNITY CHEST ---
