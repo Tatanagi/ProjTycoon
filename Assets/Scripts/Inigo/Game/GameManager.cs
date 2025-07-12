@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.ShowLoanOffer(player);
                 break;
             case CellType.RoyalMint:
-                UIManager.Instance.ShowExchange(player);
+                UIManager.Instance.ShowExchange();
                 break;
             case CellType.ResourceTokens:
                 GiveStartTileBonus(player);

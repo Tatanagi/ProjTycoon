@@ -36,7 +36,7 @@ public class BoardCell : MonoBehaviour
 
             case CellType.RoyalMint:
                 Debug.Log("Player landed on Royal Mint.");
-                UIManager.Instance.ShowExchange(player);
+                UIManager.Instance.ShowExchange();
                 break;
 
             case CellType.ResourceTokens:

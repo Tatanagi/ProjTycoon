@@ -40,6 +40,8 @@ public class UIManager : MonoBehaviour
     public TurnUIController turnController;
 
     [Header("Fields")]
+    public TurnManager TurnManager;
+
     private PlayerController popupPlayer;
 
     private PlayerController currentPlayer;
@@ -159,9 +161,23 @@ public class UIManager : MonoBehaviour
     }
 
         // --- ROYAL FICKLE MINT ---
-    public void ShowExchange(PlayerController player)
+    public void ShowExchange()
     {
-        mintingPlayer = player;
+        string currentPlayerTag = "Player" + (TurnManager.GetCurrentPlayerIndex() + 1);
+
+        GameObject playerObject = GameObject.FindGameObjectWithTag(currentPlayerTag);
+        if (playerObject == null)
+        {
+            Debug.LogError($"Player GameObject with tag '{currentPlayerTag}' not found.");
+            return;
+        }
+
+        mintingPlayer = playerObject.GetComponent<PlayerController>();
+        if (mintingPlayer == null)
+        {
+            Debug.LogError("PlayerController component not found on player GameObject.");
+            return;
+        }
 
         exchangeTitleText.text = "Royal Fickle Mint";
         bronzeInput.text = "0";
