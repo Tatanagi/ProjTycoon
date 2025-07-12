@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
     [Header("References")]
     public PlayerController[] players;
     public ResourceMarket resourceMarket;

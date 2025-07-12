@@ -228,7 +228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &77985195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1890,6 +1890,7 @@ MonoBehaviour:
   confirmExchangeButton: {fileID: 2054850900}
   cancelExchangeButton: {fileID: 353249898}
   turnController: {fileID: 652189929}
+  TurnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
 --- !u!114 &363180860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2036,7 +2037,7 @@ MonoBehaviour:
   - {fileID: 943135954}
   - {fileID: 1712280708}
   resourceMarket: {fileID: 1116571572}
-  royalDecree: {fileID: 0}
+  royalDecree: {fileID: 1346314463}
   communityChest: {fileID: 1879414183}
   loanLender: {fileID: 844036734}
   suddenShortage: {fileID: 632376663}
@@ -4643,7 +4644,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 363180859}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SetupDrawCardUI
+        m_MethodName: ShowDrawCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6000,11 +6001,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 363180859}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowExchange
-        m_Mode: 2
+        m_MethodName: HideCellAction
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6917,7 +6918,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1346314461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb2cf1fd3592af44ab88f0f92fc38475, type: 3}
+  m_Script: {fileID: 11500000, guid: 567669cd51a26694aa416ce457f2bd70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1365888543
@@ -9727,10 +9728,10 @@ MonoBehaviour:
       - m_Target: {fileID: 363180859}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ShowExchange
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10200,7 +10201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836080878760381583, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_Name
-      value: Royal Fickle Mint
+      value: RoyalMint
       objectReference: {fileID: 0}
     - target: {fileID: 6836080878760381583, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -10256,7 +10257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9191650484850324870, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_Name
-      value: Community Chest
+      value: CommunityChest
       objectReference: {fileID: 0}
     - target: {fileID: 9191650484850324870, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString

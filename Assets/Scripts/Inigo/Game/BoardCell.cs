@@ -30,7 +30,7 @@ public class BoardCell : MonoBehaviour
                 break;
 
             case CellType.LuckyLoanLender:
-                Debug.Log("Player landed on LuckyLoanLender.");
+                Debug.Log("Player landed on Lucky Loan Lender.");
                 UIManager.Instance.ShowLoanOffer(player);
                 break;
 

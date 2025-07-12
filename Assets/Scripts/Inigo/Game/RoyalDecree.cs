@@ -12,6 +12,18 @@ public class RoyalDecree : MonoBehaviour
     public int multiplier { get; private set; } = 3;
 
     // ---------- Public API ----------
+    public void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     public void GenerateNewDecree()
     {

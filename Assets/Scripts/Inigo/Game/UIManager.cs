@@ -128,9 +128,8 @@ public class UIManager : MonoBehaviour
             turnController.UpdateTurnUI();
     }
 
-        // --- LUCKY LOAN LENDER ---
-
-        public void ShowLoanOffer(PlayerController player)
+    // --- LUCKY LOAN LENDER ---
+    public void ShowLoanOffer(PlayerController player)
     {
         currentPlayer = player;
 
@@ -160,7 +159,7 @@ public class UIManager : MonoBehaviour
             turnController.UpdateTurnUI();
     }
 
-        // --- ROYAL FICKLE MINT ---
+    // --- ROYAL FICKLE MINT ---
     public void ShowExchange()
     {
         string currentPlayerTag = "Player" + (TurnManager.GetCurrentPlayerIndex() + 1);
@@ -193,7 +192,7 @@ public class UIManager : MonoBehaviour
         REPanel.SetActive(true);
     }
 
-    private void ConfirmExchange()
+    public void ConfirmExchange()
     {
         int b = int.Parse(bronzeInput.text);
         int s = int.Parse(silverInput.text);
@@ -219,7 +218,6 @@ public class UIManager : MonoBehaviour
         Debug.Log($"{mintingPlayer.name} exchanged for {totalPennies} shiny pennies.");
         HideExchange();
     }
-
 
     public void HideExchange()
     {
