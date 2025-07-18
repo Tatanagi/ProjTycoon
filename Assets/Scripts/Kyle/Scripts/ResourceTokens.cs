@@ -1,8 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Trigger on the Start tile that grants +5 gold, silver, and bronze on any round.
-/// </summary>
 public class StartTileBonus : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)

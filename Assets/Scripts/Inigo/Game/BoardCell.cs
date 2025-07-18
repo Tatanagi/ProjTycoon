@@ -46,7 +46,25 @@ public class BoardCell : MonoBehaviour
 
             case CellType.SuddenShortage:
                 Debug.Log("Player landed on Sudden Shortage!");
-                GameManager.Instance.suddenShortage.TryTriggerShortage();
+                SuddenShortage suddenShortage = GameManager.Instance.suddenShortage;
+                if (suddenShortage.IsActive ||
+                    GameManager.Instance.turnManager.GetCurrentRound() == suddenShortage.TriggeredRound)
+                {
+                    UIManager.Instance.ShowCellAction(
+                        "Sudden Shortage",
+                        "You cannot activate sudden shortage it is once per round",
+                        player
+                    );
+                }
+                else
+                {
+                    UIManager.Instance.ShowCellAction(
+                        "Sudden Shortage",
+                        "This round will be capped to 20 silver, gold and bronze",
+                        player
+                    );
+                    suddenShortage.TryTriggerShortage(player);
+                }
                 break;
 
             case CellType.Stables:
@@ -81,6 +99,7 @@ public class BoardCell : MonoBehaviour
 
             case CellType.Normal:
             default:
+                Debug.Log("Player landed on a Normal cell.");
                 break;
         }
     }

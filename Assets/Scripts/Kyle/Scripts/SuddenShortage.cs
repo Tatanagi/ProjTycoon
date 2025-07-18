@@ -1,27 +1,35 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SuddenShortage : MonoBehaviour
 {
     [Header("Settings")]
-    public int maxShortageRounds = 3;
+    public int maxShortageRounds = 1;
 
     private int shortageRoundsTriggered = 0;
     private bool isActive = false;
+    private int triggeredRound = -1;
     private List<PlayerController> affectedPlayers = new();
 
-    public void TryTriggerShortage()
-    {
-        if (isActive || shortageRoundsTriggered >= maxShortageRounds) return;
+    // Public properties to access private fields
+    public bool IsActive => isActive;
+    public int TriggeredRound => triggeredRound;
 
-        TriggerShortageForAll();
+    public void TryTriggerShortage(PlayerController triggeringPlayer)
+    {
+        if (isActive ||
+            shortageRoundsTriggered >= maxShortageRounds ||
+            GameManager.Instance.turnManager.GetCurrentRound() == triggeredRound)
+            return;
+
+        TriggerShortage(triggeringPlayer);
     }
 
-    public void TriggerShortageForAll()
+    private void TriggerShortage(PlayerController triggeringPlayer)
     {
         affectedPlayers = GameManager.Instance.GetAllPlayers();
-
+        triggeredRound = GameManager.Instance.turnManager.GetCurrentRound();
         shortageRoundsTriggered++;
         isActive = true;
 
@@ -29,6 +37,7 @@ public class SuddenShortage : MonoBehaviour
 
         foreach (var player in affectedPlayers)
         {
+            player.inventory.isInShortage = true;
             ClampPlayerResources(player);
             player.inventory.OnChanged += () => EnforceClamp(player);
         }
@@ -47,6 +56,8 @@ public class SuddenShortage : MonoBehaviour
 
     private void EnforceClamp(PlayerController player)
     {
+        if (!player.inventory.isInShortage) return;
+
         var inv = player.inventory;
 
         if (inv.Gold > 20) inv.Add(ResourceType.Gold, 20 - inv.Gold);
@@ -56,25 +67,18 @@ public class SuddenShortage : MonoBehaviour
 
     private IEnumerator WaitForRoundEnd()
     {
-        int totalTurns = affectedPlayers.Count;
-        int startIndex = GameManager.Instance.turnManager.GetCurrentPlayerIndex();
-        int turnsPassed = 0;
-        int lastSeenPlayer = startIndex;
+        int startRound = GameManager.Instance.turnManager.GetCurrentRound();
 
-        while (turnsPassed < totalTurns)
+        // Wait until a new round begins
+        while (GameManager.Instance.turnManager.GetCurrentRound() == startRound)
         {
-            int current = GameManager.Instance.turnManager.GetCurrentPlayerIndex();
-            if (current != lastSeenPlayer)
-            {
-                lastSeenPlayer = current;
-                turnsPassed++;
-            }
             yield return null;
         }
 
         // Remove effect
         foreach (var player in affectedPlayers)
         {
+            player.inventory.isInShortage = false;
             player.inventory.OnChanged -= () => EnforceClamp(player);
         }
 

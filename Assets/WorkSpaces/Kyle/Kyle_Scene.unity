@@ -1467,8 +1467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -6.9042, y: -26.1833}
+  m_SizeDelta: {x: 486.19, y: 254.3667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &235278352
 GameObject:
@@ -2205,15 +2205,15 @@ MonoBehaviour:
   cellDescriptionText: {fileID: 215955569}
   cellConfirmButton: {fileID: 1233717756}
   cardTitleText: {fileID: 1235283985}
-  cardDescriptionText: {fileID: 436330224}
-  drawCardButton: {fileID: 932011955}
+  cardDescriptionText: {fileID: 1957349124}
+  drawCardButton: {fileID: 1278120417}
   loanTitleText: {fileID: 1271663336}
   loanDescriptionText: {fileID: 1957349124}
   acceptLoanButton: {fileID: 1278120417}
   cancelLoanButton: {fileID: 1766511228}
-  exchangeTitleText: {fileID: 656721845}
-  bronzeInput: {fileID: 163246033}
-  silverInput: {fileID: 773508435}
+  exchangeTitleText: {fileID: 1271663336}
+  bronzeInput: {fileID: 656721845}
+  silverInput: {fileID: 163246033}
   goldInput: {fileID: 1243865881}
   confirmExchangeButton: {fileID: 2054850900}
   cancelExchangeButton: {fileID: 353249898}
@@ -2370,7 +2370,6 @@ MonoBehaviour:
   loanLender: {fileID: 844036734}
   suddenShortage: {fileID: 632376663}
   turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
-  round: 1
 --- !u!4 &372771443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 235643487393325272, guid: 68986c470fbbac449a30c616e1a18dc7, type: 3}
@@ -3573,9 +3572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: 0
-  Silver: 0
-  Bronze: 0
+  Gold: 40
+  Silver: 40
+  Bronze: 40
   ShinyPennies: 0
   Turnips: 0
   RoundTurnips: 0
@@ -6136,9 +6135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: 0
-  Silver: 0
-  Bronze: 0
+  Gold: 40
+  Silver: 40
+  Bronze: 40
   ShinyPennies: 0
   Turnips: 0
   RoundTurnips: 0
@@ -6870,9 +6869,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: 0
-  Silver: 0
-  Bronze: 0
+  Gold: 40
+  Silver: 40
+  Bronze: 40
   ShinyPennies: 0
   Turnips: 0
   RoundTurnips: 0
@@ -7284,7 +7283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -179.99997}
+  m_AnchoredPosition: {x: 0, y: -143}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1235283983
@@ -9902,7 +9901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 138}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1637168079
@@ -13788,8 +13787,20 @@ PrefabInstance:
       value: Dice
       objectReference: {fileID: 0}
     - target: {fileID: 3894742323365779061, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.625993
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894742323365779061, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7068262
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894742323365779061, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -281
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894742323365779061, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -209
       objectReference: {fileID: 0}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: face1
@@ -13833,7 +13844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: testDiceNumber
-      value: 6
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: turnUIController
@@ -14853,9 +14864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: 0
-  Silver: 0
-  Bronze: 0
+  Gold: 40
+  Silver: 40
+  Bronze: 40
   ShinyPennies: 0
   Turnips: 0
   RoundTurnips: 0

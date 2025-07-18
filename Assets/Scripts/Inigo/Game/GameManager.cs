@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     public SuddenShortage suddenShortage;
     public TurnManager turnManager;
 
-    public int round = 1;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public void StartRound()
     {
-        Debug.Log($"Round {round} begins!");
+        Debug.Log($"Round {turnManager.GetCurrentRound()} begins!");
 
         foreach (PlayerController p in players)
         {
@@ -41,7 +39,7 @@ public class GameManager : MonoBehaviour
         }
 
         royalDecree.GenerateNewDecree();
-        resourceMarket.GenerateTokens(round);
+        resourceMarket.GenerateTokens(turnManager.GetCurrentRound());
     }
 
     public void OnPlayerFinishMove(PlayerController player, int rollResult)
@@ -54,9 +52,18 @@ public class GameManager : MonoBehaviour
 
     public void GiveStartTileBonus(PlayerController player)
     {
+        // Add the bonus
         player.inventory.Add(ResourceType.Gold, 5);
         player.inventory.Add(ResourceType.Silver, 5);
         player.inventory.Add(ResourceType.Bronze, 5);
+
+        // Show UI message
+        UIManager.Instance.ShowCellAction(
+            "Start Tile Bonus",
+            "Player receives +5 gold, silver, and bronze!",
+            player
+        );
+
         Debug.Log($"{player.name} received +5 gold, silver, and bronze.");
     }
 
@@ -80,11 +87,16 @@ public class GameManager : MonoBehaviour
             case CellType.RoyalMint:
                 UIManager.Instance.ShowExchange();
                 break;
-            case CellType.ResourceTokens:
+            case CellType.ResourceTokens: // Start tile
                 GiveStartTileBonus(player);
                 break;
             case CellType.SuddenShortage:
-                suddenShortage.TryTriggerShortage();
+                UIManager.Instance.ShowCellAction(
+                    "Sudden Shortage",
+                    "This round will be capped to 20 silver, gold and bronze.",
+                    player
+                );
+                suddenShortage.TryTriggerShortage(player); // Fixed: Pass player parameter
                 break;
             case CellType.Normal:
             default:

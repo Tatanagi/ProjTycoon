@@ -16,20 +16,26 @@ public class PlayerInventory : MonoBehaviour
     [Header("Shortage Settings")]
     [SerializeField] public bool isInShortage = false;
 
-    private int shortageResourceGainedThisRound = 0;
     private const int shortageResourceLimit = 20;
 
     public event Action OnChanged;
 
     public void Add(ResourceType type, int amount)
     {
-        if (isInShortage && IsMetal(type))
+        if (isInShortage && IsMetal(type) && amount > 0)
         {
-            int allowed = shortageResourceLimit - shortageResourceGainedThisRound;
-            if (allowed <= 0) return;
+            int currentTotal = type switch
+            {
+                ResourceType.Gold => Gold,
+                ResourceType.Silver => Silver,
+                ResourceType.Bronze => Bronze,
+                _ => 0
+            };
 
+            if (currentTotal >= shortageResourceLimit) return;
+
+            int allowed = shortageResourceLimit - currentTotal;
             amount = Mathf.Min(amount, allowed);
-            shortageResourceGainedThisRound += amount;
         }
 
         switch (type)
@@ -59,8 +65,6 @@ public class PlayerInventory : MonoBehaviour
             ResourceType.ShinyPennies => ShinyPennies >= amount,
             _ => false
         };
-
-    public void ResetShortageLimit() => shortageResourceGainedThisRound = 0;
 
     private bool IsMetal(ResourceType type) =>
         type == ResourceType.Gold || type == ResourceType.Silver || type == ResourceType.Bronze;
