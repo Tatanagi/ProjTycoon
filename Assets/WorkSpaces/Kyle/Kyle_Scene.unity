@@ -1624,6 +1624,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+--- !u!1 &249341272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249341273}
+  - component: {fileID: 249341274}
+  m_Layer: 0
+  m_Name: CoinDisplayByTurn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &249341273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249341272}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1859.9707, y: 106.7407, z: -1.3130102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1587119922}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &249341274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249341272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324c55167ac0b2044afe12d1d415a0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldTextP1: {fileID: 1904308197}
+  silverTextP1: {fileID: 694930111}
+  bronzeTextP1: {fileID: 930270800}
+  goldTextP2: {fileID: 1205394066}
+  silverTextP2: {fileID: 1503191145}
+  bronzeTextP2: {fileID: 1087774854}
+  goldTextP3: {fileID: 702282973}
+  silverTextP3: {fileID: 1340856088}
+  bronzeTextP3: {fileID: 530980375}
+  goldTextP4: {fileID: 1359403707}
+  silverTextP4: {fileID: 1607107072}
+  bronzeTextP4: {fileID: 752506658}
 --- !u!1 &264811910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1621143400440760411, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -3110,6 +3166,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &519409832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519409833}
+  - component: {fileID: 519409834}
+  m_Layer: 0
+  m_Name: TurnipAndPennyDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &519409833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519409832}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 161.50311, y: 352.7407, z: -14.68042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1587119922}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519409834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519409832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7807af1561cc50249bbd426dba50534b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnipNumTextP1: {fileID: 2056456940}
+  shinyPennyNumTextP1: {fileID: 1399486318}
+  turnipNumTextP2: {fileID: 2067333984}
+  shinyPennyNumTextP2: {fileID: 1753829117}
+  turnipNumTextP3: {fileID: 1203128571}
+  shinyPennyNumTextP3: {fileID: 1656640663}
+  turnipNumTextP4: {fileID: 1266391820}
+  shinyPennyNumTextP4: {fileID: 1278763725}
 --- !u!114 &530980375 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2448456529598985237, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -3214,7 +3322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75978231b0659f740964dacb6a3566ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5daf3bd00dd769345aac1ecaf0e11d85, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3323,7 +3431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 9
 --- !u!1 &558668825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3536,7 +3644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 9
 --- !u!1 &656721843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,27 +4069,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703010671}
   m_CullTransparentMesh: 1
---- !u!1 &741935132 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
-  m_PrefabInstance: {fileID: 8997649176046392310}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &741935137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741935132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324c55167ac0b2044afe12d1d415a0a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldNumTextCoin: {fileID: 1904308197}
-  silverNumTextCoin: {fileID: 694930111}
-  bronzeNumTextCoin: {fileID: 930270800}
-  playerIndex: 0
 --- !u!224 &741935141 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -4345,7 +4432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75978231b0659f740964dacb6a3566ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b109d76ba03650a44b06f3f402f3c0fd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4720,10 +4807,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1347830685}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1143378154}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
 --- !u!1 &799376702 stripped
 GameObject:
@@ -4822,7 +4906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 11
 --- !u!1 &815857519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6504705817604289574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -5076,7 +5160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 11
 --- !u!114 &884944923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5089,7 +5173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 11
 --- !u!1 &886098798
 GameObject:
   m_ObjectHideFlags: 0
@@ -5925,7 +6009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75978231b0659f740964dacb6a3566ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b109d76ba03650a44b06f3f402f3c0fd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6126,7 +6210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 5
 --- !u!1 &1083073052
 GameObject:
   m_ObjectHideFlags: 0
@@ -6769,27 +6853,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137873054}
   m_CullTransparentMesh: 1
---- !u!1 &1143378153 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
-  m_PrefabInstance: {fileID: 797504391}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1143378154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1143378153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324c55167ac0b2044afe12d1d415a0a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldNumTextCoin: {fileID: 1359403707}
-  silverNumTextCoin: {fileID: 1607107072}
-  bronzeNumTextCoin: {fileID: 752506658}
-  playerIndex: 3
 --- !u!224 &1143378158 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -6880,7 +6943,7 @@ GameObject:
   - component: {fileID: 1203128572}
   - component: {fileID: 1203128571}
   m_Layer: 5
-  m_Name: GoldText (TMP) G
+  m_Name: Turnips Text (TMP) G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7027,7 +7090,7 @@ GameObject:
   - component: {fileID: 1209484545}
   - component: {fileID: 1209484544}
   m_Layer: 5
-  m_Name: Gold (2)
+  m_Name: 'Turnips '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7073,7 +7136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75978231b0659f740964dacb6a3566ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5daf3bd00dd769345aac1ecaf0e11d85, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7672,7 +7735,7 @@ GameObject:
   - component: {fileID: 1266391821}
   - component: {fileID: 1266391820}
   m_Layer: 5
-  m_Name: GoldText (TMP) G
+  m_Name: TurnipText (TMP) G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8077,7 +8140,7 @@ GameObject:
   - component: {fileID: 1278763726}
   - component: {fileID: 1278763725}
   m_Layer: 5
-  m_Name: GoldText (TMP) G
+  m_Name: Shiny Tokens Text (TMP) G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8417,10 +8480,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
       insertIndex: -1
       addedObject: {fileID: 167482924}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1447504250}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
 --- !u!1 &1296929164
 GameObject:
@@ -8514,7 +8574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 7
 --- !u!20 &1328174567 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 3027134469059563175, guid: f44789097a7910e4d9435138c636bce9, type: 3}
@@ -8842,7 +8902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 8
 --- !u!1 &1399486316
 GameObject:
   m_ObjectHideFlags: 0
@@ -8855,7 +8915,7 @@ GameObject:
   - component: {fileID: 1399486319}
   - component: {fileID: 1399486318}
   m_Layer: 5
-  m_Name: GoldText (TMP) G
+  m_Name: ShinyTokens (TMP) G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8991,7 +9051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 8
 --- !u!114 &1405498991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9168,7 +9228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 6
 --- !u!1 &1434069157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1421066785194115840, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -9186,7 +9246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 8
 --- !u!1 &1442263382 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2199376536744659637, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -9205,27 +9265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
---- !u!1 &1447504249 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
-  m_PrefabInstance: {fileID: 1281436526}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1447504250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447504249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324c55167ac0b2044afe12d1d415a0a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldNumTextCoin: {fileID: 1205394066}
-  silverNumTextCoin: {fileID: 1503191145}
-  bronzeNumTextCoin: {fileID: 1087774854}
-  playerIndex: 1
 --- !u!224 &1447504254 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -9289,7 +9328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75978231b0659f740964dacb6a3566ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5daf3bd00dd769345aac1ecaf0e11d85, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9606,6 +9645,8 @@ Transform:
   - {fileID: 1879414182}
   - {fileID: 844036733}
   - {fileID: 632376662}
+  - {fileID: 519409833}
+  - {fileID: 249341273}
   - {fileID: 111952268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9954,7 +9995,7 @@ GameObject:
   - component: {fileID: 1656640664}
   - component: {fileID: 1656640663}
   m_Layer: 5
-  m_Name: GoldText (TMP) G
+  m_Name: Shiny Token Text (TMP) G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10470,7 +10511,7 @@ GameObject:
   - component: {fileID: 1753829118}
   - component: {fileID: 1753829117}
   m_Layer: 5
-  m_Name: GoldText (TMP) G
+  m_Name: ShinyTokensText (TMP) G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10744,7 +10785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 11
 --- !u!1001 &1780193374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10949,10 +10990,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
       insertIndex: -1
       addedObject: {fileID: 967110513}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1876220545}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
 --- !u!1 &1784339226 stripped
 GameObject:
@@ -10971,7 +11009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 11
 --- !u!1 &1798564432
 GameObject:
   m_ObjectHideFlags: 0
@@ -11030,7 +11068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75978231b0659f740964dacb6a3566ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5daf3bd00dd769345aac1ecaf0e11d85, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11060,7 +11098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 5
+  cellType: 6
 --- !u!1 &1834122113
 GameObject:
   m_ObjectHideFlags: 0
@@ -11119,7 +11157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75978231b0659f740964dacb6a3566ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b109d76ba03650a44b06f3f402f3c0fd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11155,27 +11193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 3
---- !u!1 &1876220544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
-  m_PrefabInstance: {fileID: 1780193374}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1876220545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876220544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324c55167ac0b2044afe12d1d415a0a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldNumTextCoin: {fileID: 702282973}
-  silverNumTextCoin: {fileID: 1340856088}
-  bronzeNumTextCoin: {fileID: 530980375}
-  playerIndex: 2
 --- !u!224 &1876220549 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -11297,7 +11314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 7
 --- !u!114 &1904308197 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 480253490234275944, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -11571,7 +11588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 10
 --- !u!1 &1957349121
 GameObject:
   m_ObjectHideFlags: 0
@@ -11863,7 +11880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 10
 --- !u!1 &1977177576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5904730418975142354, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -11899,7 +11916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 11
 --- !u!1001 &1993480494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11977,7 +11994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 7
 --- !u!114 &2012306109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11990,7 +12007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 9
 --- !u!114 &2022217727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12003,7 +12020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 5
 --- !u!1 &2022353317
 GameObject:
   m_ObjectHideFlags: 0
@@ -12330,7 +12347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
+  cellType: 6
 --- !u!1 &2050550610
 GameObject:
   m_ObjectHideFlags: 0
@@ -12512,7 +12529,7 @@ GameObject:
   - component: {fileID: 2056456941}
   - component: {fileID: 2056456940}
   m_Layer: 5
-  m_Name: GoldText (TMP) G
+  m_Name: Turnip Text (TMP) G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12557,7 +12574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12700,7 +12717,7 @@ GameObject:
   - component: {fileID: 2067333985}
   - component: {fileID: 2067333984}
   m_Layer: 5
-  m_Name: GoldText (TMP) G
+  m_Name: Turnips Text (TMP) G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12956,7 +12973,7 @@ GameObject:
   - component: {fileID: 2088761568}
   - component: {fileID: 2088761567}
   m_Layer: 5
-  m_Name: Gold (1)
+  m_Name: Shiny Tokens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13002,7 +13019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75978231b0659f740964dacb6a3566ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b109d76ba03650a44b06f3f402f3c0fd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13125,6 +13142,10 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1146104882268552664, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Fishery
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146104882268552664, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -13133,20 +13154,40 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1338559417494131951, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Mining Shaft
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338559417494131951, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374542994194828350, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
       objectReference: {fileID: 0}
     - target: {fileID: 1374542994194828350, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1421066785194115840, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Fishery
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421066785194115840, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1621143400440760411, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Wheat Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621143400440760411, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864147829158506881, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Quarry
       objectReference: {fileID: 0}
     - target: {fileID: 1864147829158506881, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -13155,6 +13196,10 @@ PrefabInstance:
     - target: {fileID: 2199376536744659637, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348202025704152302, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Mining Shaft
       objectReference: {fileID: 0}
     - target: {fileID: 2348202025704152302, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -13173,16 +13218,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 86b76e09967e266459c842550f5abb8f, type: 2}
     - target: {fileID: 3070063898249420925, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: WheatField
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070063898249420925, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581543469045220867, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Quarry
       objectReference: {fileID: 0}
     - target: {fileID: 3581543469045220867, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4189913529286855031, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189913529286855031, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862614587852432301, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Wheat Field
       objectReference: {fileID: 0}
     - target: {fileID: 4862614587852432301, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -13233,6 +13294,10 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5198275165148759822, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: SuddenShortage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198275165148759822, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -13245,8 +13310,16 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5418799427657237251, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418799427657237251, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606584171948361598, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Stables
       objectReference: {fileID: 0}
     - target: {fileID: 5606584171948361598, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -13257,6 +13330,10 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5724282388600941286, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: 'Theif '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724282388600941286, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -13265,12 +13342,20 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6322810006826758440, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Quarry
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322810006826758440, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6504705817604289574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659854663375145677, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
       objectReference: {fileID: 0}
     - target: {fileID: 6659854663375145677, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -13286,11 +13371,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6897374805845516819, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_Name
-      value: Sudden Shortage
+      value: Stables
       objectReference: {fileID: 0}
     - target: {fileID: 6897374805845516819, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267228270737217574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
       objectReference: {fileID: 0}
     - target: {fileID: 7267228270737217574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -13305,8 +13394,16 @@ PrefabInstance:
       value: Board
       objectReference: {fileID: 0}
     - target: {fileID: 7511926152921752316, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: SuddenShortage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511926152921752316, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601660158676739493, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Fishery
       objectReference: {fileID: 0}
     - target: {fileID: 7601660158676739493, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -13323,6 +13420,10 @@ PrefabInstance:
     - target: {fileID: 8825560305697457990, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Loan Lender
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907995756414300267, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Stables
       objectReference: {fileID: 0}
     - target: {fileID: 8907995756414300267, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
@@ -15117,10 +15218,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
       insertIndex: -1
       addedObject: {fileID: 235278353}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3269576636752534451, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 741935137}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

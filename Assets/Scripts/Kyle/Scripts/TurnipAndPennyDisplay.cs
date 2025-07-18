@@ -3,52 +3,84 @@ using UnityEngine;
 
 public class TurnipAndPennyDisplay : MonoBehaviour
 {
-    [Header("UI Elements")]
-    public TMP_Text turnipNumText;
-    public TMP_Text shinyPennyNumText;
+    [Header("Player 1 UI Elements")]
+    public TMP_Text turnipNumTextP1;
+    public TMP_Text shinyPennyNumTextP1;
 
-    [Header("Player Settings")]
-    [Tooltip("Set this to 0 for Player1, 1 for Player2, etc.")]
-    public int playerIndex;
+    [Header("Player 2 UI Elements")]
+    public TMP_Text turnipNumTextP2;
+    public TMP_Text shinyPennyNumTextP2;
 
-    private PlayerController player;
+    [Header("Player 3 UI Elements")]
+    public TMP_Text turnipNumTextP3;
+    public TMP_Text shinyPennyNumTextP3;
+
+    [Header("Player 4 UI Elements")]
+    public TMP_Text turnipNumTextP4;
+    public TMP_Text shinyPennyNumTextP4;
+
+    private PlayerController[] players = new PlayerController[4];
 
     void Start()
     {
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player" + (playerIndex + 1));
-        if (playerObj != null)
+        for (int i = 0; i < 4; i++)
         {
-            player = playerObj.GetComponent<PlayerController>();
-
-            if (player == null)
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player" + (i + 1));
+            if (playerObj != null)
             {
-                Debug.LogWarning($"Player{playerIndex + 1} is missing PlayerController!");
+                players[i] = playerObj.GetComponent<PlayerController>();
+
+                if (players[i] != null && players[i].inventory != null)
+                {
+                    players[i].inventory.OnChanged += UpdateDisplay;
+                }
+                else
+                {
+                    Debug.LogWarning($"Player{i + 1} is missing PlayerController or Inventory.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Player{i + 1} not found in scene.");
             }
         }
-        else
-        {
-            Debug.LogWarning($"Player{playerIndex + 1} not found in scene!");
-        }
 
-        if (player != null && player.inventory != null)
+        UpdateDisplay(); // Initial display update
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var player in players)
         {
-            player.inventory.OnChanged += UpdateDisplay;
-            UpdateDisplay();
+            if (player != null && player.inventory != null)
+                player.inventory.OnChanged -= UpdateDisplay;
         }
     }
 
-    void OnDestroy()
+    private void UpdateDisplay()
     {
-        if (player != null && player.inventory != null)
-            player.inventory.OnChanged -= UpdateDisplay;
-    }
-
-    public void UpdateDisplay()
-    {
-        if (player != null && player.inventory != null)
+        if (players[0]?.inventory != null)
         {
-            turnipNumText.text = player.inventory.Turnips.ToString();
-            shinyPennyNumText.text = player.inventory.ShinyPennies.ToString();
+            turnipNumTextP1.text = players[0].inventory.Turnips.ToString();
+            shinyPennyNumTextP1.text = players[0].inventory.ShinyPennies.ToString();
+        }
+
+        if (players[1]?.inventory != null)
+        {
+            turnipNumTextP2.text = players[1].inventory.Turnips.ToString();
+            shinyPennyNumTextP2.text = players[1].inventory.ShinyPennies.ToString();
+        }
+
+        if (players[2]?.inventory != null)
+        {
+            turnipNumTextP3.text = players[2].inventory.Turnips.ToString();
+            shinyPennyNumTextP3.text = players[2].inventory.ShinyPennies.ToString();
+        }
+
+        if (players[3]?.inventory != null)
+        {
+            turnipNumTextP4.text = players[3].inventory.Turnips.ToString();
+            shinyPennyNumTextP4.text = players[3].inventory.ShinyPennies.ToString();
         }
     }
 }
