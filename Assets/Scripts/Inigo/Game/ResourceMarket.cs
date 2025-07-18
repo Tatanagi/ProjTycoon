@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public enum ResourceType { Bronze, Silver, Gold, ShinyPennies }
+public enum ResourceType { Bronze, Silver, Gold, ShinyPennies, Turnips, RoundTurnips }
 
 [System.Serializable]
 public class ResourceToken
@@ -28,30 +29,42 @@ public class ResourceMarket : MonoBehaviour
         availableTokens.Add(new ResourceToken { type = ResourceType.Silver, quantity = 3 + round / 2 });
         availableTokens.Add(new ResourceToken { type = ResourceType.Gold, quantity = 1 + round / 3 });
 
-        Debug.Log("New tokens added to the market.");
+        Debug.Log($"New tokens added to the market: {availableTokens.Count} types generated for round {round}.");
     }
 
     public void GiveResourceToPlayer(PlayerController player, int roll)
     {
-        switch (roll)
+        if (player == null || player.inventory == null) return;
+
+        if (availableTokens.Count == 0)
         {
-            case <= 2:
-                player.inventory.Add(ResourceType.Bronze, 2);
-                Debug.Log($"{player.name} gained Bronze x2.");
-                break;
-            case <= 5: // Change to 5
-                player.inventory.Add(ResourceType.Silver, 1);
-                Debug.Log($"{player.name} gained Silver x1.");
-                break;
-            default:
-                player.inventory.Add(ResourceType.Gold, 1);
-                Debug.Log($"{player.name} gained Gold x1.");
-                break;
+            Debug.LogWarning("No tokens available in ResourceMarket!");
+            return;
         }
+
+        int totalWeight = availableTokens.Sum(token => token.quantity);
+        int rollThreshold = (int)(roll / 6f * totalWeight);
+
+        int cumulative = 0;
+        foreach (var token in availableTokens)
+        {
+            cumulative += token.quantity;
+            if (rollThreshold <= cumulative)
+            {
+                player.inventory.Add(token.type, 1);
+                Debug.Log($"{player.name} gained 1 {token.type} based on roll {roll}.");
+                return;
+            }
+        }
+
+        player.inventory.Add(ResourceType.Bronze, 1);
+        Debug.Log($"{player.name} gained 1 Bronze (fallback) for roll {roll}.");
     }
 
     public void GiveStartTileBonus(PlayerController player)
     {
+        if (player == null || player.inventory == null) return;
+
         player.inventory.Add(ResourceType.Gold, startGold);
         player.inventory.Add(ResourceType.Silver, startSilver);
         player.inventory.Add(ResourceType.Bronze, startBronze);

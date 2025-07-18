@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerFinishMove(PlayerController player, int rollResult)
     {
-        if (!player.tokenGainBanned)
+        if (!player.tokenGainBanned && player != null)
         {
             resourceMarket.GiveResourceToPlayer(player, rollResult);
         }
@@ -52,12 +52,12 @@ public class GameManager : MonoBehaviour
 
     public void GiveStartTileBonus(PlayerController player)
     {
-        // Add the bonus
+        if (player == null || player.inventory == null) return;
+
         player.inventory.Add(ResourceType.Gold, 5);
         player.inventory.Add(ResourceType.Silver, 5);
         player.inventory.Add(ResourceType.Bronze, 5);
 
-        // Show UI message
         UIManager.Instance.ShowCellAction(
             "Start Tile Bonus",
             "Player receives +5 gold, silver, and bronze!",
@@ -67,13 +67,14 @@ public class GameManager : MonoBehaviour
         Debug.Log($"{player.name} received +5 gold, silver, and bronze.");
     }
 
-    public List<PlayerController> GetAllPlayers()
+    public PlayerController[] GetAllPlayers()
     {
-        return new List<PlayerController>(players);
+        return players;
     }
 
     public void ResolveLanding(PlayerController player)
     {
+        if (player == null) return;
         BoardCell cell = player.GetCurrentCell();
 
         switch (cell.cellType)
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
             case CellType.RoyalMint:
                 UIManager.Instance.ShowExchange();
                 break;
-            case CellType.ResourceTokens: // Start tile
+            case CellType.ResourceTokens:
                 GiveStartTileBonus(player);
                 break;
             case CellType.SuddenShortage:
@@ -96,7 +97,7 @@ public class GameManager : MonoBehaviour
                     "This round will be capped to 20 silver, gold and bronze.",
                     player
                 );
-                suddenShortage.TryTriggerShortage(player); // Fixed: Pass player parameter
+                suddenShortage.TryTriggerShortage(player);
                 break;
             case CellType.Normal:
             default:

@@ -4,14 +4,10 @@ public static class Fishery
 {
     public static void Execute(PlayerController player)
     {
-        player.inventory.Silver += 1;
+        if (player == null || player.inventory == null) return;
+
+        player.inventory.Add(ResourceType.Silver, 1);
 
         Debug.Log($"{player.name} visited the Fishery: +1 Silver Token.");
-        UIManager.Instance.ShowCellAction
-        (
-            "Fishery",
-            $"{player.name} gained 1 Silver Token!",
-            player
-        );
     }
 }

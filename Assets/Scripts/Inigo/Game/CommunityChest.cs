@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Draw‑a‑card mechanic that lets a player pay a cost to trigger an effect.
+/// Draw-a-card mechanic that lets a player pay a cost to trigger an effect.
 /// The deck is created at runtime in <see cref="Awake"/>.
 /// </summary>
 public class CommunityChest : MonoBehaviour
@@ -15,13 +15,13 @@ public class CommunityChest : MonoBehaviour
     {
         public string cardName;
         public string description;
-        public int cost;   // shiny‑penny cost to draw
+        public int cost;   // shiny-penny cost to draw
         public Action<PlayerController, List<PlayerController>> effect;
     }
 
     // ---------- Fields ----------
 
-    private readonly List<CommunityCard> _deck = new();   // run‑time deck
+    private readonly List<CommunityCard> _deck = new();   // run-time deck
 
     // ---------- Unity ----------
 
@@ -55,52 +55,52 @@ public class CommunityChest : MonoBehaviour
         _deck.Clear();
         _deck.AddRange(new[]
         {
-        NewCard("Steal Gold", "Pick a player and decrease 2 gold.", 8,
-            (self, others) =>
-            {
-                var target = ChooseTarget(others);
-                int lost = Mathf.Min(2, target.inventory.Gold);
-                target.inventory.Spend(ResourceType.Gold, lost);
-            }),
+            NewCard("Steal Gold", "Pick a player and decrease 2 gold.", 8,
+                (self, others) =>
+                {
+                    var target = ChooseTarget(others);
+                    int lost = Mathf.Min(2, target.inventory.GoldValue); // Use GoldValue
+                    target.inventory.Spend(ResourceType.Gold, lost);
+                }),
 
-        NewCard("Steal Silver", "Pick a player and decrease 5 silver.", 5,
-            (self, others) =>
-            {
-                var target = ChooseTarget(others);
-                int lost = Mathf.Min(5, target.inventory.Silver);
-                target.inventory.Spend(ResourceType.Silver, lost);
-            }),
+            NewCard("Steal Silver", "Pick a player and decrease 5 silver.", 5,
+                (self, others) =>
+                {
+                    var target = ChooseTarget(others);
+                    int lost = Mathf.Min(5, target.inventory.SilverValue); // Use SilverValue
+                    target.inventory.Spend(ResourceType.Silver, lost);
+                }),
 
-        NewCard("Steal Bronze", "Pick a player and decrease 10 bronze.", 1,
-            (self, others) =>
-            {
-                var target = ChooseTarget(others);
-                int lost = Mathf.Min(10, target.inventory.Bronze);
-                target.inventory.Spend(ResourceType.Bronze, lost);
-            }),
+            NewCard("Steal Bronze", "Pick a player and decrease 10 bronze.", 1,
+                (self, others) =>
+                {
+                    var target = ChooseTarget(others);
+                    int lost = Mathf.Min(10, target.inventory.BronzeValue); // Use BronzeValue
+                    target.inventory.Spend(ResourceType.Bronze, lost);
+                }),
 
-        NewCard("Steal Shiny Pennies", "Pick a player and decrease 5 shiny pennies.", 12,
-            (self, others) =>
-            {
-                var target = ChooseTarget(others);
-                int stolen = Mathf.Min(5, target.inventory.ShinyPennies);
-                target.inventory.Spend(ResourceType.ShinyPennies, stolen);
-                self.inventory.Add(ResourceType.ShinyPennies, stolen);
-            }),
+            NewCard("Steal Shiny Pennies", "Pick a player and decrease 5 shiny pennies.", 12,
+                (self, others) =>
+                {
+                    var target = ChooseTarget(others);
+                    int stolen = Mathf.Min(5, target.inventory.ShinyPenniesValue); // Use ShinyPenniesValue
+                    target.inventory.Spend(ResourceType.ShinyPennies, stolen);
+                    self.inventory.Add(ResourceType.ShinyPennies, stolen);
+                }),
 
-        NewCard("Gain Extra Pennies", "Gain 10 shiny pennies.", 5,
-            (self, _) =>
-            {
-                self.inventory.Add(ResourceType.ShinyPennies, 10);
-            }),
+            NewCard("Gain Extra Pennies", "Gain 10 shiny pennies.", 5,
+                (self, _) =>
+                {
+                    self.inventory.Add(ResourceType.ShinyPennies, 10);
+                }),
 
-        NewCard("Gain Turnips", "All players gain 25 turnips this round only.", 4,
-            (self, others) =>
-            {
-                foreach (var p in others) p.inventory.RoundTurnips += 25;
-                self.inventory.RoundTurnips += 25;
-            })
-    });
+            NewCard("Gain Turnips", "All players gain 25 turnips this round only.", 4,
+                (self, others) =>
+                {
+                    foreach (var p in others) p.inventory.Add(ResourceType.RoundTurnips, 25); // Use Add
+                    self.inventory.Add(ResourceType.RoundTurnips, 25); // Use Add
+                })
+        });
     }
 
     private static CommunityCard NewCard(string name, string desc, int cost,

@@ -12,15 +12,12 @@ public class SuddenShortage : MonoBehaviour
     private int triggeredRound = -1;
     private List<PlayerController> affectedPlayers = new();
 
-    // Public properties to access private fields
     public bool IsActive => isActive;
     public int TriggeredRound => triggeredRound;
 
     public void TryTriggerShortage(PlayerController triggeringPlayer)
     {
-        if (isActive ||
-            shortageRoundsTriggered >= maxShortageRounds ||
-            GameManager.Instance.turnManager.GetCurrentRound() == triggeredRound)
+        if (isActive || shortageRoundsTriggered >= maxShortageRounds || GameManager.Instance.turnManager.GetCurrentRound() == triggeredRound)
             return;
 
         TriggerShortage(triggeringPlayer);
@@ -28,7 +25,7 @@ public class SuddenShortage : MonoBehaviour
 
     private void TriggerShortage(PlayerController triggeringPlayer)
     {
-        affectedPlayers = GameManager.Instance.GetAllPlayers();
+        affectedPlayers = new List<PlayerController>(GameManager.Instance.GetAllPlayers());
         triggeredRound = GameManager.Instance.turnManager.GetCurrentRound();
         shortageRoundsTriggered++;
         isActive = true;
@@ -37,7 +34,7 @@ public class SuddenShortage : MonoBehaviour
 
         foreach (var player in affectedPlayers)
         {
-            player.inventory.isInShortage = true;
+            SetPlayerShortage(player, true);
             ClampPlayerResources(player);
             player.inventory.OnChanged += () => EnforceClamp(player);
         }
@@ -45,40 +42,57 @@ public class SuddenShortage : MonoBehaviour
         StartCoroutine(WaitForRoundEnd());
     }
 
+    private void SetPlayerShortage(PlayerController player, bool state)
+    {
+        if (player != null && player.inventory != null)
+        {
+            player.inventory.SetShortage(state); // Use SetShortage method
+            player.inventory.Notify(); // Redundant with SetShortage's OnChanged, but kept for clarity
+        }
+    }
+
     private void ClampPlayerResources(PlayerController player)
     {
         var inv = player.inventory;
+        if (inv == null) return;
 
-        if (inv.Gold > 20) inv.Add(ResourceType.Gold, 20 - inv.Gold);
-        if (inv.Silver > 20) inv.Add(ResourceType.Silver, 20 - inv.Silver);
-        if (inv.Bronze > 20) inv.Add(ResourceType.Bronze, 20 - inv.Bronze);
+        int excessGold = Mathf.Max(0, inv.GoldValue - 20);
+        int excessSilver = Mathf.Max(0, inv.SilverValue - 20);
+        int excessBronze = Mathf.Max(0, inv.BronzeValue - 20);
+
+        if (excessGold > 0) inv.Add(ResourceType.Gold, -excessGold);
+        if (excessSilver > 0) inv.Add(ResourceType.Silver, -excessSilver);
+        if (excessBronze > 0) inv.Add(ResourceType.Bronze, -excessBronze);
     }
 
     private void EnforceClamp(PlayerController player)
     {
-        if (!player.inventory.isInShortage) return;
+        if (!player.inventory.IsInShortage) return;
 
         var inv = player.inventory;
+        if (inv == null) return;
 
-        if (inv.Gold > 20) inv.Add(ResourceType.Gold, 20 - inv.Gold);
-        if (inv.Silver > 20) inv.Add(ResourceType.Silver, 20 - inv.Silver);
-        if (inv.Bronze > 20) inv.Add(ResourceType.Bronze, 20 - inv.Bronze);
+        int excessGold = Mathf.Max(0, inv.GoldValue - 20);
+        int excessSilver = Mathf.Max(0, inv.SilverValue - 20);
+        int excessBronze = Mathf.Max(0, inv.BronzeValue - 20);
+
+        if (excessGold > 0) inv.Add(ResourceType.Gold, -excessGold);
+        if (excessSilver > 0) inv.Add(ResourceType.Silver, -excessSilver);
+        if (excessBronze > 0) inv.Add(ResourceType.Bronze, -excessBronze);
     }
 
     private IEnumerator WaitForRoundEnd()
     {
         int startRound = GameManager.Instance.turnManager.GetCurrentRound();
 
-        // Wait until a new round begins
         while (GameManager.Instance.turnManager.GetCurrentRound() == startRound)
         {
             yield return null;
         }
 
-        // Remove effect
         foreach (var player in affectedPlayers)
         {
-            player.inventory.isInShortage = false;
+            SetPlayerShortage(player, false);
             player.inventory.OnChanged -= () => EnforceClamp(player);
         }
 

@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
         if (!inventory)
         {
             Debug.LogError($"{name} is missing PlayerInventory!");
+        }
+        else
+        {
+            inventory.Initialize(); // Initialize with default values
         }
     }
 
@@ -66,7 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         if (hasLoan)
         {
-            int payment = Mathf.RoundToInt(inventory.ShinyPennies * 0.2f);
+            int payment = Mathf.RoundToInt(inventory.ShinyPenniesValue * 0.2f);
             if (inventory.Spend(ResourceType.ShinyPennies, payment))
             {
                 hasLoan = false;

@@ -4,28 +4,24 @@ public static class Stables
 {
     public static void Execute(PlayerController player)
     {
-        player.inventory.ShinyPennies += 1;
+        if (player == null || player.inventory == null) return;
 
-        ResourceType randomType = (ResourceType)Random.Range(0, 3);
+        player.inventory.Add(ResourceType.ShinyPennies, 1);
+
+        ResourceType randomType = (ResourceType)Random.Range(0, 3); // 0, 1, 2 for Bronze, Silver, Gold
         switch (randomType)
         {
             case ResourceType.Bronze:
-                player.inventory.Bronze += 1;
+                player.inventory.Add(ResourceType.Bronze, 1);
                 break;
             case ResourceType.Silver:
-                player.inventory.Silver += 1;
+                player.inventory.Add(ResourceType.Silver, 1);
                 break;
             case ResourceType.Gold:
-                player.inventory.Gold += 1;
+                player.inventory.Add(ResourceType.Gold, 1);
                 break;
         }
 
         Debug.Log($"{player.name} visited the Stables: +1 shiny penny and 1 random resource ({randomType})");
-        UIManager.Instance.ShowCellAction
-        (
-            "Stables",
-            $"{player.name} gained 1 shiny penny and 1 {randomType}!",
-            player
-        );
     }
 }

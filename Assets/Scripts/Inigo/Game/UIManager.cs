@@ -2,16 +2,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
     [Header("Panels")]
-    public GameObject CAPanel; // Cell Action panel
-    public GameObject CCPanel; // Community Chest panel
-    public GameObject LOPanel; // Lucky Loan Lender panel
-    public GameObject REPanel; // Royal Fickle Mint panel
+    public GameObject CAPanel;
+    public GameObject CCPanel;
+    public GameObject LOPanel;
+    public GameObject REPanel;
 
     [Header("Cell Action Panel")]
     public TextMeshProUGUI cellTitleText;
@@ -31,9 +32,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Royal Fickle Mint")]
     public TextMeshProUGUI exchangeTitleText;
-    public TextMeshProUGUI bronzeInput; // Changed to TextMeshProUGUI
-    public TextMeshProUGUI silverInput; // Changed to TextMeshProUGUI
-    public TextMeshProUGUI goldInput; // Changed to TextMeshProUGUI
+    public TextMeshProUGUI bronzeInput;
+    public TextMeshProUGUI silverInput;
+    public TextMeshProUGUI goldInput;
     public Button confirmExchangeButton;
     public Button cancelExchangeButton;
 
@@ -55,30 +56,35 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Optional: Persist across scenes
+
+        if (transform.parent != null)
+        {
+            transform.SetParent(null);
+            Debug.Log("UIManager GameObject moved to root to support DontDestroyOnLoad.");
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        // Initialize all panels to inactive
         if (CAPanel != null) CAPanel.SetActive(false);
+        else Debug.LogWarning("CAPanel is not assigned in UIManager!");
         if (CCPanel != null) CCPanel.SetActive(false);
+        else Debug.LogWarning("CCPanel is not assigned in UIManager!");
         if (LOPanel != null) LOPanel.SetActive(false);
+        else Debug.LogWarning("LOPanel is not assigned in UIManager!");
         if (REPanel != null) REPanel.SetActive(false);
+        else Debug.LogWarning("REPanel is not assigned in UIManager!");
 
-        // Ensure turnController is assigned
         if (turnController == null)
         {
             turnController = FindFirstObjectByType<TurnUIController>();
             if (turnController == null)
-            {
                 Debug.LogWarning("TurnUIController not found in scene!");
-            }
         }
     }
 
-    // --- CELL ACTION ---
-    public void ShowCellAction(string title, string description, PlayerController player = null)
+    public void ShowCellAction(string title, string description, PlayerController player = null, Action onConfirm = null)
     {
         popupPlayer = player;
 
@@ -88,60 +94,51 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (cellTitleText != null)
-        {
-            cellTitleText.text = title;
-        }
-        else
-        {
-            Debug.LogWarning("cellTitleText is not assigned in UIManager!");
-        }
+        if (cellTitleText != null) cellTitleText.text = title;
+        else Debug.LogWarning("cellTitleText is not assigned in UIManager!");
 
-        if (cellDescriptionText != null)
-        {
-            cellDescriptionText.text = player != null ? $"{player.name}: {description}" : description;
-        }
-        else
-        {
-            Debug.LogWarning("cellDescriptionText is not assigned in UIManager!");
-        }
+        if (cellDescriptionText != null) cellDescriptionText.text = player != null ? $"{player.name}: {description}" : description;
+        else Debug.LogWarning("cellDescriptionText is not assigned in UIManager!");
 
         if (cellConfirmButton != null)
         {
             cellConfirmButton.onClick.RemoveAllListeners();
-            cellConfirmButton.onClick.AddListener(HideCellAction);
+            cellConfirmButton.onClick.AddListener(() =>
+            {
+                onConfirm?.Invoke();
+                HideCellAction();
+                if (turnController != null && turnController.firstTurn)
+                    turnController.StartFirstTurn();
+            });
         }
         else
         {
             Debug.LogWarning("cellConfirmButton is not assigned in UIManager!");
-            StartCoroutine(HideCellActionAfterDelay(5f)); // Fallback: Auto-hide after 5 seconds
+            StartCoroutine(HideCellActionAfterDelay(5f, onConfirm));
         }
 
         CAPanel.SetActive(true);
     }
 
-    private IEnumerator HideCellActionAfterDelay(float delay)
+    private IEnumerator HideCellActionAfterDelay(float delay, Action onConfirm = null)
     {
         yield return new WaitForSeconds(delay);
+        onConfirm?.Invoke();
         HideCellAction();
+        if (turnController != null && turnController.firstTurn)
+            turnController.StartFirstTurn();
     }
 
     public void HideCellAction()
     {
-        if (CAPanel != null)
-        {
-            CAPanel.SetActive(false);
-        }
+        if (CAPanel != null) CAPanel.SetActive(false);
 
-        if (popupPlayer != null && turnController != null)
-        {
+        if (popupPlayer != null && turnController != null && !turnController.firstTurn)
             turnController.UpdateTurnUI();
-        }
 
         popupPlayer = null;
     }
 
-    // --- COMMUNITY CHEST ---
     public void ShowCommunityChestCard(PlayerController player)
     {
         if (CCPanel == null)
@@ -152,25 +149,11 @@ public class UIManager : MonoBehaviour
 
         currentPlayer = player;
 
-        if (cardTitleText != null)
-        {
-            cardTitleText.text = "Community Chest";
-        }
-        else
-        {
-            Debug.LogWarning("cardTitleText is not assigned in UIManager!");
-        }
+        if (cardTitleText != null) cardTitleText.text = "Community Chest";
+        else Debug.LogWarning("cardTitleText is not assigned in UIManager!");
 
-        if (cardDescriptionText != null)
-        {
-            cardDescriptionText.text = player != null
-                ? $"{player.name}: Click to draw a random effect!"
-                : "Click to draw a random effect!";
-        }
-        else
-        {
-            Debug.LogWarning("cardDescriptionText is not assigned in UIManager!");
-        }
+        if (cardDescriptionText != null) cardDescriptionText.text = player != null ? $"{player.name}: Click to draw a random effect!" : "Click to draw a random effect!";
+        else Debug.LogWarning("cardDescriptionText is not assigned in UIManager!");
 
         if (drawCardButton != null)
         {
@@ -183,34 +166,21 @@ public class UIManager : MonoBehaviour
                     chest.DrawCard(currentPlayer, GameManager.Instance.GetAllPlayers());
                     HideCommunityChestCard();
                 }
-                else
-                {
-                    Debug.LogWarning("CommunityChest not found in scene!");
-                }
+                else Debug.LogWarning("CommunityChest not found in scene!");
             });
         }
-        else
-        {
-            Debug.LogWarning("drawCardButton is not assigned in UIManager!");
-        }
+        else Debug.LogWarning("drawCardButton is not assigned in UIManager!");
 
         CCPanel.SetActive(true);
     }
 
     public void HideCommunityChestCard()
     {
-        if (CCPanel != null)
-        {
-            CCPanel.SetActive(false);
-        }
+        if (CCPanel != null) CCPanel.SetActive(false);
 
-        if (turnController != null)
-        {
-            turnController.UpdateTurnUI();
-        }
+        if (turnController != null) turnController.UpdateTurnUI();
     }
 
-    // --- LUCKY LOAN LENDER ---
     public void ShowLoanOffer(PlayerController player)
     {
         if (LOPanel == null)
@@ -221,45 +191,25 @@ public class UIManager : MonoBehaviour
 
         currentPlayer = player;
 
-        if (loanTitleText != null)
-        {
-            loanTitleText.text = "Lucky Loan Lender";
-        }
-        else
-        {
-            Debug.LogWarning("loanTitleText is not assigned in UIManager!");
-        }
+        if (loanTitleText != null) loanTitleText.text = "Lucky Loan Lender";
+        else Debug.LogWarning("loanTitleText is not assigned in UIManager!");
 
-        if (loanDescriptionText != null)
-        {
-            loanDescriptionText.text = player != null
-                ? $"{player.name}: Would you like to take a loan worth 10% of your current shiny pennies?"
-                : "Would you like to take a loan worth 10% of your current shiny pennies?";
-        }
-        else
-        {
-            Debug.LogWarning("loanDescriptionText is not assigned in UIManager!");
-        }
+        if (loanDescriptionText != null) loanDescriptionText.text = player != null ? $"{player.name}: Would you like to take a loan worth 10% of your current shiny pennies?" : "Would you like to take a loan worth 10% of your current shiny pennies?";
+        else Debug.LogWarning("loanDescriptionText is not assigned in UIManager!");
 
         if (acceptLoanButton != null)
         {
             acceptLoanButton.onClick.RemoveAllListeners();
             acceptLoanButton.onClick.AddListener(OnConfirmLoan);
         }
-        else
-        {
-            Debug.LogWarning("acceptLoanButton is not assigned in UIManager!");
-        }
+        else Debug.LogWarning("acceptLoanButton is not assigned in UIManager!");
 
         if (cancelLoanButton != null)
         {
             cancelLoanButton.onClick.RemoveAllListeners();
             cancelLoanButton.onClick.AddListener(HideLoanOffer);
         }
-        else
-        {
-            Debug.LogWarning("cancelLoanButton is not assigned in UIManager!");
-        }
+        else Debug.LogWarning("cancelLoanButton is not assigned in UIManager!");
 
         LOPanel.SetActive(true);
     }
@@ -273,28 +223,18 @@ public class UIManager : MonoBehaviour
             {
                 loanLender.OfferLoan(currentPlayer);
             }
-            else
-            {
-                Debug.LogWarning("LuckyLoanLender not found in GameManager!");
-            }
+            else Debug.LogWarning("LuckyLoanLender not found in GameManager!");
         }
         HideLoanOffer();
     }
 
     public void HideLoanOffer()
     {
-        if (LOPanel != null)
-        {
-            LOPanel.SetActive(false);
-        }
+        if (LOPanel != null) LOPanel.SetActive(false);
 
-        if (turnController != null)
-        {
-            turnController.UpdateTurnUI();
-        }
+        if (turnController != null) turnController.UpdateTurnUI();
     }
 
-    // --- ROYAL FICKLE MINT ---
     public void ShowExchange()
     {
         if (REPanel == null)
@@ -318,14 +258,8 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (exchangeTitleText != null)
-        {
-            exchangeTitleText.text = "Royal Fickle Mint";
-        }
-        else
-        {
-            Debug.LogWarning("exchangeTitleText is not assigned in UIManager!");
-        }
+        if (exchangeTitleText != null) exchangeTitleText.text = "Royal Fickle Mint";
+        else Debug.LogWarning("exchangeTitleText is not assigned in UIManager!");
 
         if (bronzeInput != null) bronzeInput.text = "0";
         else Debug.LogWarning("bronzeInput is not assigned in UIManager!");
@@ -339,20 +273,14 @@ public class UIManager : MonoBehaviour
             confirmExchangeButton.onClick.RemoveAllListeners();
             confirmExchangeButton.onClick.AddListener(ConfirmExchange);
         }
-        else
-        {
-            Debug.LogWarning("confirmExchangeButton is not assigned in UIManager!");
-        }
+        else Debug.LogWarning("confirmExchangeButton is not assigned in UIManager!");
 
         if (cancelExchangeButton != null)
         {
             cancelExchangeButton.onClick.RemoveAllListeners();
             cancelExchangeButton.onClick.AddListener(HideExchange);
         }
-        else
-        {
-            Debug.LogWarning("cancelExchangeButton is not assigned in UIManager!");
-        }
+        else Debug.LogWarning("cancelExchangeButton is not assigned in UIManager!");
 
         REPanel.SetActive(true);
     }
@@ -367,7 +295,6 @@ public class UIManager : MonoBehaviour
         }
 
         // Since inputs are TextMeshProUGUI, values are not user-editable
-        // Using 0 as placeholder; actual values need to be determined
         Debug.LogWarning("Exchange values not implemented for TextMeshProUGUI inputs. Add input mechanism (e.g., buttons, sliders).");
         int bronze = 0, silver = 0, gold = 0;
 
@@ -381,9 +308,9 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        int bronzeSpent = Mathf.Min(bronze, inv.Bronze);
-        int silverSpent = Mathf.Min(silver, inv.Silver);
-        int goldSpent = Mathf.Min(gold, inv.Gold);
+        int bronzeSpent = Mathf.Min(bronze, inv.BronzeValue); // Use BronzeValue
+        int silverSpent = Mathf.Min(silver, inv.SilverValue); // Use SilverValue
+        int goldSpent = Mathf.Min(gold, inv.GoldValue);      // Use GoldValue
 
         int totalPennies =
               decree.GetValueExchange(ResourceType.Bronze, bronzeSpent)
@@ -401,14 +328,8 @@ public class UIManager : MonoBehaviour
 
     public void HideExchange()
     {
-        if (REPanel != null)
-        {
-            REPanel.SetActive(false);
-        }
+        if (REPanel != null) REPanel.SetActive(false);
 
-        if (turnController != null)
-        {
-            turnController.UpdateTurnUI();
-        }
+        if (turnController != null) turnController.UpdateTurnUI();
     }
 }

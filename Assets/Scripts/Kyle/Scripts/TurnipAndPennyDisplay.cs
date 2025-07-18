@@ -61,26 +61,26 @@ public class TurnipAndPennyDisplay : MonoBehaviour
     {
         if (players[0]?.inventory != null)
         {
-            turnipNumTextP1.text = players[0].inventory.Turnips.ToString();
-            shinyPennyNumTextP1.text = players[0].inventory.ShinyPennies.ToString();
+            turnipNumTextP1.text = players[0].inventory.TurnipsValue.ToString();      // Use TurnipsValue
+            shinyPennyNumTextP1.text = players[0].inventory.ShinyPenniesValue.ToString(); // Use ShinyPenniesValue
         }
 
         if (players[1]?.inventory != null)
         {
-            turnipNumTextP2.text = players[1].inventory.Turnips.ToString();
-            shinyPennyNumTextP2.text = players[1].inventory.ShinyPennies.ToString();
+            turnipNumTextP2.text = players[1].inventory.TurnipsValue.ToString();      // Use TurnipsValue
+            shinyPennyNumTextP2.text = players[1].inventory.ShinyPenniesValue.ToString(); // Use ShinyPenniesValue
         }
 
         if (players[2]?.inventory != null)
         {
-            turnipNumTextP3.text = players[2].inventory.Turnips.ToString();
-            shinyPennyNumTextP3.text = players[2].inventory.ShinyPennies.ToString();
+            turnipNumTextP3.text = players[2].inventory.TurnipsValue.ToString();      // Use TurnipsValue
+            shinyPennyNumTextP3.text = players[2].inventory.ShinyPenniesValue.ToString(); // Use ShinyPenniesValue
         }
 
         if (players[3]?.inventory != null)
         {
-            turnipNumTextP4.text = players[3].inventory.Turnips.ToString();
-            shinyPennyNumTextP4.text = players[3].inventory.ShinyPennies.ToString();
+            turnipNumTextP4.text = players[3].inventory.TurnipsValue.ToString();      // Use TurnipsValue
+            shinyPennyNumTextP4.text = players[3].inventory.ShinyPenniesValue.ToString(); // Use ShinyPenniesValue
         }
     }
 }

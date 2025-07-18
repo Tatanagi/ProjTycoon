@@ -96,7 +96,22 @@ public class Dice : MonoBehaviour
 
         // Award resource, then resolve tile
         GameManager.Instance.OnPlayerFinishMove(currentPlayer, diceRoll);
-        GameManager.Instance.ResolveLanding(currentPlayer);   // decides UI
+        BoardCell currentCell = currentPlayer.GetCurrentCell().GetComponent<BoardCell>();
+        if (currentCell != null && (currentCell.cellType == CellType.Stables || currentCell.cellType == CellType.Quarry ||
+            currentCell.cellType == CellType.Fishery || currentCell.cellType == CellType.WheatField ||
+            currentCell.cellType == CellType.MiningShaft || currentCell.cellType == CellType.Thief))
+        {
+            UIManager.Instance.ShowCellAction(GetCellActionTitle(currentCell.cellType), GetCellActionDescription(currentCell.cellType), currentPlayer, () =>
+            {
+                ExecuteCellAction(currentCell.cellType, currentPlayer);
+                TurnUIController.Instance.UpdateTurnUI();
+            });
+        }
+        else
+        {
+            GameManager.Instance.ResolveLanding(currentPlayer);
+            TurnUIController.Instance.UpdateTurnUI();
+        }
 
         // Advance turn
         turnManager.NextTurn();
@@ -150,4 +165,36 @@ public class Dice : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
+    private string GetCellActionTitle(CellType cellType)
+    {
+        return cellType.ToString();
+    }
+
+    private string GetCellActionDescription(CellType cellType)
+    {
+        switch (cellType)
+        {
+            case CellType.Stables: return "Gain 1 shiny penny and 1 random resource!";
+            case CellType.Quarry: return "Gain 1 Bronze Token!";
+            case CellType.Fishery: return "Gain 1 Silver Token!";
+            case CellType.WheatField: return "Gain 5 Turnips! (Double during Turnip Craze)";
+            case CellType.MiningShaft: return "Gain 1 Gold Token!";
+            case CellType.Thief: return "Lose up to 20% Bronze, 10% Silver, 5% Gold to a thief!";
+            default: return "";
+        }
+    }
+
+    private void ExecuteCellAction(CellType cellType, PlayerController player)
+    {
+        switch (cellType)
+        {
+            case CellType.Stables: Stables.Execute(player); break;
+            case CellType.Quarry: Quarry.Execute(player); break;
+            case CellType.Fishery: Fishery.Execute(player); break;
+            case CellType.WheatField: WheatField.Execute(player); break;
+            case CellType.MiningShaft: MiningShaft.Execute(player); break;
+            case CellType.Thief: Thief.Execute(player); break;
+        }
+        GameManager.Instance.ResolveLanding(player);
+    }
 }

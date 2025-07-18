@@ -187,9 +187,9 @@ public class StickyFingers : MonoBehaviour
     {
         return type switch
         {
-            ResourceType.Gold => inv.Gold,
-            ResourceType.Silver => inv.Silver,
-            ResourceType.Bronze => inv.Bronze,
+            ResourceType.Gold => inv.GoldValue,    // Use GoldValue
+            ResourceType.Silver => inv.SilverValue, // Use SilverValue
+            ResourceType.Bronze => inv.BronzeValue, // Use BronzeValue
             _ => 0
         };
     }

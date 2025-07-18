@@ -6,7 +6,7 @@ public class LuckyLoanLender : MonoBehaviour
     {
         if (!player.hasLoan)
         {
-            int currentPennies = player.inventory.ShinyPennies;
+            int currentPennies = player.inventory.ShinyPenniesValue; // Use property instead of field
             int loanAmount = Mathf.CeilToInt(currentPennies * 0.1f);
 
             player.inventory.Add(ResourceType.ShinyPennies, loanAmount);

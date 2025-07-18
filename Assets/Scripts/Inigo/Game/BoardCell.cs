@@ -60,46 +60,77 @@ public class BoardCell : MonoBehaviour
                 {
                     UIManager.Instance.ShowCellAction(
                         "Sudden Shortage",
-                        "This round will be capped to 20 silver, gold and bronze",
-                        player
+                        "This round will be capped to 20 silver, gold, and bronze",
+                        player,
+                        () => suddenShortage.TryTriggerShortage(player)
                     );
-                    suddenShortage.TryTriggerShortage(player);
                 }
                 break;
 
             case CellType.Stables:
                 Debug.Log("Player landed on Stables!");
-                Stables.Execute(player);
+                UIManager.Instance.ShowCellAction(
+                    "Stables",
+                    "Gain 1 shiny penny and 1 random resource!",
+                    player,
+                    () => Stables.Execute(player)
+                );
                 break;
 
             case CellType.Quarry:
                 Debug.Log("Player landed on Quarry!");
-                Quarry.Execute(player);
+                UIManager.Instance.ShowCellAction(
+                    "Quarry",
+                    "Gain 1 Bronze Token!",
+                    player,
+                    () => Quarry.Execute(player)
+                );
                 break;
 
             case CellType.Fishery:
                 Debug.Log("Player landed on Fishery!");
-                Fishery.Execute(player);
+                UIManager.Instance.ShowCellAction(
+                    "Fishery",
+                    "Gain 1 Silver Token!",
+                    player,
+                    () => Fishery.Execute(player)
+                );
                 break;
 
             case CellType.WheatField:
                 Debug.Log("Player landed on Wheat Field!");
-                WheatField.Execute(player);
+                UIManager.Instance.ShowCellAction(
+                    "Wheat Field",
+                    "Gain 5 Turnips! (Double during Turnip Craze)",
+                    player,
+                    () => WheatField.Execute(player)
+                );
                 break;
 
             case CellType.MiningShaft:
                 Debug.Log("Player landed on Mining Shaft!");
-                MiningShaft.Execute(player);
+                UIManager.Instance.ShowCellAction(
+                    "Mining Shaft",
+                    "Gain 1 Gold Token!",
+                    player,
+                    () => MiningShaft.Execute(player)
+                );
                 break;
 
             case CellType.Thief:
                 Debug.Log("Player landed on Thief!");
-                Thief.Execute(player);
+                UIManager.Instance.ShowCellAction(
+                    "Thief",
+                    "Lose up to 20% Bronze, 10% Silver, 5% Gold to a thief!",
+                    player,
+                    () => Thief.Execute(player)
+                );
                 break;
 
             case CellType.Normal:
             default:
                 Debug.Log("Player landed on a Normal cell.");
+                TurnUIController.Instance.UpdateTurnUI(); // Show TurnUI for normal cells immediately
                 break;
         }
     }

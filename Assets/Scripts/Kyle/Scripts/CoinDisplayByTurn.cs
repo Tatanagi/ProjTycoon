@@ -65,30 +65,30 @@ public class CoinDisplayByTurn : MonoBehaviour
     {
         if (players[0]?.inventory != null)
         {
-            goldTextP1.text = players[0].inventory.Gold.ToString();
-            silverTextP1.text = players[0].inventory.Silver.ToString();
-            bronzeTextP1.text = players[0].inventory.Bronze.ToString();
+            goldTextP1.text = players[0].inventory.GoldValue.ToString();    // Use GoldValue
+            silverTextP1.text = players[0].inventory.SilverValue.ToString(); // Use SilverValue
+            bronzeTextP1.text = players[0].inventory.BronzeValue.ToString(); // Use BronzeValue
         }
 
         if (players[1]?.inventory != null)
         {
-            goldTextP2.text = players[1].inventory.Gold.ToString();
-            silverTextP2.text = players[1].inventory.Silver.ToString();
-            bronzeTextP2.text = players[1].inventory.Bronze.ToString();
+            goldTextP2.text = players[1].inventory.GoldValue.ToString();    // Use GoldValue
+            silverTextP2.text = players[1].inventory.SilverValue.ToString(); // Use SilverValue
+            bronzeTextP2.text = players[1].inventory.BronzeValue.ToString(); // Use BronzeValue
         }
 
         if (players[2]?.inventory != null)
         {
-            goldTextP3.text = players[2].inventory.Gold.ToString();
-            silverTextP3.text = players[2].inventory.Silver.ToString();
-            bronzeTextP3.text = players[2].inventory.Bronze.ToString();
+            goldTextP3.text = players[2].inventory.GoldValue.ToString();    // Use GoldValue
+            silverTextP3.text = players[2].inventory.SilverValue.ToString(); // Use SilverValue
+            bronzeTextP3.text = players[2].inventory.BronzeValue.ToString(); // Use BronzeValue
         }
 
         if (players[3]?.inventory != null)
         {
-            goldTextP4.text = players[3].inventory.Gold.ToString();
-            silverTextP4.text = players[3].inventory.Silver.ToString();
-            bronzeTextP4.text = players[3].inventory.Bronze.ToString();
+            goldTextP4.text = players[3].inventory.GoldValue.ToString();    // Use GoldValue
+            silverTextP4.text = players[3].inventory.SilverValue.ToString(); // Use SilverValue
+            bronzeTextP4.text = players[3].inventory.BronzeValue.ToString(); // Use BronzeValue
         }
     }
 }
