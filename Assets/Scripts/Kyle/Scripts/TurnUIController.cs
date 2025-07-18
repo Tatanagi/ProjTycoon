@@ -10,6 +10,7 @@ public class TurnUIController : MonoBehaviour
     public TMP_Text turnTMPText;          // TextMeshPro text component
     public TurnManager turnManager;       // Reference to TurnManager ScriptableObject
     public bool firstTurn = true;         // Flag to handle the first turn, now public
+    public float displayDuration = 5f;    // Duration in seconds to show the turn UI
 
     private Coroutine hideCoroutine;
 
@@ -37,7 +38,9 @@ public class TurnUIController : MonoBehaviour
     public void UpdateTurnUI()
     {
         if (turnBasedUI != null)
-            turnBasedUI.SetActive(true);
+        {
+            turnBasedUI.SetActive(true); // Ensure UI is shown
+        }
 
         if (turnTMPText != null && turnManager != null)
         {
@@ -45,11 +48,12 @@ public class TurnUIController : MonoBehaviour
             turnTMPText.text = $"Player {playerNumber}'s Turn";
         }
 
-        // Restart the 5-second hide timer
+        // Start the hide coroutine if not already running
         if (hideCoroutine != null)
+        {
             StopCoroutine(hideCoroutine);
-
-        hideCoroutine = StartCoroutine(HideAfterDelay(5f));
+        }
+        hideCoroutine = StartCoroutine(HideAfterDelay(displayDuration));
     }
 
     public void StartFirstTurn()
@@ -61,8 +65,9 @@ public class TurnUIController : MonoBehaviour
     private IEnumerator HideAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-
         if (turnBasedUI != null)
+        {
             turnBasedUI.SetActive(false);
+        }
     }
 }

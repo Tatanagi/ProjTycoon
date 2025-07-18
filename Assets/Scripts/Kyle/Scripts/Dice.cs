@@ -97,15 +97,39 @@ public class Dice : MonoBehaviour
         // Award resource, then resolve tile
         GameManager.Instance.OnPlayerFinishMove(currentPlayer, diceRoll);
         BoardCell currentCell = currentPlayer.GetCurrentCell().GetComponent<BoardCell>();
-        if (currentCell != null && (currentCell.cellType == CellType.Stables || currentCell.cellType == CellType.Quarry ||
-            currentCell.cellType == CellType.Fishery || currentCell.cellType == CellType.WheatField ||
-            currentCell.cellType == CellType.MiningShaft || currentCell.cellType == CellType.Thief))
+        if (currentCell != null)
         {
-            UIManager.Instance.ShowCellAction(GetCellActionTitle(currentCell.cellType), GetCellActionDescription(currentCell.cellType), currentPlayer, () =>
+            switch (currentCell.cellType)
             {
-                ExecuteCellAction(currentCell.cellType, currentPlayer);
-                TurnUIController.Instance.UpdateTurnUI();
-            });
+                case CellType.CommunityChest:
+                    UIManager.Instance.ShowCommunityChestCard(currentPlayer);
+                    break;
+
+                case CellType.LuckyLoanLender:
+                    UIManager.Instance.ShowLoanOffer(currentPlayer);
+                    break;
+
+                case CellType.RoyalMint:
+                    UIManager.Instance.ShowExchange();
+                    break;
+
+                case CellType.Stables:
+                case CellType.Quarry:
+                case CellType.Fishery:
+                case CellType.WheatField:
+                case CellType.MiningShaft:
+                case CellType.Thief:
+                    UIManager.Instance.ShowCellAction(GetCellActionTitle(currentCell.cellType), GetCellActionDescription(currentCell.cellType), currentPlayer, () =>
+                    {
+                        ExecuteCellAction(currentCell.cellType, currentPlayer);
+                    });
+                    break;
+
+                default:
+                    GameManager.Instance.ResolveLanding(currentPlayer);
+                    TurnUIController.Instance.UpdateTurnUI();
+                    break;
+            }
         }
         else
         {

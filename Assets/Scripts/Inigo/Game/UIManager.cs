@@ -105,10 +105,9 @@ public class UIManager : MonoBehaviour
             cellConfirmButton.onClick.RemoveAllListeners();
             cellConfirmButton.onClick.AddListener(() =>
             {
+                if (turnController != null) turnController.UpdateTurnUI(); // Show turn UI immediately on confirm
                 onConfirm?.Invoke();
                 HideCellAction();
-                if (turnController != null && turnController.firstTurn)
-                    turnController.StartFirstTurn();
             });
         }
         else
@@ -123,20 +122,14 @@ public class UIManager : MonoBehaviour
     private IEnumerator HideCellActionAfterDelay(float delay, Action onConfirm = null)
     {
         yield return new WaitForSeconds(delay);
+        if (turnController != null) turnController.UpdateTurnUI(); // Show turn UI immediately on confirm
         onConfirm?.Invoke();
         HideCellAction();
-        if (turnController != null && turnController.firstTurn)
-            turnController.StartFirstTurn();
     }
 
     public void HideCellAction()
     {
         if (CAPanel != null) CAPanel.SetActive(false);
-
-        if (popupPlayer != null && turnController != null && !turnController.firstTurn)
-            turnController.UpdateTurnUI();
-
-        popupPlayer = null;
     }
 
     public void ShowCommunityChestCard(PlayerController player)
@@ -165,6 +158,7 @@ public class UIManager : MonoBehaviour
                 {
                     chest.DrawCard(currentPlayer, GameManager.Instance.GetAllPlayers());
                     HideCommunityChestCard();
+                    TurnUIController.Instance.UpdateTurnUI(); // Show turn UI after action
                 }
                 else Debug.LogWarning("CommunityChest not found in scene!");
             });
@@ -177,8 +171,6 @@ public class UIManager : MonoBehaviour
     public void HideCommunityChestCard()
     {
         if (CCPanel != null) CCPanel.SetActive(false);
-
-        if (turnController != null) turnController.UpdateTurnUI();
     }
 
     public void ShowLoanOffer(PlayerController player)
@@ -200,14 +192,23 @@ public class UIManager : MonoBehaviour
         if (acceptLoanButton != null)
         {
             acceptLoanButton.onClick.RemoveAllListeners();
-            acceptLoanButton.onClick.AddListener(OnConfirmLoan);
+            acceptLoanButton.onClick.AddListener(() =>
+            {
+                OnConfirmLoan();
+                HideLoanOffer();
+                TurnUIController.Instance.UpdateTurnUI(); // Show turn UI after confirm
+            });
         }
         else Debug.LogWarning("acceptLoanButton is not assigned in UIManager!");
 
         if (cancelLoanButton != null)
         {
             cancelLoanButton.onClick.RemoveAllListeners();
-            cancelLoanButton.onClick.AddListener(HideLoanOffer);
+            cancelLoanButton.onClick.AddListener(() =>
+            {
+                HideLoanOffer();
+                TurnUIController.Instance.UpdateTurnUI(); // Show turn UI after cancel
+            });
         }
         else Debug.LogWarning("cancelLoanButton is not assigned in UIManager!");
 
@@ -218,21 +219,18 @@ public class UIManager : MonoBehaviour
     {
         if (currentPlayer != null)
         {
-            LuckyLoanLender loanLender = GameManager.Instance.loanLender;
+            LuckyLoanLender loanLender = FindFirstObjectByType<LuckyLoanLender>();
             if (loanLender != null)
             {
                 loanLender.OfferLoan(currentPlayer);
             }
-            else Debug.LogWarning("LuckyLoanLender not found in GameManager!");
+            else Debug.LogWarning("LuckyLoanLender not found in scene!");
         }
-        HideLoanOffer();
     }
 
     public void HideLoanOffer()
     {
         if (LOPanel != null) LOPanel.SetActive(false);
-
-        if (turnController != null) turnController.UpdateTurnUI();
     }
 
     public void ShowExchange()
@@ -324,12 +322,11 @@ public class UIManager : MonoBehaviour
 
         Debug.Log($"{mintingPlayer.name} exchanged {bronzeSpent} bronze, {silverSpent} silver, {goldSpent} gold for {totalPennies} shiny pennies.");
         HideExchange();
+        TurnUIController.Instance.UpdateTurnUI(); // Show turn UI after action
     }
 
     public void HideExchange()
     {
         if (REPanel != null) REPanel.SetActive(false);
-
-        if (turnController != null) turnController.UpdateTurnUI();
     }
 }
