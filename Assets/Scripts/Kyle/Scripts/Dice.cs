@@ -127,7 +127,6 @@ public class Dice : MonoBehaviour
 
                 default:
                     GameManager.Instance.ResolveLanding(currentPlayer);
-                    TurnUIController.Instance.UpdateTurnUI();
                     break;
             }
         }

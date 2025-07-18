@@ -41,7 +41,16 @@ public class BoardCell : MonoBehaviour
 
             case CellType.ResourceTokens:
                 Debug.Log("Player landed on Resource Tokens.");
-                GameManager.Instance.GiveStartTileBonus(player);
+                UIManager.Instance.ShowCellAction(
+                    "Start Tile Bonus",
+                    "You received +5 gold, silver, and bronze!",
+                    player,
+                    () =>
+                    {
+                        GameManager.Instance.GiveStartTileBonus(player);
+                        TurnUIController.Instance.UpdateTurnUI(); // Show turn UI only after confirming
+                    }
+                );
                 break;
 
             case CellType.SuddenShortage:
