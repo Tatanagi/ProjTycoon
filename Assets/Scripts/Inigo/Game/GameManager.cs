@@ -60,11 +60,11 @@ public class GameManager : MonoBehaviour
 
         UIManager.Instance.ShowCellAction(
             "Start Tile Bonus",
-            "Player receives +5 gold, silver, and bronze!",
+            $"{player.name} received +5 gold, +5 silver, and +5 bronze!",
             player
         );
 
-        Debug.Log($"{player.name} received +5 gold, silver, and bronze.");
+        Debug.Log($"{player.name} received +5 gold, +5 silver, and +5 bronze.");
     }
 
     public PlayerController[] GetAllPlayers()
@@ -88,16 +88,28 @@ public class GameManager : MonoBehaviour
             case CellType.RoyalMint:
                 UIManager.Instance.ShowExchange();
                 break;
-            case CellType.ResourceTokens:
-                GiveStartTileBonus(player);
-                break;
             case CellType.SuddenShortage:
                 UIManager.Instance.ShowCellAction(
                     "Sudden Shortage",
-                    "This round will be capped to 20 silver, gold and bronze.",
+                    "This round will be capped to 20 silver, gold, and bronze.",
                     player
                 );
                 suddenShortage.TryTriggerShortage(player);
+                break;
+            case CellType.Stables:
+            case CellType.Quarry:
+            case CellType.Fishery:
+            case CellType.WheatField:
+            case CellType.MiningShaft:
+            case CellType.Thief:
+                UIManager.Instance.ShowCellAction(
+                    cell.GetCellActionTitle(),
+                    cell.GetCellActionDescription(),
+                    player
+                );
+                break;
+            case CellType.ResourceTokens:
+                // Handled by CA panel confirm in OnPlayerLanded, no action here
                 break;
             case CellType.Normal:
             default:

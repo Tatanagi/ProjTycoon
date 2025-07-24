@@ -22,125 +22,61 @@ public class BoardCell : MonoBehaviour
 
     public void OnPlayerLanded(PlayerController player)
     {
+        Debug.Log($"Player {player.name} landed on {cellType}.");
         switch (cellType)
         {
             case CellType.CommunityChest:
-                Debug.Log("Player landed on Community Chest.");
                 UIManager.Instance.ShowCommunityChestCard(player);
                 break;
-
             case CellType.LuckyLoanLender:
-                Debug.Log("Player landed on Lucky Loan Lender.");
                 UIManager.Instance.ShowLoanOffer(player);
                 break;
-
             case CellType.RoyalMint:
-                Debug.Log("Player landed on Royal Mint.");
                 UIManager.Instance.ShowExchange();
                 break;
-
             case CellType.ResourceTokens:
-                Debug.Log("Player landed on Resource Tokens.");
+                // At start, show CA panel and let GameManager handle the bonus on confirm
                 UIManager.Instance.ShowCellAction(
-                    "Start Tile Bonus",
-                    "You received +5 gold, silver, and bronze!",
+                    GetCellActionTitle(),
+                    GetCellActionDescription(),
                     player,
-                    () =>
-                    {
-                        GameManager.Instance.GiveStartTileBonus(player);
-                        TurnUIController.Instance.UpdateTurnUI(); // Show turn UI only after confirming
-                    }
+                    () => GameManager.Instance.GiveStartTileBonus(player) // Trigger bonus on confirm
                 );
                 break;
-
             case CellType.SuddenShortage:
-                Debug.Log("Player landed on Sudden Shortage!");
-                SuddenShortage suddenShortage = GameManager.Instance.suddenShortage;
-                if (suddenShortage.IsActive ||
-                    GameManager.Instance.turnManager.GetCurrentRound() == suddenShortage.TriggeredRound)
-                {
-                    UIManager.Instance.ShowCellAction(
-                        "Sudden Shortage",
-                        "You cannot activate sudden shortage it is once per round",
-                        player
-                    );
-                }
-                else
-                {
-                    UIManager.Instance.ShowCellAction(
-                        "Sudden Shortage",
-                        "This round will be capped to 20 silver, gold, and bronze",
-                        player,
-                        () => suddenShortage.TryTriggerShortage(player)
-                    );
-                }
-                break;
-
             case CellType.Stables:
-                Debug.Log("Player landed on Stables!");
-                UIManager.Instance.ShowCellAction(
-                    "Stables",
-                    "Gain 1 shiny penny and 1 random resource!",
-                    player,
-                    () => Stables.Execute(player)
-                );
-                break;
-
             case CellType.Quarry:
-                Debug.Log("Player landed on Quarry!");
-                UIManager.Instance.ShowCellAction(
-                    "Quarry",
-                    "Gain 1 Bronze Token!",
-                    player,
-                    () => Quarry.Execute(player)
-                );
-                break;
-
             case CellType.Fishery:
-                Debug.Log("Player landed on Fishery!");
-                UIManager.Instance.ShowCellAction(
-                    "Fishery",
-                    "Gain 1 Silver Token!",
-                    player,
-                    () => Fishery.Execute(player)
-                );
-                break;
-
             case CellType.WheatField:
-                Debug.Log("Player landed on Wheat Field!");
-                UIManager.Instance.ShowCellAction(
-                    "Wheat Field",
-                    "Gain 5 Turnips! (Double during Turnip Craze)",
-                    player,
-                    () => WheatField.Execute(player)
-                );
-                break;
-
             case CellType.MiningShaft:
-                Debug.Log("Player landed on Mining Shaft!");
-                UIManager.Instance.ShowCellAction(
-                    "Mining Shaft",
-                    "Gain 1 Gold Token!",
-                    player,
-                    () => MiningShaft.Execute(player)
-                );
-                break;
-
             case CellType.Thief:
-                Debug.Log("Player landed on Thief!");
                 UIManager.Instance.ShowCellAction(
-                    "Thief",
-                    "Lose up to 20% Bronze, 10% Silver, 5% Gold to a thief!",
-                    player,
-                    () => Thief.Execute(player)
+                    GetCellActionTitle(),
+                    GetCellActionDescription(),
+                    player
                 );
                 break;
+        }
+    }
 
-            case CellType.Normal:
-            default:
-                Debug.Log("Player landed on a Normal cell.");
-                TurnUIController.Instance.UpdateTurnUI(); // Show TurnUI for normal cells immediately
-                break;
+    public string GetCellActionTitle()
+    {
+        return cellType.ToString();
+    }
+
+    public string GetCellActionDescription()
+    {
+        switch (cellType)
+        {
+            case CellType.Stables: return "Gain 1 shiny penny and 1 random resource!";
+            case CellType.Quarry: return "Gain 1 Bronze Token!";
+            case CellType.Fishery: return "Gain 1 Silver Token!";
+            case CellType.WheatField: return "Gain 5 Turnips! (Double during Turnip Craze)";
+            case CellType.MiningShaft: return "Gain 1 Gold Token!";
+            case CellType.Thief: return "Lose up to 20% Bronze, 10% Silver, 5% Gold to a thief!";
+            case CellType.ResourceTokens: return "Confirm to receive +5 gold, silver, and bronze!";
+            case CellType.SuddenShortage: return "This round will be capped to 20 silver, gold, and bronze";
+            default: return "";
         }
     }
 }

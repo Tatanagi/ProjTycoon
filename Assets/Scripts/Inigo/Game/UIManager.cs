@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
 
     private PlayerController popupPlayer;
     private PlayerController currentPlayer;
-    private PlayerController mintingPlayer;
+    private PlayerController mintingPlayer; // Class-level field for exchange
 
     private void Awake()
     {
@@ -105,8 +105,8 @@ public class UIManager : MonoBehaviour
             cellConfirmButton.onClick.RemoveAllListeners();
             cellConfirmButton.onClick.AddListener(() =>
             {
-                if (turnController != null) turnController.UpdateTurnUI(); // Show turn UI immediately on confirm
                 onConfirm?.Invoke();
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal confirmation to Dice
                 HideCellAction();
             });
         }
@@ -122,8 +122,8 @@ public class UIManager : MonoBehaviour
     private IEnumerator HideCellActionAfterDelay(float delay, Action onConfirm = null)
     {
         yield return new WaitForSeconds(delay);
-        if (turnController != null) turnController.UpdateTurnUI(); // Show turn UI immediately on confirm
         onConfirm?.Invoke();
+        if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal confirmation to Dice
         HideCellAction();
     }
 
@@ -132,7 +132,7 @@ public class UIManager : MonoBehaviour
         if (CAPanel != null) CAPanel.SetActive(false);
     }
 
-    public void ShowCommunityChestCard(PlayerController player)
+    public void ShowCommunityChestCard(PlayerController player, Action onDraw = null)
     {
         if (CCPanel == null)
         {
@@ -157,8 +157,9 @@ public class UIManager : MonoBehaviour
                 if (chest != null)
                 {
                     chest.DrawCard(currentPlayer, GameManager.Instance.GetAllPlayers());
+                    onDraw?.Invoke();
+                    if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal draw to Dice
                     HideCommunityChestCard();
-                    TurnUIController.Instance.UpdateTurnUI(); // Show turn UI after action
                 }
                 else Debug.LogWarning("CommunityChest not found in scene!");
             });
@@ -173,7 +174,7 @@ public class UIManager : MonoBehaviour
         if (CCPanel != null) CCPanel.SetActive(false);
     }
 
-    public void ShowLoanOffer(PlayerController player)
+    public void ShowLoanOffer(PlayerController player, Action onDecision = null)
     {
         if (LOPanel == null)
         {
@@ -195,8 +196,9 @@ public class UIManager : MonoBehaviour
             acceptLoanButton.onClick.AddListener(() =>
             {
                 OnConfirmLoan();
+                onDecision?.Invoke();
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal decision to Dice
                 HideLoanOffer();
-                TurnUIController.Instance.UpdateTurnUI(); // Show turn UI after confirm
             });
         }
         else Debug.LogWarning("acceptLoanButton is not assigned in UIManager!");
@@ -206,8 +208,9 @@ public class UIManager : MonoBehaviour
             cancelLoanButton.onClick.RemoveAllListeners();
             cancelLoanButton.onClick.AddListener(() =>
             {
+                onDecision?.Invoke();
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal decision to Dice
                 HideLoanOffer();
-                TurnUIController.Instance.UpdateTurnUI(); // Show turn UI after cancel
             });
         }
         else Debug.LogWarning("cancelLoanButton is not assigned in UIManager!");
@@ -233,7 +236,7 @@ public class UIManager : MonoBehaviour
         if (LOPanel != null) LOPanel.SetActive(false);
     }
 
-    public void ShowExchange()
+    public void ShowExchange(Action onDecision = null)
     {
         if (REPanel == null)
         {
@@ -269,14 +272,25 @@ public class UIManager : MonoBehaviour
         if (confirmExchangeButton != null)
         {
             confirmExchangeButton.onClick.RemoveAllListeners();
-            confirmExchangeButton.onClick.AddListener(ConfirmExchange);
+            confirmExchangeButton.onClick.AddListener(() =>
+            {
+                ConfirmExchange();
+                onDecision?.Invoke();
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal decision to Dice
+                HideExchange();
+            });
         }
         else Debug.LogWarning("confirmExchangeButton is not assigned in UIManager!");
 
         if (cancelExchangeButton != null)
         {
             cancelExchangeButton.onClick.RemoveAllListeners();
-            cancelExchangeButton.onClick.AddListener(HideExchange);
+            cancelExchangeButton.onClick.AddListener(() =>
+            {
+                onDecision?.Invoke();
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal decision to Dice
+                HideExchange();
+            });
         }
         else Debug.LogWarning("cancelExchangeButton is not assigned in UIManager!");
 
@@ -321,8 +335,6 @@ public class UIManager : MonoBehaviour
         inv.Add(ResourceType.ShinyPennies, totalPennies);
 
         Debug.Log($"{mintingPlayer.name} exchanged {bronzeSpent} bronze, {silverSpent} silver, {goldSpent} gold for {totalPennies} shiny pennies.");
-        HideExchange();
-        TurnUIController.Instance.UpdateTurnUI(); // Show turn UI after action
     }
 
     public void HideExchange()
