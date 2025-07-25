@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
 
     private PlayerController popupPlayer;
     private PlayerController currentPlayer;
-    private PlayerController mintingPlayer; // Class-level field for exchange
+    private PlayerController mintingPlayer;
 
     private void Awake()
     {
@@ -97,7 +97,7 @@ public class UIManager : MonoBehaviour
         if (cellTitleText != null) cellTitleText.text = title;
         else Debug.LogWarning("cellTitleText is not assigned in UIManager!");
 
-        if (cellDescriptionText != null) cellDescriptionText.text = player != null ? $"{player.name}: {description}" : description;
+        if (cellDescriptionText != null) cellDescriptionText.text = description;
         else Debug.LogWarning("cellDescriptionText is not assigned in UIManager!");
 
         if (cellConfirmButton != null)
@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
             cellConfirmButton.onClick.AddListener(() =>
             {
                 onConfirm?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal confirmation to Dice
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
                 HideCellAction();
             });
         }
@@ -123,7 +123,7 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         onConfirm?.Invoke();
-        if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal confirmation to Dice
+        if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
         HideCellAction();
     }
 
@@ -158,7 +158,7 @@ public class UIManager : MonoBehaviour
                 {
                     chest.DrawCard(currentPlayer, GameManager.Instance.GetAllPlayers());
                     onDraw?.Invoke();
-                    if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal draw to Dice
+                    if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
                     HideCommunityChestCard();
                 }
                 else Debug.LogWarning("CommunityChest not found in scene!");
@@ -197,7 +197,7 @@ public class UIManager : MonoBehaviour
             {
                 OnConfirmLoan();
                 onDecision?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal decision to Dice
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
                 HideLoanOffer();
             });
         }
@@ -209,7 +209,7 @@ public class UIManager : MonoBehaviour
             cancelLoanButton.onClick.AddListener(() =>
             {
                 onDecision?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal decision to Dice
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
                 HideLoanOffer();
             });
         }
@@ -276,7 +276,7 @@ public class UIManager : MonoBehaviour
             {
                 ConfirmExchange();
                 onDecision?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal decision to Dice
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
                 HideExchange();
             });
         }
@@ -288,7 +288,7 @@ public class UIManager : MonoBehaviour
             cancelExchangeButton.onClick.AddListener(() =>
             {
                 onDecision?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true; // Signal decision to Dice
+                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
                 HideExchange();
             });
         }
@@ -306,7 +306,6 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        // Since inputs are TextMeshProUGUI, values are not user-editable
         Debug.LogWarning("Exchange values not implemented for TextMeshProUGUI inputs. Add input mechanism (e.g., buttons, sliders).");
         int bronze = 0, silver = 0, gold = 0;
 
@@ -320,9 +319,9 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        int bronzeSpent = Mathf.Min(bronze, inv.BronzeValue); // Use BronzeValue
-        int silverSpent = Mathf.Min(silver, inv.SilverValue); // Use SilverValue
-        int goldSpent = Mathf.Min(gold, inv.GoldValue);      // Use GoldValue
+        int bronzeSpent = Mathf.Min(bronze, inv.BronzeValue);
+        int silverSpent = Mathf.Min(silver, inv.SilverValue);
+        int goldSpent = Mathf.Min(gold, inv.GoldValue);
 
         int totalPennies =
               decree.GetValueExchange(ResourceType.Bronze, bronzeSpent)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SuddenShortage : MonoBehaviour
 {
+    public static SuddenShortage Instance { get; private set; }
+
     [Header("Settings")]
     public int maxShortageRounds = 1;
 
@@ -15,10 +17,34 @@ public class SuddenShortage : MonoBehaviour
     public bool IsActive => isActive;
     public int TriggeredRound => triggeredRound;
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public static void Execute(PlayerController triggeringPlayer)
+    {
+        if (Instance == null)
+        {
+            Debug.LogError("SuddenShortage instance not found in the scene!");
+            return;
+        }
+        Instance.TryTriggerShortage(triggeringPlayer);
+    }
+
     public void TryTriggerShortage(PlayerController triggeringPlayer)
     {
         if (isActive || shortageRoundsTriggered >= maxShortageRounds || GameManager.Instance.turnManager.GetCurrentRound() == triggeredRound)
+        {
+            Debug.Log($"Sudden Shortage not triggered: isActive={isActive}, roundsTriggered={shortageRoundsTriggered}, currentRound={GameManager.Instance.turnManager.GetCurrentRound()}, triggeredRound={triggeredRound}");
             return;
+        }
 
         TriggerShortage(triggeringPlayer);
     }
@@ -30,7 +56,7 @@ public class SuddenShortage : MonoBehaviour
         shortageRoundsTriggered++;
         isActive = true;
 
-        Debug.Log("Sudden Shortage triggered! Limiting all players' gold/silver/bronze to 20.");
+        Debug.Log($"Sudden Shortage triggered by {triggeringPlayer.name}! Limiting all players' gold/silver/bronze to 20.");
 
         foreach (var player in affectedPlayers)
         {
@@ -46,8 +72,8 @@ public class SuddenShortage : MonoBehaviour
     {
         if (player != null && player.inventory != null)
         {
-            player.inventory.SetShortage(state); // Use SetShortage method
-            player.inventory.Notify(); // Redundant with SetShortage's OnChanged, but kept for clarity
+            player.inventory.SetShortage(state);
+            player.inventory.Notify();
         }
     }
 

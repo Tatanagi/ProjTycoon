@@ -4,27 +4,26 @@ using System.Collections;
 
 public class Dice : MonoBehaviour
 {
-    public static Dice Instance { get; private set; } // Static instance for singleton access
+    public static Dice Instance { get; private set; }
 
-    public GameObject diceObject;            // 3D dice object
-    public Button rollButton;                // Button to trigger roll
-    public TurnManager turnManager;          // ScriptableObject managing turn logic
+    public GameObject diceObject;
+    public Button rollButton;
+    public TurnManager turnManager;
 
     private PlayerController[] players;
     private bool coroutineAllowed = true;
-    public bool actionConfirmed = false;     // Flag to track CA panel, loan offer, exchange, or Community Chest confirmation
+    public bool actionConfirmed = false;
 
     [Header("Testing Options")]
-    public bool testMode = false;            // Toggle for test mode
+    public bool testMode = false;
     [Range(1, 40)]
-    public int testDiceNumber = 1;           // Number to use when test mode is enabled
+    public int testDiceNumber = 1;
 
     [Header("Face Transforms")]
-    public Transform[] faceTransforms = new Transform[6]; // Index 0 = Face 1, ..., Index 5 = Face 6
+    public Transform[] faceTransforms = new Transform[6];
 
     void Awake()
     {
-        // Singleton pattern: Ensure only one instance exists
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -35,7 +34,6 @@ public class Dice : MonoBehaviour
 
     void Start()
     {
-        // Validate faceTransforms assignment
         for (int i = 0; i < faceTransforms.Length; i++)
         {
             if (faceTransforms[i] == null)
@@ -44,7 +42,6 @@ public class Dice : MonoBehaviour
             }
         }
 
-        // Auto-load players based on tags Player1–4
         players = new PlayerController[4];
         for (int i = 0; i < 4; i++)
         {
@@ -61,7 +58,6 @@ public class Dice : MonoBehaviour
             }
         }
 
-        // Add listener to the Roll button
         if (rollButton != null)
         {
             rollButton.onClick.AddListener(() => StartCoroutine(RollDice()));
@@ -69,7 +65,6 @@ public class Dice : MonoBehaviour
 
         Debug.Log("TurnManager starting at index: " + turnManager.GetCurrentPlayerIndex());
 
-        // Trigger ResourceTokens CA panel as the initial action
         StartCoroutine(InitializeGameWithResourceTokens());
     }
 
@@ -84,7 +79,6 @@ public class Dice : MonoBehaviour
             yield break;
         }
 
-        // Assume GetCurrentCell() returns a BoardCell
         BoardCell startCell = currentPlayer.GetCurrentCell();
         if (startCell == null)
         {
@@ -94,22 +88,15 @@ public class Dice : MonoBehaviour
 
         if (startCell.cellType == CellType.ResourceTokens)
         {
-            startCell.OnPlayerLanded(currentPlayer); // Trigger CA panel
-            actionConfirmed = false; // Reset flag
-            UIManager.Instance.ShowCellAction(
-                startCell.GetCellActionTitle(),
-                startCell.GetCellActionDescription(),
-                currentPlayer,
-                () => actionConfirmed = true // Set flag when confirmed
-            );
-            yield return new WaitUntil(() => actionConfirmed); // Wait for confirmation
+            startCell.OnPlayerLanded(currentPlayer);
+            actionConfirmed = false;
+            yield return new WaitUntil(() => actionConfirmed);
         }
         else
         {
             Debug.LogWarning("Starting cell is not ResourceTokens. Cell type: " + (startCell != null ? startCell.cellType.ToString() : "null"));
         }
 
-        // Set the first turn UI after confirmation
         TurnUIController.Instance.StartFirstTurn();
         TurnUIController.Instance.UpdateTurnUI();
     }
@@ -139,69 +126,28 @@ public class Dice : MonoBehaviour
             yield break;
         }
 
-        // Choose dice roll
         int diceRoll = testMode ? testDiceNumber : Random.Range(1, 7);
         Debug.Log("Player " + (currentPlayerIndex + 1) + " rolled: " + diceRoll + (testMode ? " (TEST MODE)" : ""));
 
-        // Animate the dice roll
         yield return StartCoroutine(AnimateDiceRoll(diceRoll));
 
-        // Move the player
         currentPlayer.MovePlayer(diceRoll);
 
-        // Wait for movement to complete
         yield return new WaitUntil(() => currentPlayer.IsFinishedMoving);
 
-        // Award resource, then resolve tile
         GameManager.Instance.OnPlayerFinishMove(currentPlayer, diceRoll);
         BoardCell currentCell = currentPlayer.GetCurrentCell();
         if (currentCell != null)
         {
-            switch (currentCell.cellType)
+            actionConfirmed = false;
+            currentCell.OnPlayerLanded(currentPlayer);
+            if (currentCell.cellType != CellType.Normal)
             {
-                case CellType.CommunityChest:
-                    currentCell.OnPlayerLanded(currentPlayer); // Trigger CC panel
-                    actionConfirmed = false; // Reset flag
-                    UIManager.Instance.ShowCommunityChestCard(currentPlayer, () => actionConfirmed = true); // Wait for draw
-                    yield return new WaitUntil(() => actionConfirmed); // Wait for draw action
-                    break;
-
-                case CellType.LuckyLoanLender:
-                    currentCell.OnPlayerLanded(currentPlayer); // Trigger LO panel
-                    actionConfirmed = false; // Reset flag
-                    UIManager.Instance.ShowLoanOffer(currentPlayer, () => actionConfirmed = true); // Wait for decision
-                    yield return new WaitUntil(() => actionConfirmed); // Wait for confirm or cancel
-                    break;
-
-                case CellType.RoyalMint:
-                    currentCell.OnPlayerLanded(currentPlayer); // Trigger RE panel
-                    actionConfirmed = false; // Reset flag
-                    UIManager.Instance.ShowExchange(() => actionConfirmed = true); // Wait for decision
-                    yield return new WaitUntil(() => actionConfirmed); // Wait for confirm or cancel
-                    break;
-
-                case CellType.ResourceTokens:
-                case CellType.SuddenShortage:
-                case CellType.Stables:
-                case CellType.Quarry:
-                case CellType.Fishery:
-                case CellType.WheatField:
-                case CellType.MiningShaft:
-                case CellType.Thief:
-                    currentCell.OnPlayerLanded(currentPlayer); // Trigger CA panel
-                    actionConfirmed = false; // Reset flag
-                    UIManager.Instance.ShowCellAction(
-                        currentCell.GetCellActionTitle(),
-                        currentCell.GetCellActionDescription(),
-                        currentPlayer,
-                        () => actionConfirmed = true // Set flag when confirmed
-                    );
-                    yield return new WaitUntil(() => actionConfirmed); // Wait for confirmation
-                    break;
-
-                default:
-                    GameManager.Instance.ResolveLanding(currentPlayer);
-                    break;
+                yield return new WaitUntil(() => actionConfirmed);
+            }
+            else
+            {
+                GameManager.Instance.ResolveLanding(currentPlayer);
             }
         }
         else
@@ -209,7 +155,6 @@ public class Dice : MonoBehaviour
             GameManager.Instance.ResolveLanding(currentPlayer);
         }
 
-        // Advance turn after Community Chest, loan offer, exchange, or CA panel confirmation
         turnManager.NextTurn();
         TurnUIController.Instance.UpdateTurnUI();
 
@@ -218,10 +163,8 @@ public class Dice : MonoBehaviour
 
     private IEnumerator AnimateDiceRoll(int diceRoll)
     {
-        // Reset dice rotation
         diceObject.transform.rotation = Quaternion.identity;
 
-        // Roll animation with random rotations
         float rollDuration = 1f;
         float interval = 0.1f;
         int steps = Mathf.FloorToInt(rollDuration / interval);
@@ -242,7 +185,6 @@ public class Dice : MonoBehaviour
             yield return new WaitForSeconds(interval);
         }
 
-        // Snap the dice to the correct rotation using transform reference
         Quaternion finalRotation;
 
         if (diceRoll >= 1 && diceRoll <= 6 && faceTransforms[diceRoll - 1] != null)
@@ -260,5 +202,10 @@ public class Dice : MonoBehaviour
         Debug.Log($"Final dice result: {diceRoll} | Final rotation set to: {finalRotation.eulerAngles}");
 
         yield return new WaitForSeconds(0.5f);
+    }
+
+    public void OnActionConfirmed()
+    {
+        actionConfirmed = true;
     }
 }

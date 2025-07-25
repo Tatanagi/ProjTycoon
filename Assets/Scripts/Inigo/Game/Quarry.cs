@@ -7,7 +7,6 @@ public static class Quarry
         if (player == null || player.inventory == null) return;
 
         player.inventory.Add(ResourceType.Bronze, 1);
-
-        Debug.Log($"{player.name} mined at the Quarry: +1 Bronze Token.");
+        Debug.Log($"{player.name} gained 1 Bronze Token from Quarry.");
     }
 }

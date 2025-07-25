@@ -44,10 +44,9 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerFinishMove(PlayerController player, int rollResult)
     {
-        if (!player.tokenGainBanned && player != null)
-        {
-            resourceMarket.GiveResourceToPlayer(player, rollResult);
-        }
+        if (player == null) return;
+        // Removed resourceMarket.GiveResourceToPlayer to stop automatic resource gain on every move
+        ResolveLanding(player);
     }
 
     public void GiveStartTileBonus(PlayerController player)
@@ -104,7 +103,7 @@ public class GameManager : MonoBehaviour
             case CellType.Thief:
                 UIManager.Instance.ShowCellAction(
                     cell.GetCellActionTitle(),
-                    cell.GetCellActionDescription(),
+                    cell.GetCellActionDescription(player),
                     player
                 );
                 break;

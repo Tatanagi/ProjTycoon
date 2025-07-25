@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public enum CellType
 {
@@ -23,6 +24,8 @@ public class BoardCell : MonoBehaviour
     public void OnPlayerLanded(PlayerController player)
     {
         Debug.Log($"Player {player.name} landed on {cellType}.");
+        Action onConfirm = null;
+
         switch (cellType)
         {
             case CellType.CommunityChest:
@@ -35,27 +38,39 @@ public class BoardCell : MonoBehaviour
                 UIManager.Instance.ShowExchange();
                 break;
             case CellType.ResourceTokens:
-                // At start, show CA panel and let GameManager handle the bonus on confirm
-                UIManager.Instance.ShowCellAction(
-                    GetCellActionTitle(),
-                    GetCellActionDescription(),
-                    player,
-                    () => GameManager.Instance.GiveStartTileBonus(player) // Trigger bonus on confirm
-                );
+                onConfirm = () => GameManager.Instance.GiveStartTileBonus(player);
                 break;
             case CellType.SuddenShortage:
-            case CellType.Stables:
-            case CellType.Quarry:
-            case CellType.Fishery:
-            case CellType.WheatField:
-            case CellType.MiningShaft:
-            case CellType.Thief:
-                UIManager.Instance.ShowCellAction(
-                    GetCellActionTitle(),
-                    GetCellActionDescription(),
-                    player
-                );
+                onConfirm = () => SuddenShortage.Execute(player);
                 break;
+            case CellType.Stables:
+                onConfirm = () => Stables.Execute(player);
+                break;
+            case CellType.Quarry:
+                onConfirm = () => Quarry.Execute(player);
+                break;
+            case CellType.Fishery:
+                onConfirm = () => Fishery.Execute(player);
+                break;
+            case CellType.WheatField:
+                onConfirm = () => WheatField.Execute(player);
+                break;
+            case CellType.MiningShaft:
+                onConfirm = () => MiningShaft.Execute(player);
+                break;
+            case CellType.Thief:
+                onConfirm = () => Thief.Execute(player);
+                break;
+        }
+
+        if (onConfirm != null)
+        {
+            UIManager.Instance.ShowCellAction(
+                GetCellActionTitle(),
+                GetCellActionDescription(player),
+                player,
+                onConfirm
+            );
         }
     }
 
@@ -64,19 +79,37 @@ public class BoardCell : MonoBehaviour
         return cellType.ToString();
     }
 
-    public string GetCellActionDescription()
+    public string GetCellActionDescription(PlayerController currentPlayer)
     {
+        if (currentPlayer == null) return "";
+
         switch (cellType)
         {
-            case CellType.Stables: return "Gain 1 shiny penny and 1 random resource!";
-            case CellType.Quarry: return "Gain 1 Bronze Token!";
-            case CellType.Fishery: return "Gain 1 Silver Token!";
-            case CellType.WheatField: return "Gain 5 Turnips! (Double during Turnip Craze)";
-            case CellType.MiningShaft: return "Gain 1 Gold Token!";
-            case CellType.Thief: return "Lose up to 20% Bronze, 10% Silver, 5% Gold to a thief!";
-            case CellType.ResourceTokens: return "Confirm to receive +5 gold, silver, and bronze!";
-            case CellType.SuddenShortage: return "This round will be capped to 20 silver, gold, and bronze";
-            default: return "";
+            case CellType.Stables:
+                return "Gain 1 shiny penny and 1 random resource!";
+            case CellType.Quarry:
+                return "Gain 1 Bronze Token!";
+            case CellType.Fishery:
+                return "Gain 1 Silver Token!";
+            case CellType.WheatField:
+                return "Gain 5 Turnips! (Double during Turnip Craze)";
+            case CellType.MiningShaft:
+                return "Gain 1 Gold Token!";
+            case CellType.Thief:
+                PlayerController[] allPlayers = GameManager.Instance.GetAllPlayers();
+                if (allPlayers == null || allPlayers.Length == 0) return "Thief: No players available!";
+                int currentIndex = Array.IndexOf(allPlayers, currentPlayer);
+                int targetIndex = (currentIndex + 1) % allPlayers.Length;
+                PlayerController targetPlayer = allPlayers[targetIndex];
+                return $"{targetPlayer.name}: Lose up to 20% Bronze, 10% Silver, 5% Gold to a thief! Bronze";
+            case CellType.ResourceTokens:
+                return "Confirm to receive +5 gold, +5 silver, and +5 bronze!";
+            case CellType.SuddenShortage:
+                return "This round will be capped to 20 silver, gold, and bronze for all players!";
+            case CellType.LuckyLoanLender:
+                return "Would you like a loan worth 10% of your shiny pennies?";
+            default:
+                return "";
         }
     }
 }
