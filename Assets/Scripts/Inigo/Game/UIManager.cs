@@ -259,14 +259,23 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (exchangeTitleText != null) exchangeTitleText.text = "Royal Fickle Mint";
+        if (exchangeTitleText != null)
+        {
+            exchangeTitleText.text = "Royal Fickle Mint";
+            // Display RoyalDecree effect if available
+            if (RoyalDecree.Instance != null)
+            {
+                exchangeTitleText.text += $"\nRoyal Decree: {RoyalDecree.Instance.favoredType} is worth x{RoyalDecree.Instance.multiplier}!";
+            }
+        }
         else Debug.LogWarning("exchangeTitleText is not assigned in UIManager!");
 
-        if (bronzeInput != null) bronzeInput.text = "0";
+        // Set fixed input values for the exchange
+        if (bronzeInput != null) bronzeInput.text = "1";
         else Debug.LogWarning("bronzeInput is not assigned in UIManager!");
-        if (silverInput != null) silverInput.text = "0";
+        if (silverInput != null) silverInput.text = "3";
         else Debug.LogWarning("silverInput is not assigned in UIManager!");
-        if (goldInput != null) goldInput.text = "0";
+        if (goldInput != null) goldInput.text = "6";
         else Debug.LogWarning("goldInput is not assigned in UIManager!");
 
         if (confirmExchangeButton != null)
@@ -306,34 +315,49 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        Debug.LogWarning("Exchange values not implemented for TextMeshProUGUI inputs. Add input mechanism (e.g., buttons, sliders).");
-        int bronze = 0, silver = 0, gold = 0;
-
         var inv = mintingPlayer.inventory;
-        var decree = RoyalDecree.Instance;
-
-        if (inv == null || decree == null)
+        if (inv == null)
         {
-            Debug.LogWarning("Player inventory or RoyalDecree not found!");
+            Debug.LogWarning("Player inventory not found!");
             HideExchange();
             return;
         }
 
-        int bronzeSpent = Mathf.Min(bronze, inv.BronzeValue);
-        int silverSpent = Mathf.Min(silver, inv.SilverValue);
-        int goldSpent = Mathf.Min(gold, inv.GoldValue);
+        // Fixed amounts to exchange
+        int bronzeToSpend = 1;
+        int silverToSpend = 3;
+        int goldToSpend = 6;
+        int shinyPenniesToGain = 1;
 
-        int totalPennies =
-              decree.GetValueExchange(ResourceType.Bronze, bronzeSpent)
-            + decree.GetValueExchange(ResourceType.Silver, silverSpent)
-            + decree.GetValueExchange(ResourceType.Gold, goldSpent);
+        // Check if player can afford the exchange
+        if (!inv.CanAfford(ResourceType.Bronze, bronzeToSpend) ||
+            !inv.CanAfford(ResourceType.Silver, silverToSpend) ||
+            !inv.CanAfford(ResourceType.Gold, goldToSpend))
+        {
+            Debug.LogWarning($"{mintingPlayer.name} cannot afford to exchange 1 Bronze, 3 Silver, and 6 Gold!");
+            return;
+        }
 
-        inv.Spend(ResourceType.Bronze, bronzeSpent);
-        inv.Spend(ResourceType.Silver, silverSpent);
-        inv.Spend(ResourceType.Gold, goldSpent);
-        inv.Add(ResourceType.ShinyPennies, totalPennies);
+        // Check for shortage restrictions
+        if (inv.IsInShortage)
+        {
+            int totalBronze = inv.BronzeValue - bronzeToSpend;
+            int totalSilver = inv.SilverValue - silverToSpend;
+            int totalGold = inv.GoldValue - goldToSpend;
+            if (totalBronze > 20 || totalSilver > 20 || totalGold > 20)
+            {
+                Debug.LogWarning($"{mintingPlayer.name} cannot exchange due to shortage restrictions (max 20 per metal resource).");
+                return;
+            }
+        }
 
-        Debug.Log($"{mintingPlayer.name} exchanged {bronzeSpent} bronze, {silverSpent} silver, {goldSpent} gold for {totalPennies} shiny pennies.");
+        // Perform the exchange
+        inv.Spend(ResourceType.Bronze, bronzeToSpend);
+        inv.Spend(ResourceType.Silver, silverToSpend);
+        inv.Spend(ResourceType.Gold, goldToSpend);
+        inv.Add(ResourceType.ShinyPennies, shinyPenniesToGain);
+
+        Debug.Log($"{mintingPlayer.name} exchanged 1 Bronze, 3 Silver, 6 Gold for 1 Shiny Penny.");
     }
 
     public void HideExchange()
