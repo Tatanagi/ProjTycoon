@@ -6979,6 +6979,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993813621}
   m_CullTransparentMesh: 1
+--- !u!1 &994996997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 994996999}
+  - component: {fileID: 994996998}
+  m_Layer: 0
+  m_Name: GameEndChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &994996998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994996997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f30de24ed9ca748be37190624ab55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shinyPennyQuota: 5
+--- !u!4 &994996999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994996997}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -14.073481, y: -1.13, z: -11.677}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1587119922}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &998626776 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2348202025704152302, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -10505,6 +10550,7 @@ Transform:
   - {fileID: 632376662}
   - {fileID: 519409833}
   - {fileID: 249341273}
+  - {fileID: 994996999}
   - {fileID: 111952268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14055,7 +14101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: testMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: diceObject
@@ -14067,7 +14113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: testDiceNumber
-      value: 21
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: turnUIController

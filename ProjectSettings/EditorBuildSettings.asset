@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WorkSpaces/Kyle/Kyle_Scene.unity
     guid: 75c3fcd6a4441584cabec4fe049bbee0
+  - enabled: 1
+    path: Assets/WorkSpaces/Kyle/ENDSCENE.unity
+    guid: e38d89fd03bf6aa439a27e6923ab8a97
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
