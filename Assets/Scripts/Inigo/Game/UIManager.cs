@@ -259,18 +259,45 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        // Set base description
+        string description = "Royal Fickle Mint\nExchange 1 Bronze, 3 Silver, 6 Gold for 1 Shiny Penny.";
+        if (RoyalDecree.Instance != null)
+        {
+            description += $"\nRoyal Decree: {RoyalDecree.Instance.favoredType} is worth x{RoyalDecree.Instance.multiplier}!";
+        }
+
+        // Check resource availability and update description if insufficient
+        var inv = mintingPlayer.inventory;
+        if (inv == null)
+        {
+            Debug.LogWarning("Player inventory not found!");
+            return;
+        }
+
+        bool canAfford = inv.CanAfford(ResourceType.Bronze, 1) &&
+                         inv.CanAfford(ResourceType.Silver, 3) &&
+                         inv.CanAfford(ResourceType.Gold, 6);
+        bool canExchangeWithShortage = true;
+        if (inv.IsInShortage)
+        {
+            int totalBronze = inv.BronzeValue - 1;
+            int totalSilver = inv.SilverValue - 3;
+            int totalGold = inv.GoldValue - 6;
+            canExchangeWithShortage = totalBronze <= 20 && totalSilver <= 20 && totalGold <= 20;
+        }
+
+        if (!canAfford || !canExchangeWithShortage)
+        {
+            description += "\nInvalid Resources: You lack the required resources or exceed shortage limits!";
+        }
+
         if (exchangeTitleText != null)
         {
-            exchangeTitleText.text = "Royal Fickle Mint";
-            // Display RoyalDecree effect if available
-            if (RoyalDecree.Instance != null)
-            {
-                exchangeTitleText.text += $"\nRoyal Decree: {RoyalDecree.Instance.favoredType} is worth x{RoyalDecree.Instance.multiplier}!";
-            }
+            exchangeTitleText.text = description;
         }
         else Debug.LogWarning("exchangeTitleText is not assigned in UIManager!");
 
-        // Set fixed input values for the exchange
+        // Set fixed input values for display
         if (bronzeInput != null) bronzeInput.text = "1";
         else Debug.LogWarning("bronzeInput is not assigned in UIManager!");
         if (silverInput != null) silverInput.text = "3";
@@ -278,8 +305,10 @@ public class UIManager : MonoBehaviour
         if (goldInput != null) goldInput.text = "6";
         else Debug.LogWarning("goldInput is not assigned in UIManager!");
 
+        // Enable/disable confirm button based on resource availability
         if (confirmExchangeButton != null)
         {
+            confirmExchangeButton.interactable = canAfford && canExchangeWithShortage;
             confirmExchangeButton.onClick.RemoveAllListeners();
             confirmExchangeButton.onClick.AddListener(() =>
             {
@@ -299,6 +328,15 @@ public class UIManager : MonoBehaviour
                 onDecision?.Invoke();
                 if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
                 HideExchange();
+                // Show next player's turn
+                if (turnController != null)
+                {
+                    turnController.UpdateTurnUI();
+                }
+                else
+                {
+                    Debug.LogWarning("TurnUIController not found to update next player's turn!");
+                }
             });
         }
         else Debug.LogWarning("cancelExchangeButton is not assigned in UIManager!");
@@ -329,7 +367,7 @@ public class UIManager : MonoBehaviour
         int goldToSpend = 6;
         int shinyPenniesToGain = 1;
 
-        // Check if player can afford the exchange
+        // Double-check resources (though button should be disabled if insufficient)
         if (!inv.CanAfford(ResourceType.Bronze, bronzeToSpend) ||
             !inv.CanAfford(ResourceType.Silver, silverToSpend) ||
             !inv.CanAfford(ResourceType.Gold, goldToSpend))
@@ -358,6 +396,16 @@ public class UIManager : MonoBehaviour
         inv.Add(ResourceType.ShinyPennies, shinyPenniesToGain);
 
         Debug.Log($"{mintingPlayer.name} exchanged 1 Bronze, 3 Silver, 6 Gold for 1 Shiny Penny.");
+
+        // Show next player's turn after successful exchange
+        if (turnController != null)
+        {
+            turnController.UpdateTurnUI();
+        }
+        else
+        {
+            Debug.LogWarning("TurnUIController not found to update next player's turn!");
+        }
     }
 
     public void HideExchange()
