@@ -4,17 +4,28 @@ public static class WheatField
 {
     public static void Execute(PlayerController player)
     {
-        if (player == null || player.inventory == null) return;
+        if (player == null || player.inventory == null)
+        {
+            Debug.LogWarning("Player or player inventory is null.");
+            return;
+        }
 
         int turnips = 5;
-        if (TurnipCraze.Instance != null && TurnipCraze.Instance.isCrazeActive)
+        if (TurnipCraze.Instance != null)
         {
-            turnips *= 2;
-            Debug.Log($"{player.name} gained double turnips due to the Turnip Craze!");
+            if (TurnipCraze.Instance.isTurnipConversionActive)
+            {
+                turnips = 10; // Set to 10 turnips during TurnipConversionEffect
+                Debug.Log($"{player.name} gained 10 turnips due to the Turnip Conversion Effect!");
+            }
+            else if (TurnipCraze.Instance.isCrazeActive)
+            {
+                turnips = 10; // Set to 10 turnips during TurnipCraze
+                Debug.Log($"{player.name} gained 10 turnips due to the Turnip Craze!");
+            }
         }
 
         player.inventory.Add(ResourceType.Turnips, turnips);
-
         Debug.Log($"{player.name} harvested at the Wheat Field: +{turnips} Turnips.");
     }
 }

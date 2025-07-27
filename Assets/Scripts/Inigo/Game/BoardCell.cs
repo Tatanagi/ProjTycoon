@@ -86,13 +86,21 @@ public class BoardCell : MonoBehaviour
         switch (cellType)
         {
             case CellType.Stables:
-                return "Gain 1 shiny penny and 1 random resource!";
+                return "Gain 1 Shiny Penny and 1 random resource!";
             case CellType.Quarry:
                 return "Gain 1 Bronze Token!";
             case CellType.Fishery:
                 return "Gain 1 Silver Token!";
             case CellType.WheatField:
-                return "Gain 5 Turnips! (Double during Turnip Craze)";
+                bool isTurnipConversionActive = TurnipCraze.Instance != null && TurnipCraze.Instance.isTurnipConversionActive;
+                bool isCrazeActive = TurnipCraze.Instance != null && TurnipCraze.Instance.isCrazeActive;
+                int turnipsGained = isTurnipConversionActive || isCrazeActive ? 10 : 5;
+                string description = $"Gain {turnipsGained} Turnips!";
+                if (isTurnipConversionActive)
+                    description += " (Increased during Turnip Conversion Effect)";
+                else if (isCrazeActive)
+                    description += " (Increased during Turnip Craze)";
+                return description;
             case CellType.MiningShaft:
                 return "Gain 1 Gold Token!";
             case CellType.Thief:
@@ -101,7 +109,7 @@ public class BoardCell : MonoBehaviour
                 int currentIndex = Array.IndexOf(allPlayers, currentPlayer);
                 int targetIndex = (currentIndex + 1) % allPlayers.Length;
                 PlayerController targetPlayer = allPlayers[targetIndex];
-                return $"{targetPlayer.name}: Lose up to 20% Bronze, 10% Silver, 5% Gold to a thief! Bronze";
+                return $"{targetPlayer.name}: Lose up to 20% Bronze, 10% Silver, 5% Gold to a thief!";
             case CellType.ResourceTokens:
                 return "Confirm to receive +5 gold, +5 silver, and +5 bronze!";
             case CellType.SuddenShortage:
