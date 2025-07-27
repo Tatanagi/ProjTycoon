@@ -156,7 +156,12 @@ public class Dice : MonoBehaviour
         }
 
         turnManager.NextTurn();
-        TurnUIController.Instance.UpdateTurnUI();
+
+        // Only update UI if not starting a new round
+        if (turnManager.GetCurrentPlayerIndex() != 0)
+        {
+            TurnUIController.Instance.UpdateTurnUI();
+        }
 
         coroutineAllowed = true;
     }

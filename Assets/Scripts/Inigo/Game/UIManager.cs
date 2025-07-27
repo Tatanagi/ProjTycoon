@@ -161,7 +161,7 @@ public class UIManager : MonoBehaviour
                     if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
                     HideCommunityChestCard();
                 }
-                else Debug.LogWarning("CommunityChest not found in scene!");
+                else Debug.LogWarning("CommunityChest not found!");
             });
         }
         else Debug.LogWarning("drawCardButton is not assigned in UIManager!");
@@ -286,6 +286,18 @@ public class UIManager : MonoBehaviour
             canExchangeWithShortage = totalBronze <= 20 && totalSilver <= 20 && totalGold <= 20;
         }
 
+        // Check Wrong Currency effect
+        bool isWrongCurrencyActive = false;
+        string devaluedResource = "";
+        if (WrongCurrency.Instance != null && WrongCurrency.Instance.IsResourceDevalued(ResourceType.Bronze) ||
+            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Silver) ||
+            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Gold))
+        {
+            isWrongCurrencyActive = true;
+            devaluedResource = WrongCurrency.Instance.GetDevaluedResource().ToString();
+            description += $"\nWrong Currency: {devaluedResource} is worthless and cannot be used for exchange this round!";
+        }
+
         if (!canAfford || !canExchangeWithShortage)
         {
             description += "\nInvalid Resources: You lack the required resources or exceed shortage limits!";
@@ -298,17 +310,17 @@ public class UIManager : MonoBehaviour
         else Debug.LogWarning("exchangeTitleText is not assigned in UIManager!");
 
         // Set fixed input values for display
-        if (bronzeInput != null) bronzeInput.text = "1";
+        if (bronzeInput != null) bronzeInput.text = "1 Bronze";
         else Debug.LogWarning("bronzeInput is not assigned in UIManager!");
-        if (silverInput != null) silverInput.text = "3";
+        if (silverInput != null) silverInput.text = "3 Silver";
         else Debug.LogWarning("silverInput is not assigned in UIManager!");
-        if (goldInput != null) goldInput.text = "6";
+        if (goldInput != null) goldInput.text = "6 Gold";
         else Debug.LogWarning("goldInput is not assigned in UIManager!");
 
-        // Enable/disable confirm button based on resource availability
+        // Enable/disable confirm button based on resource availability and Wrong Currency
         if (confirmExchangeButton != null)
         {
-            confirmExchangeButton.interactable = canAfford && canExchangeWithShortage;
+            confirmExchangeButton.interactable = canAfford && canExchangeWithShortage && !isWrongCurrencyActive;
             confirmExchangeButton.onClick.RemoveAllListeners();
             confirmExchangeButton.onClick.AddListener(() =>
             {
@@ -387,6 +399,16 @@ public class UIManager : MonoBehaviour
                 Debug.LogWarning($"{mintingPlayer.name} cannot exchange due to shortage restrictions (max 20 per metal resource).");
                 return;
             }
+        }
+
+        // Check Wrong Currency effect (additional safeguard)
+        if (WrongCurrency.Instance != null && (
+            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Bronze) ||
+            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Silver) ||
+            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Gold)))
+        {
+            Debug.LogWarning($"{mintingPlayer.name} cannot exchange due to Wrong Currency effect!");
+            return;
         }
 
         // Perform the exchange
