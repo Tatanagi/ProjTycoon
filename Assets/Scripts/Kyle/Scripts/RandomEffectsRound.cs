@@ -27,7 +27,8 @@ public class RandomEffectRounds : MonoBehaviour
     {
         roundEffects = new List<Action>
         {
-            WrongCurrencyEffect
+            WrongCurrencyEffect,
+            TurnipConversionEffect // Added new turnip conversion effect
         };
     }
 
@@ -67,6 +68,8 @@ public class RandomEffectRounds : MonoBehaviour
     {
         if (currentEffect == WrongCurrencyEffect)
             return "A random resource (Bronze, Silver, or Gold) is worthless this round!";
+        if (currentEffect == TurnipConversionEffect)
+            return "Players can convert 5 Turnips to 1 Shiny Penny this round!";
         return "Unknown effect.";
     }
 
@@ -83,6 +86,25 @@ public class RandomEffectRounds : MonoBehaviour
         }
     }
 
+    private void TurnipConversionEffect()
+    {
+        TurnipCraze turnipCraze = FindFirstObjectByType<TurnipCraze>();
+        if (turnipCraze != null)
+        {
+            turnipCraze.ActivateTurnipConversion();
+            // Apply conversion to all players
+            PlayerController[] players = FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
+            foreach (var player in players)
+            {
+                turnipCraze.ConvertTurnipsToShinyPennies(player);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("TurnipCraze component not found!");
+        }
+    }
+
     public void ResetEffect()
     {
         if (isEffectActive)
@@ -93,6 +115,14 @@ public class RandomEffectRounds : MonoBehaviour
                 if (wrongCurrency != null)
                 {
                     wrongCurrency.ResetEffect();
+                }
+            }
+            else if (currentEffect == TurnipConversionEffect)
+            {
+                TurnipCraze turnipCraze = FindFirstObjectByType<TurnipCraze>();
+                if (turnipCraze != null)
+                {
+                    turnipCraze.DeactivateTurnipConversion();
                 }
             }
             isEffectActive = false;
