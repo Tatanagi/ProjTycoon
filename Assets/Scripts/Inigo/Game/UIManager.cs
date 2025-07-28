@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject CCPanel;
     public GameObject LOPanel;
     public GameObject REPanel;
+    public GameObject LOPanelPayment;
 
     [Header("Cell Action Panel")]
     public TextMeshProUGUI cellTitleText;
@@ -27,8 +28,14 @@ public class UIManager : MonoBehaviour
     [Header("Lucky Loan Lender")]
     public TextMeshProUGUI loanTitleText;
     public TextMeshProUGUI loanDescriptionText;
+    public TMP_InputField loanAmountInput;
     public Button acceptLoanButton;
     public Button cancelLoanButton;
+    public TextMeshProUGUI paymentTitleText;
+    public TextMeshProUGUI paymentDescriptionText;
+    public TMP_InputField paymentAmountInput;
+    public Button confirmPaymentButton;
+    public Button cancelPaymentButton;
 
     [Header("Royal Fickle Mint")]
     public TextMeshProUGUI exchangeTitleText;
@@ -73,6 +80,8 @@ public class UIManager : MonoBehaviour
         else Debug.LogWarning("CCPanel is not assigned in UIManager!");
         if (LOPanel != null) LOPanel.SetActive(false);
         else Debug.LogWarning("LOPanel is not assigned in UIManager!");
+        if (LOPanelPayment != null) LOPanelPayment.SetActive(false);
+        else Debug.LogWarning("LOPanelPayment is not assigned in UIManager!");
         if (REPanel != null) REPanel.SetActive(false);
         else Debug.LogWarning("REPanel is not assigned in UIManager!");
 
@@ -81,6 +90,57 @@ public class UIManager : MonoBehaviour
             turnController = FindFirstObjectByType<TurnUIController>();
             if (turnController == null)
                 Debug.LogWarning("TurnUIController not found in scene!");
+        }
+
+        SetupLoanInput();
+        SetupPaymentInput();
+    }
+
+    private void SetupLoanInput()
+    {
+        if (loanAmountInput != null)
+        {
+            loanAmountInput.onValueChanged.AddListener(OnLoanInputChanged);
+            loanAmountInput.characterValidation = TMP_InputField.CharacterValidation.Integer;
+            loanAmountInput.characterLimit = 1;
+        }
+        else Debug.LogWarning("loanAmountInput is not assigned in UIManager!");
+    }
+
+    private void SetupPaymentInput()
+    {
+        if (paymentAmountInput != null)
+        {
+            paymentAmountInput.onValueChanged.AddListener(OnPaymentInputChanged);
+            paymentAmountInput.characterValidation = TMP_InputField.CharacterValidation.Integer;
+        }
+        else Debug.LogWarning("paymentAmountInput is not assigned in UIManager!");
+    }
+
+    private void OnLoanInputChanged(string input)
+    {
+        if (int.TryParse(input, out int amount))
+        {
+            acceptLoanButton.interactable = (amount >= 1 && amount <= 5);
+        }
+        else
+        {
+            acceptLoanButton.interactable = false;
+        }
+    }
+
+    private void OnPaymentInputChanged(string input)
+    {
+        if (currentPlayer == null) return;
+
+        int debtAmount = currentPlayer.loanAmount * 2;
+        if (int.TryParse(input, out int amount))
+        {
+            confirmPaymentButton.interactable = amount >= debtAmount && currentPlayer.inventory.CanAfford(ResourceType.ShinyPennies, amount);
+        }
+        else
+        {
+            confirmPaymentButton.interactable = false;
         }
     }
 
@@ -106,7 +166,7 @@ public class UIManager : MonoBehaviour
             cellConfirmButton.onClick.AddListener(() =>
             {
                 onConfirm?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
+                if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                 HideCellAction();
             });
         }
@@ -123,7 +183,7 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         onConfirm?.Invoke();
-        if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
+        if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
         HideCellAction();
     }
 
@@ -158,7 +218,7 @@ public class UIManager : MonoBehaviour
                 {
                     chest.DrawCard(currentPlayer, GameManager.Instance.GetAllPlayers());
                     onDraw?.Invoke();
-                    if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
+                    if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                     HideCommunityChestCard();
                 }
                 else Debug.LogWarning("CommunityChest not found!");
@@ -184,11 +244,26 @@ public class UIManager : MonoBehaviour
 
         currentPlayer = player;
 
+        if (player.hasLoan)
+        {
+            ShowPaymentPanel(player, onDecision);
+            return;
+        }
+
         if (loanTitleText != null) loanTitleText.text = "Lucky Loan Lender";
         else Debug.LogWarning("loanTitleText is not assigned in UIManager!");
 
-        if (loanDescriptionText != null) loanDescriptionText.text = player != null ? $"{player.name}: Would you like to take a loan worth 10% of your current shiny pennies?" : "Would you like to take a loan worth 10% of your current shiny pennies?";
+        if (loanDescriptionText != null)
+            loanDescriptionText.text = player != null ?
+                $"{player.name}: Enter 1-5 Shiny Pennies to borrow (repay double next round)!" :
+                "Enter 1-5 Shiny Pennies to borrow (repay double next round)!";
         else Debug.LogWarning("loanDescriptionText is not assigned in UIManager!");
+
+        if (loanAmountInput != null)
+        {
+            loanAmountInput.text = "";
+            acceptLoanButton.interactable = false;
+        }
 
         if (acceptLoanButton != null)
         {
@@ -197,7 +272,7 @@ public class UIManager : MonoBehaviour
             {
                 OnConfirmLoan();
                 onDecision?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
+                if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                 HideLoanOffer();
             });
         }
@@ -209,7 +284,7 @@ public class UIManager : MonoBehaviour
             cancelLoanButton.onClick.AddListener(() =>
             {
                 onDecision?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
+                if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                 HideLoanOffer();
             });
         }
@@ -218,22 +293,134 @@ public class UIManager : MonoBehaviour
         LOPanel.SetActive(true);
     }
 
+    public void ShowPaymentPanel(PlayerController player, Action onDecision = null)
+    {
+        if (LOPanelPayment == null)
+        {
+            Debug.LogWarning("LOPanelPayment is not assigned in UIManager!");
+            return;
+        }
+
+        currentPlayer = player;
+        int debtAmount = player.loanAmount * 2;
+
+        if (paymentTitleText != null) paymentTitleText.text = "Repay Your Loan";
+        else Debug.LogWarning("paymentTitleText is not assigned in UIManager!");
+
+        if (paymentDescriptionText != null)
+            paymentDescriptionText.text = player != null ?
+                $"{player.name}: You owe {debtAmount} Shiny Pennies. Enter amount to repay." :
+                $"You owe {debtAmount} Shiny Pennies. Enter amount to repay.";
+        else Debug.LogWarning("paymentDescriptionText is not assigned in UIManager!");
+
+        if (paymentAmountInput != null)
+        {
+            paymentAmountInput.text = "";
+            confirmPaymentButton.interactable = false;
+        }
+
+        if (confirmPaymentButton != null)
+        {
+            confirmPaymentButton.onClick.RemoveAllListeners();
+            confirmPaymentButton.onClick.AddListener(() =>
+            {
+                OnConfirmPay();
+                onDecision?.Invoke();
+                if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
+                HidePaymentPanel();
+            });
+        }
+        else Debug.LogWarning("confirmPaymentButton is not assigned in UIManager!");
+
+        if (cancelPaymentButton != null)
+        {
+            cancelPaymentButton.onClick.RemoveAllListeners();
+            cancelPaymentButton.onClick.AddListener(() =>
+            {
+                OnCancelPay();
+                onDecision?.Invoke();
+                if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
+                HidePaymentPanel();
+            });
+        }
+        else Debug.LogWarning("cancelPaymentButton is not assigned in UIManager!");
+
+        LOPanelPayment.SetActive(true);
+    }
+
     public void OnConfirmLoan()
+    {
+        if (currentPlayer != null && loanAmountInput != null)
+        {
+            if (int.TryParse(loanAmountInput.text, out int amount) && amount >= 1 && amount <= 5)
+            {
+                LuckyLoanLender loanLender = FindFirstObjectByType<LuckyLoanLender>();
+                if (loanLender != null)
+                {
+                    loanLender.OfferLoan(currentPlayer, amount);
+                    // Ensure hasLoan is true (already handled in OfferLoan, but confirming)
+                    if (!currentPlayer.hasLoan)
+                    {
+                        Debug.LogWarning($"{currentPlayer.name}'s hasLoan was not set to true in OfferLoan!");
+                        currentPlayer.hasLoan = true;
+                    }
+                }
+                else Debug.LogWarning("LuckyLoanLender not found in scene!");
+            }
+            else
+            {
+                Debug.LogWarning("Invalid loan amount entered!");
+            }
+        }
+    }
+
+    public void OnCancelPay()
     {
         if (currentPlayer != null)
         {
             LuckyLoanLender loanLender = FindFirstObjectByType<LuckyLoanLender>();
             if (loanLender != null)
             {
-                loanLender.OfferLoan(currentPlayer);
+                loanLender.RepayLoan(currentPlayer, 0);
+                // Ensure isInDebt is true (already handled in RepayLoan, but confirming)
+                if (!currentPlayer.isInDebt)
+                {
+                    Debug.LogWarning($"{currentPlayer.name}'s isInDebt was not set to true in RepayLoan!");
+                    currentPlayer.isInDebt = true;
+                }
             }
             else Debug.LogWarning("LuckyLoanLender not found in scene!");
+        }
+    }
+
+    public void OnConfirmPay()
+    {
+        if (currentPlayer != null && paymentAmountInput != null)
+        {
+            if (int.TryParse(paymentAmountInput.text, out int amount))
+            {
+                LuckyLoanLender loanLender = FindFirstObjectByType<LuckyLoanLender>();
+                if (loanLender != null)
+                {
+                    loanLender.RepayLoan(currentPlayer, amount);
+                }
+                else Debug.LogWarning("LuckyLoanLender not found in scene!");
+            }
+            else
+            {
+                Debug.LogWarning("Invalid payment amount entered!");
+            }
         }
     }
 
     public void HideLoanOffer()
     {
         if (LOPanel != null) LOPanel.SetActive(false);
+    }
+
+    public void HidePaymentPanel()
+    {
+        if (LOPanelPayment != null) LOPanelPayment.SetActive(false);
     }
 
     public void ShowExchange(Action onDecision = null)
@@ -259,14 +446,12 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        // Set base description
         string description = "Royal Fickle Mint\nExchange 1 Bronze, 3 Silver, 6 Gold for 1 Shiny Penny.";
         if (RoyalDecree.Instance != null)
         {
             description += $"\nRoyal Decree: {RoyalDecree.Instance.favoredType} is worth x{RoyalDecree.Instance.multiplier}!";
         }
 
-        // Check resource availability and update description if insufficient
         var inv = mintingPlayer.inventory;
         if (inv == null)
         {
@@ -286,7 +471,6 @@ public class UIManager : MonoBehaviour
             canExchangeWithShortage = totalBronze <= 20 && totalSilver <= 20 && totalGold <= 20;
         }
 
-        // Check Wrong Currency effect
         bool isWrongCurrencyActive = false;
         string devaluedResource = "";
         if (WrongCurrency.Instance != null && WrongCurrency.Instance.IsResourceDevalued(ResourceType.Bronze) ||
@@ -309,7 +493,6 @@ public class UIManager : MonoBehaviour
         }
         else Debug.LogWarning("exchangeTitleText is not assigned in UIManager!");
 
-        // Set fixed input values for display
         if (bronzeInput != null) bronzeInput.text = "1 Bronze";
         else Debug.LogWarning("bronzeInput is not assigned in UIManager!");
         if (silverInput != null) silverInput.text = "3 Silver";
@@ -317,7 +500,6 @@ public class UIManager : MonoBehaviour
         if (goldInput != null) goldInput.text = "6 Gold";
         else Debug.LogWarning("goldInput is not assigned in UIManager!");
 
-        // Enable/disable confirm button based on resource availability and Wrong Currency
         if (confirmExchangeButton != null)
         {
             confirmExchangeButton.interactable = canAfford && canExchangeWithShortage && !isWrongCurrencyActive;
@@ -326,7 +508,7 @@ public class UIManager : MonoBehaviour
             {
                 ConfirmExchange();
                 onDecision?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
+                if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                 HideExchange();
             });
         }
@@ -338,9 +520,8 @@ public class UIManager : MonoBehaviour
             cancelExchangeButton.onClick.AddListener(() =>
             {
                 onDecision?.Invoke();
-                if (Dice.Instance != null) Dice.Instance.actionConfirmed = true;
+                if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                 HideExchange();
-                // Show next player's turn
                 if (turnController != null)
                 {
                     turnController.UpdateTurnUI();
@@ -373,13 +554,11 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        // Fixed amounts to exchange
         int bronzeToSpend = 1;
         int silverToSpend = 3;
         int goldToSpend = 6;
         int shinyPenniesToGain = 1;
 
-        // Double-check resources (though button should be disabled if insufficient)
         if (!inv.CanAfford(ResourceType.Bronze, bronzeToSpend) ||
             !inv.CanAfford(ResourceType.Silver, silverToSpend) ||
             !inv.CanAfford(ResourceType.Gold, goldToSpend))
@@ -388,7 +567,6 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        // Check for shortage restrictions
         if (inv.IsInShortage)
         {
             int totalBronze = inv.BronzeValue - bronzeToSpend;
@@ -401,7 +579,6 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        // Check Wrong Currency effect (additional safeguard)
         if (WrongCurrency.Instance != null && (
             WrongCurrency.Instance.IsResourceDevalued(ResourceType.Bronze) ||
             WrongCurrency.Instance.IsResourceDevalued(ResourceType.Silver) ||
@@ -411,7 +588,6 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        // Perform the exchange
         inv.Spend(ResourceType.Bronze, bronzeToSpend);
         inv.Spend(ResourceType.Silver, silverToSpend);
         inv.Spend(ResourceType.Gold, goldToSpend);
@@ -419,7 +595,6 @@ public class UIManager : MonoBehaviour
 
         Debug.Log($"{mintingPlayer.name} exchanged 1 Bronze, 3 Silver, 6 Gold for 1 Shiny Penny.");
 
-        // Show next player's turn after successful exchange
         if (turnController != null)
         {
             turnController.UpdateTurnUI();

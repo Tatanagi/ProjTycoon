@@ -4,9 +4,9 @@ public static class WheatField
 {
     public static void Execute(PlayerController player)
     {
-        if (player == null || player.inventory == null)
+        if (player == null || player.inventory == null || player.isInDebt)
         {
-            Debug.LogWarning("Player or player inventory is null.");
+            Debug.LogWarning($"{player?.name ?? "Player"} cannot gain resources from WheatField: {(player == null ? "Player is null" : player.inventory == null ? "Inventory is null" : "In debt due to unpaid loan")}");
             return;
         }
 
@@ -15,12 +15,12 @@ public static class WheatField
         {
             if (TurnipCraze.Instance.isTurnipConversionActive)
             {
-                turnips = 10; // Set to 10 turnips during TurnipConversionEffect
+                turnips = 10;
                 Debug.Log($"{player.name} gained 10 turnips due to the Turnip Conversion Effect!");
             }
             else if (TurnipCraze.Instance.isCrazeActive)
             {
-                turnips = 10; // Set to 10 turnips during TurnipCraze
+                turnips = 10;
                 Debug.Log($"{player.name} gained 10 turnips due to the Turnip Craze!");
             }
         }
