@@ -26,6 +26,22 @@ public class BoardCell : MonoBehaviour
         Debug.Log($"Player {player.name} landed on {cellType}.");
         Action onConfirm = null;
 
+        // Prevent resource gains during Debt round for specific cells
+        if (player.isInDebt && 
+            (cellType == CellType.Stables || cellType == CellType.Quarry || 
+             cellType == CellType.Fishery || cellType == CellType.WheatField || 
+             cellType == CellType.MiningShaft))
+        {
+            UIManager.Instance.ShowCellAction(
+                GetCellActionTitle(),
+                "This round you will not gain currency due to unpaid loan!",
+                player,
+                () => { Dice.Instance?.OnActionConfirmed(); }
+            );
+            Debug.Log($"{player.name} is in Debt Round: No resources gained from {cellType}.");
+            return;
+        }
+
         switch (cellType)
         {
             case CellType.CommunityChest:
@@ -69,7 +85,11 @@ public class BoardCell : MonoBehaviour
                 GetCellActionTitle(),
                 GetCellActionDescription(player),
                 player,
-                onConfirm
+                () =>
+                {
+                    onConfirm.Invoke();
+                    Dice.Instance?.OnActionConfirmed();
+                }
             );
         }
     }
@@ -82,6 +102,14 @@ public class BoardCell : MonoBehaviour
     public string GetCellActionDescription(PlayerController currentPlayer)
     {
         if (currentPlayer == null) return "";
+
+        if (currentPlayer.isInDebt && 
+            (cellType == CellType.Stables || cellType == CellType.Quarry || 
+             cellType == CellType.Fishery || cellType == CellType.WheatField || 
+             cellType == CellType.MiningShaft))
+        {
+            return "This round you will not gain currency due to unpaid loan!";
+        }
 
         switch (cellType)
         {
