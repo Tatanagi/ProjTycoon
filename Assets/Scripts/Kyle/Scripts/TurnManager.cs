@@ -31,13 +31,7 @@ public class TurnManager : ScriptableObject
             else
             {
                 Debug.LogWarning("RandomEffectRounds not found in scene!");
-                UpdateTurnUI(); // Fallback to update UI if no effects
             }
-        }
-        else
-        {
-            // Update turn UI for non-round-starting turns
-            UpdateTurnUI();
         }
         Debug.Log($"Now it's Player {(currentPlayerIndex + 1)}'s turn.");
     }

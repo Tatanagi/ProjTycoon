@@ -88,7 +88,7 @@ public class Dice : MonoBehaviour
 
         if (startCell.cellType == CellType.ResourceTokens)
         {
-            startCell.OnPlayerLanded(currentPlayer);
+            startCell.OnPlayerLanded(currentPlayer, turnManager); // Pass turnManager
             actionConfirmed = false;
             yield return new WaitUntil(() => actionConfirmed);
         }
@@ -140,7 +140,7 @@ public class Dice : MonoBehaviour
         if (currentCell != null)
         {
             actionConfirmed = false;
-            currentCell.OnPlayerLanded(currentPlayer);
+            currentCell.OnPlayerLanded(currentPlayer, turnManager); // Pass turnManager
             if (currentCell.cellType != CellType.Normal)
             {
                 yield return new WaitUntil(() => actionConfirmed);

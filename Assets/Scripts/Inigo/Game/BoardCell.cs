@@ -20,16 +20,24 @@ public enum CellType
 public class BoardCell : MonoBehaviour
 {
     public CellType cellType = CellType.Normal;
+    private TurnManager turnManager; // Store the TurnManager reference
 
-    public void OnPlayerLanded(PlayerController player)
+    public void OnPlayerLanded(PlayerController player, TurnManager turnManager)
     {
-        Debug.Log($"Player {player.name} landed on {cellType}.");
+        this.turnManager = turnManager; // Assign the passed TurnManager
+        Debug.Log($"[BoardCell] Player {player.name} landed on {cellType}.");
         Action onConfirm = null;
 
+        if (turnManager == null)
+        {
+            Debug.LogError("[BoardCell] TurnManager not assigned! Cannot proceed.");
+            return;
+        }
+
         // Prevent resource gains during Debt round for specific cells
-        if (player.isInDebt && 
-            (cellType == CellType.Stables || cellType == CellType.Quarry || 
-             cellType == CellType.Fishery || cellType == CellType.WheatField || 
+        if (player.isInDebt &&
+            (cellType == CellType.Stables || cellType == CellType.Quarry ||
+             cellType == CellType.Fishery || cellType == CellType.WheatField ||
              cellType == CellType.MiningShaft))
         {
             UIManager.Instance.ShowCellAction(
@@ -38,7 +46,7 @@ public class BoardCell : MonoBehaviour
                 player,
                 () => { Dice.Instance?.OnActionConfirmed(); }
             );
-            Debug.Log($"{player.name} is in Debt Round: No resources gained from {cellType}.");
+            Debug.Log($"[BoardCell] {player.name} is in Debt Round: No resources gained from {cellType}.");
             return;
         }
 
@@ -77,9 +85,32 @@ public class BoardCell : MonoBehaviour
             case CellType.Thief:
                 onConfirm = () => Thief.Execute(player);
                 break;
+            case CellType.Normal:
+                // Check if this is the last player of the round (index 3 for 4 players)
+                if (turnManager.GetCurrentPlayerIndex() == turnManager.totalPlayers - 1)
+                {
+                    onConfirm = () =>
+                    {
+                        Debug.Log($"[BoardCell] Round finished - Applying round effect and advancing to Player 1");
+                        turnManager.NextTurn(); // This will increment to 0 and start a new round
+                        TurnUIController.Instance.UpdateTurnUI(); // Show Player 1's turn
+                    };
+                    UIManager.Instance.ShowCellAction(
+                        "Round Effect",
+                        "A random resource effect applies at the end of the round!",
+                        player,
+                        onConfirm
+                    );
+                }
+                else
+                {
+                    // For non-last players, just update UI to continue the round
+                    TurnUIController.Instance.UpdateTurnUI();
+                }
+                break;
         }
 
-        if (onConfirm != null)
+        if (onConfirm != null && cellType != CellType.Normal)
         {
             UIManager.Instance.ShowCellAction(
                 GetCellActionTitle(),
@@ -103,12 +134,18 @@ public class BoardCell : MonoBehaviour
     {
         if (currentPlayer == null) return "";
 
-        if (currentPlayer.isInDebt && 
-            (cellType == CellType.Stables || cellType == CellType.Quarry || 
-             cellType == CellType.Fishery || cellType == CellType.WheatField || 
+        if (currentPlayer.isInDebt &&
+            (cellType == CellType.Stables || cellType == CellType.Quarry ||
+             cellType == CellType.Fishery || cellType == CellType.WheatField ||
              cellType == CellType.MiningShaft))
         {
             return "This round you will not gain currency due to unpaid loan!";
+        }
+
+        if (turnManager == null)
+        {
+            Debug.LogWarning("[BoardCell] turnManager is null in GetCellActionDescription");
+            return "";
         }
 
         switch (cellType)
@@ -144,6 +181,12 @@ public class BoardCell : MonoBehaviour
                 return "This round will be capped to 20 silver, gold, and bronze for all players!";
             case CellType.LuckyLoanLender:
                 return "Would you like a loan worth 10% of your shiny pennies?";
+            case CellType.Normal:
+                if (turnManager.GetCurrentPlayerIndex() == turnManager.totalPlayers - 1)
+                {
+                    return "A random resource effect applies at the end of the round!";
+                }
+                return "";
             default:
                 return "";
         }

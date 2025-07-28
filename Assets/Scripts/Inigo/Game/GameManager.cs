@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
     public void OnPlayerFinishMove(PlayerController player, int rollResult)
     {
         if (player == null) return;
-        // Removed resourceMarket.GiveResourceToPlayer to stop automatic resource gain on every move
         ResolveLanding(player);
     }
 
@@ -75,6 +74,12 @@ public class GameManager : MonoBehaviour
     {
         if (player == null) return;
         BoardCell cell = player.GetCurrentCell();
+
+        if (cell == null)
+        {
+            Debug.LogWarning("[GameManager] Current cell is null for player " + player.name);
+            return;
+        }
 
         switch (cell.cellType)
         {
@@ -111,8 +116,11 @@ public class GameManager : MonoBehaviour
                 // Handled by CA panel confirm in OnPlayerLanded, no action here
                 break;
             case CellType.Normal:
+                // Delegate to BoardCell, but check if this is the last player of the round
+                cell.OnPlayerLanded(player, turnManager);
+                break;
             default:
-                TurnUIController.Instance.UpdateTurnUI();
+                Debug.LogWarning("[GameManager] Unhandled cell type: " + cell.cellType);
                 break;
         }
     }

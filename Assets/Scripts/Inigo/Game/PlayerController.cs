@@ -76,8 +76,6 @@ public class PlayerController : MonoBehaviour
     {
         IsFinishedMoving = false;
 
-
-
         for (int i = 0; i < steps; i++)
         {
             if (boardCells == null || boardCells.Length == 0)
@@ -103,7 +101,6 @@ public class PlayerController : MonoBehaviour
 
         currentCell = boardCells[currentCellIndex];
         Debug.Log($"{name} landed on: {currentCell.cellType} (Index: {currentCellIndex})");
-        currentCell.OnPlayerLanded(this);
 
         IsFinishedMoving = true;
 
@@ -118,7 +115,6 @@ public class PlayerController : MonoBehaviour
             isInDebt = false;
             TurnAround = false;
         }
-
     }
 
     public void StartNewRound()
