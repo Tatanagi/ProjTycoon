@@ -6,6 +6,28 @@ public class RandomEffectRounds : MonoBehaviour
 {
     public static RandomEffectRounds Instance { get; private set; }
 
+    // Enum to identify effects in the Inspector
+    public enum EffectType
+    {
+        WrongCurrency,
+        TurnipConversion
+    }
+
+    [System.Serializable]
+    public struct EffectConfig
+    {
+        public EffectType effectType;
+        [Range(0f, 100f)] // Weight as a percentage for easier configuration
+        public float weight;
+    }
+
+    [SerializeField]
+    private List<EffectConfig> effectConfigs = new List<EffectConfig>
+    {
+        new EffectConfig { effectType = EffectType.WrongCurrency, weight = 50f },
+        new EffectConfig { effectType = EffectType.TurnipConversion, weight = 50f }
+    };
+
     private List<Action> roundEffects;
     private Action currentEffect;
     private bool isEffectActive = false;
@@ -25,11 +47,33 @@ public class RandomEffectRounds : MonoBehaviour
 
     private void InitializeEffects()
     {
-        roundEffects = new List<Action>
+        roundEffects = new List<Action>();
+        foreach (var config in effectConfigs)
         {
-            WrongCurrencyEffect,
-            TurnipConversionEffect // Added new turnip conversion effect
-        };
+            switch (config.effectType)
+            {
+                case EffectType.WrongCurrency:
+                    roundEffects.Add(WrongCurrencyEffect);
+                    break;
+                case EffectType.TurnipConversion:
+                    roundEffects.Add(TurnipConversionEffect);
+                    break;
+                default:
+                    Debug.LogWarning($"Unknown effect type: {config.effectType}");
+                    break;
+            }
+        }
+
+        // Validate weights
+        float totalWeight = 0f;
+        foreach (var config in effectConfigs)
+        {
+            totalWeight += config.weight;
+        }
+        if (Mathf.Approximately(totalWeight, 0f))
+        {
+            Debug.LogError("Total weight of effects is zero. Please assign positive weights in the Unity Inspector.");
+        }
     }
 
     public void ApplyRandomEffectWithPanel(int round)
@@ -41,7 +85,12 @@ public class RandomEffectRounds : MonoBehaviour
 
         if (!isEffectActive)
         {
-            currentEffect = roundEffects[UnityEngine.Random.Range(0, roundEffects.Count)];
+            currentEffect = SelectWeightedRandomEffect();
+            if (currentEffect == null)
+            {
+                Debug.LogWarning("No effect selected. Check effect weights.");
+                return;
+            }
             isEffectActive = true;
 
             string title = "Round Effect!";
@@ -62,6 +111,30 @@ public class RandomEffectRounds : MonoBehaviour
                 }
             );
         }
+    }
+
+    private Action SelectWeightedRandomEffect()
+    {
+        float totalWeight = 0f;
+        foreach (var config in effectConfigs)
+        {
+            totalWeight += config.weight;
+        }
+
+        float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+        float cumulativeWeight = 0f;
+
+        for (int i = 0; i < effectConfigs.Count; i++)
+        {
+            cumulativeWeight += effectConfigs[i].weight;
+            if (randomValue <= cumulativeWeight)
+            {
+                return roundEffects[i];
+            }
+        }
+
+        Debug.LogWarning("Weighted random selection failed. Returning null.");
+        return null;
     }
 
     private string GetEffectDescription()

@@ -907,15 +907,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1120,15 +1120,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1431,7 +1431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.4039216, b: 0.4039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1751,8 +1751,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &163246034
@@ -2104,8 +2104,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2129,8 +2129,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 29
+  m_fontSizeBase: 29
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2197,8 +2197,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.9042, y: -26.1833}
-  m_SizeDelta: {x: 486.19, y: 254.3667}
+  m_AnchoredPosition: {x: -7.9864, y: -17.1514}
+  m_SizeDelta: {x: 548.9602, y: 284.6695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &242397973 stripped
 GameObject:
@@ -2218,6 +2218,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &249341272
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,15 +2901,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3606,7 +3620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.4039216, b: 0.4039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3671,8 +3685,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3764,7 +3778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 158}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &363180858
@@ -3828,6 +3842,9 @@ MonoBehaviour:
   cancelExchangeButton: {fileID: 353249898}
   turnController: {fileID: 652189929}
   TurnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
+  buttonAudioSource: {fileID: 1531464216}
+  buttonClickClip: {fileID: 8300000, guid: 10e1bad233def0b428ff406677eb575b, type: 3}
+  buttonSfxVolume: 0.266
 --- !u!114 &363180860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4051,15 +4068,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4365,8 +4382,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4605,7 +4622,7 @@ RectTransform:
   m_GameObject: {fileID: 473818609}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7126, y: 1.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 932011954}
@@ -4637,15 +4654,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Draw
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5103,6 +5120,14 @@ PrefabInstance:
       propertyPath: resumeButton
       value: 
       objectReference: {fileID: 84875725}
+    - target: {fileID: 3121868087577240738, guid: 6207769266ae98e469bfd2c9b76135c5, type: 3}
+      propertyPath: buttonClickClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 10e1bad233def0b428ff406677eb575b, type: 3}
+    - target: {fileID: 3121868087577240738, guid: 6207769266ae98e469bfd2c9b76135c5, type: 3}
+      propertyPath: buttonAudioSource
+      value: 
+      objectReference: {fileID: 1531464216}
     - target: {fileID: 5361522146985158379, guid: 6207769266ae98e469bfd2c9b76135c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 944.27594
@@ -5171,6 +5196,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 9
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &558668825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5201,6 +5240,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
+  buttonAudioSource: {fileID: 1531464216}
+  buttonClickClip: {fileID: 8300000, guid: 10e1bad233def0b428ff406677eb575b, type: 3}
+  buttonSfxVolume: 0.5
 --- !u!4 &558668827
 Transform:
   m_ObjectHideFlags: 0
@@ -5265,6 +5307,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec57accdb75d2d4b8557dc0aff78617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectConfigs:
+  - effectType: 0
+    weight: 50
+  - effectType: 1
+    weight: 50
 --- !u!1 &577606014
 GameObject:
   m_ObjectHideFlags: 0
@@ -5456,6 +5503,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &632376661
 GameObject:
   m_ObjectHideFlags: 0
@@ -5515,8 +5576,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gold: 40
   Silver: 40
-  Bronze: 40
-  ShinyPennies: 50
+  Bronze: 0
+  ShinyPennies: 0
   Turnips: 0
   RoundTurnips: 0
   isInShortage: 0
@@ -5585,6 +5646,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 9
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &656721843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5644,8 +5719,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5710,7 +5785,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &656721846
@@ -6007,7 +6082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5686275, g: 0.39607847, b: 0.39607847, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6162,7 +6237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.57254905, g: 0.39607847, b: 0.39607847, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6695,8 +6770,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6761,7 +6836,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &773508436
@@ -6886,6 +6961,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 11
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &815857519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6504705817604289574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -6958,6 +7047,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &844036732
 GameObject:
   m_ObjectHideFlags: 0
@@ -7107,6 +7210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
+  buttonAudioSource: {fileID: 1531464216}
+  buttonClickClip: {fileID: 8300000, guid: 10e1bad233def0b428ff406677eb575b, type: 3}
+  buttonSfxVolume: 0.5
 --- !u!4 &868967161
 Transform:
   m_ObjectHideFlags: 0
@@ -7184,6 +7290,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 11
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &884944923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7197,6 +7317,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 11
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &886098798
 GameObject:
   m_ObjectHideFlags: 0
@@ -7767,7 +7901,7 @@ RectTransform:
   m_GameObject: {fileID: 932011953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.95, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 473818610}
@@ -7775,8 +7909,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -80}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -1, y: -92.4709}
+  m_SizeDelta: {x: 188.5376, y: 54.9419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932011955
 MonoBehaviour:
@@ -7847,7 +7981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.674, g: 0.41723812, b: 0.41723812, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8077,7 +8211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30de24ed9ca748be37190624ab55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shinyPennyQuota: 100
+  shinyPennyQuota: 5
 --- !u!4 &994996999
 Transform:
   m_ObjectHideFlags: 0
@@ -8369,15 +8503,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Cancel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8670,6 +8804,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &1062684327 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 480253490234275944, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -8695,8 +8843,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gold: 40
   Silver: 40
-  Bronze: 40
-  ShinyPennies: 50
+  Bronze: 0
+  ShinyPennies: 0
   Turnips: 0
   RoundTurnips: 0
   isInShortage: 0
@@ -8871,8 +9019,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8964,7 +9112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 83}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080795535
@@ -8980,6 +9128,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 5
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1083073052
 GameObject:
   m_ObjectHideFlags: 0
@@ -9155,6 +9317,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &1100449745 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 480253490234275944, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -9311,15 +9487,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Confirm
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9856,10 +10032,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5650caedd92ed394c8b4e9ab05a4f657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: 40
-  Silver: 40
-  Bronze: 40
-  ShinyPennies: 50
+  Gold: 0
+  Silver: 0
+  Bronze: 0
+  ShinyPennies: 0
   Turnips: 0
   RoundTurnips: 0
   isInShortage: 0
@@ -9881,6 +10057,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 2
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1188143159
 GameObject:
   m_ObjectHideFlags: 0
@@ -10005,7 +10195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.4039216, b: 0.4039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10039,7 +10229,7 @@ RectTransform:
   m_GameObject: {fileID: 1233717755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4061, y: 1.3054626, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1250504394}
@@ -10047,7 +10237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -143}
+  m_AnchoredPosition: {x: 0, y: -187}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1235283983
@@ -10109,8 +10299,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Community Chest
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10245,8 +10435,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10311,7 +10501,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1243865882
@@ -10383,15 +10573,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10547,15 +10737,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10658,7 +10848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 145}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1271663335
@@ -10691,8 +10881,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10757,7 +10947,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1278120413
@@ -10812,7 +11002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.4039216, b: 0.4039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10986,6 +11176,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 7
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!20 &1328174567 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 3027134469059563175, guid: f44789097a7910e4d9435138c636bce9, type: 3}
@@ -11161,6 +11365,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 8
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1399486316
 GameObject:
   m_ObjectHideFlags: 0
@@ -11310,6 +11528,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 8
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &1405498991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11323,6 +11555,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1408885844
 GameObject:
   m_ObjectHideFlags: 0
@@ -11469,6 +11715,404 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408885844}
   m_CullTransparentMesh: 1
+--- !u!1001 &1421966712
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 785280213909552508, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 787896543664833015, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146104882268552664, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Fishery
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146104882268552664, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303070116920030651, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338559417494131951, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Mining Shaft
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338559417494131951, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374542994194828350, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374542994194828350, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421066785194115840, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Fishery
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421066785194115840, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621143400440760411, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Wheat Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621143400440760411, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864147829158506881, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Quarry
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864147829158506881, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199376536744659637, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348202025704152302, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Mining Shaft
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348202025704152302, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439597639870798798, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558127207278775209, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890560419697730013, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d9e6bb9d42361da4d99ab1aeec2e5ebc, type: 2}
+    - target: {fileID: 3070063898249420925, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: WheatField
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070063898249420925, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581543469045220867, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Quarry
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581543469045220867, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189913529286855031, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189913529286855031, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862614587852432301, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Wheat Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862614587852432301, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 79.49543
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 62.814903
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.039999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002742049182529043, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034663394926559077, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198275165148759822, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: SuddenShortage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198275165148759822, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356517189846401901, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5403825313187535987, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418799427657237251, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418799427657237251, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606584171948361598, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Stables
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606584171948361598, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675252775095102019, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724282388600941286, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: 'Theif '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724282388600941286, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904730418975142354, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322810006826758440, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Quarry
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322810006826758440, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504705817604289574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659854663375145677, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659854663375145677, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836080878760381583, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: RoyalMint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836080878760381583, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Royal Mint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897374805845516819, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Stables
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897374805845516819, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267228270737217574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Theif
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267228270737217574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450470765795447609, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483535486834400086, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: 'BackgroundImage '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511926152921752316, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: SuddenShortage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511926152921752316, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601660158676739493, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Fishery
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601660158676739493, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805577953081787119, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825560305697457990, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: LuckyLoanLender
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825560305697457990, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Loan Lender
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907995756414300267, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: Stables
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907995756414300267, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912865994312884892, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191650484850324870, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Name
+      value: CommunityChest
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191650484850324870, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_TagString
+      value: Community Chest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 4189913529286855031, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 7601660158676739493, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 6322810006826758440, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 7805577953081787119, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 8907995756414300267, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5403825313187535987, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 1421066785194115840, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 1864147829158506881, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5904730418975142354, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 6836080878760381583, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 787896543664833015, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 2558127207278775209, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5606584171948361598, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 3581543469045220867, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 8912865994312884892, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 4862614587852432301, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5724282388600941286, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 2439597639870798798, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 9191650484850324870, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 7267228270737217574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 1338559417494131951, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 1303070116920030651, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 6659854663375145677, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5198275165148759822, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 1621143400440760411, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5418799427657237251, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 7450470765795447609, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 2348202025704152302, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5675252775095102019, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 8825560305697457990, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 7511926152921752316, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5034663394926559077, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 1146104882268552664, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 785280213909552508, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 2199376536744659637, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 1374542994194828350, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 5356517189846401901, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 3070063898249420925, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 6897374805845516819, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    - {fileID: 6504705817604289574, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7483535486834400086, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1421966714}
+  m_SourcePrefab: {fileID: 100100000, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+--- !u!1 &1421966713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7483535486834400086, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+  m_PrefabInstance: {fileID: 1421966712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1421966714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421966713}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1423556384 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5606584171948361598, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -11487,6 +12131,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 6
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!224 &1431989542 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4849624843901433061, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -11510,6 +12168,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 8
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1440813786
 GameObject:
   m_ObjectHideFlags: 0
@@ -11664,6 +12336,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1481600469
 GameObject:
   m_ObjectHideFlags: 0
@@ -11753,6 +12439,97 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
+--- !u!1001 &1493265282
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 921814883227483561, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_Name
+      value: SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240798142064679085, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240798142064679085, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240798142064679085, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1761930585481221005, guid: 278ff37b2acc36b4cb5115a73e9c01b6, type: 2}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.12646
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -105.5293
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390068634226499379, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255100292088911742, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: SFXSlider
+      value: 
+      objectReference: {fileID: 583538278}
+    - target: {fileID: 6255100292088911742, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+      propertyPath: musicSlider
+      value: 
+      objectReference: {fileID: 39983940}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
 --- !u!1 &1497879853
 GameObject:
   m_ObjectHideFlags: 0
@@ -12009,7 +12786,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e163748a0f55a3d479baf49db622aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 1
+  cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
+--- !u!82 &1531464216 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1240798142064679085, guid: a8210e9d0d956f746a944b7081f2b00e, type: 3}
+  m_PrefabInstance: {fileID: 1493265282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1561181318
 GameObject:
   m_ObjectHideFlags: 0
@@ -12071,15 +12867,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12236,7 +13032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.4039216, b: 0.4039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12435,6 +13231,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597050134}
   m_CullTransparentMesh: 1
+--- !u!1 &1601251918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601251919}
+  - component: {fileID: 1601251921}
+  - component: {fileID: 1601251920}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1601251919
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601251918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1664844683}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 10, y: 44}
+  m_SizeDelta: {x: -1026.4995, y: -348.0313}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1601251920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601251918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8156863}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1601251921
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601251918}
+  m_CullTransparentMesh: 1
 --- !u!1 &1624389887
 GameObject:
   m_ObjectHideFlags: 0
@@ -12475,8 +13346,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12568,7 +13439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 138}
+  m_AnchoredPosition: {x: 0, y: 179}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1637168079
@@ -12818,6 +13689,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1601251919}
   - {fileID: 1408885845}
   - {fileID: 1964321383}
   - {fileID: 2027681554}
@@ -13024,6 +13896,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1741995220 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8907995756414300267, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -13117,7 +14003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.4039216, b: 0.4039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13180,6 +14066,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 11
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1784339226 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4189913529286855031, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -13198,6 +14098,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 11
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &1824864743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13211,6 +14125,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 6
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1834122113
 GameObject:
   m_ObjectHideFlags: 0
@@ -13441,6 +14369,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 3
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1879414181
 GameObject:
   m_ObjectHideFlags: 0
@@ -13558,6 +14500,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 7
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &1904308197 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 480253490234275944, guid: b69a1ebe2099c2f48ae45a901ef1ad16, type: 3}
@@ -13587,6 +14543,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1925886747
 GameObject:
   m_ObjectHideFlags: 0
@@ -13686,6 +14656,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1939111179
 GameObject:
   m_ObjectHideFlags: 0
@@ -13831,6 +14815,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 10
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1957349121
 GameObject:
   m_ObjectHideFlags: 0
@@ -13865,7 +14863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 62}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1957349123
@@ -13898,8 +14896,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
+  m_sharedMaterial: {fileID: -4536797517622360845, guid: 26dde8954daf56c4ab53fc160ad60cef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13964,7 +14962,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1964321382
@@ -14123,6 +15121,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 10
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1977177576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5904730418975142354, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -14141,6 +15153,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &1983936211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1374542994194828350, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
@@ -14159,6 +15185,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 11
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1001 &1993480494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14237,6 +15277,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 7
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &2012306109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14250,6 +15304,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 9
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &2022217727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14263,6 +15331,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 5
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &2022353317
 GameObject:
   m_ObjectHideFlags: 0
@@ -14590,6 +15672,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 6
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &2050550610
 GameObject:
   m_ObjectHideFlags: 0
@@ -14734,7 +15830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.4039216, b: 0.4039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15085,6 +16181,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!114 &2119855749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15098,6 +16208,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 0
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1 &2134660114
 GameObject:
   m_ObjectHideFlags: 0
@@ -15668,6 +16792,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 7423780627266685661, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7450470765795447609, guid: 39c5f17fd18258943a607b78271bd72a, type: 3}
       propertyPath: m_TagString
       value: Untagged
@@ -16195,6 +17323,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1035822816}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
+      propertyPath: diceRollClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8621e9662201ff7488eb553b9433bbf3, type: 3}
+    - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: diceRigidbody
       value: 
       objectReference: {fileID: 0}
@@ -16203,9 +17335,21 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
+      propertyPath: buttonClickClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 10e1bad233def0b428ff406677eb575b, type: 3}
+    - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
+      propertyPath: diceRollingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8621e9662201ff7488eb553b9433bbf3, type: 3}
+    - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: turnUIController
       value: 
       objectReference: {fileID: 652189929}
+    - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
+      propertyPath: diceRollAudioSource
+      value: 
+      objectReference: {fileID: 1531464216}
     - target: {fileID: 4177175383596090269, guid: 17d67a722ccfcbd4d85fef4219ef8c2a, type: 3}
       propertyPath: 'faceNormals.Array.data[0]'
       value: 
@@ -16374,8 +17518,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5755706932802071448, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: moveSpeed
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5755706932802071448, guid: f50a60f25e683dc4b892854299d91101, type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cc200817f7ad6994c830be0ba8c18f53, type: 3}
+    - target: {fileID: 5755706932802071448, guid: f50a60f25e683dc4b892854299d91101, type: 3}
+      propertyPath: stepAudioSource
+      value: 
+      objectReference: {fileID: 1531464216}
     - target: {fileID: 5755706932802071448, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: boardCells.Array.size
       value: 40
@@ -16542,8 +17694,16 @@ PrefabInstance:
       objectReference: {fileID: 1784339229}
     - target: {fileID: 6027829931254354942, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: moveSpeed
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6027829931254354942, guid: f50a60f25e683dc4b892854299d91101, type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cc200817f7ad6994c830be0ba8c18f53, type: 3}
+    - target: {fileID: 6027829931254354942, guid: f50a60f25e683dc4b892854299d91101, type: 3}
+      propertyPath: stepAudioSource
+      value: 
+      objectReference: {fileID: 1531464216}
     - target: {fileID: 6027829931254354942, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: boardCells.Array.size
       value: 40
@@ -16710,8 +17870,16 @@ PrefabInstance:
       objectReference: {fileID: 1784339229}
     - target: {fileID: 6444624081130462372, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: moveSpeed
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6444624081130462372, guid: f50a60f25e683dc4b892854299d91101, type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cc200817f7ad6994c830be0ba8c18f53, type: 3}
+    - target: {fileID: 6444624081130462372, guid: f50a60f25e683dc4b892854299d91101, type: 3}
+      propertyPath: stepAudioSource
+      value: 
+      objectReference: {fileID: 1531464216}
     - target: {fileID: 6444624081130462372, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: boardCells.Array.size
       value: 40
@@ -16922,8 +18090,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7731840034595727286, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: moveSpeed
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7731840034595727286, guid: f50a60f25e683dc4b892854299d91101, type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cc200817f7ad6994c830be0ba8c18f53, type: 3}
+    - target: {fileID: 7731840034595727286, guid: f50a60f25e683dc4b892854299d91101, type: 3}
+      propertyPath: stepAudioSource
+      value: 
+      objectReference: {fileID: 1531464216}
     - target: {fileID: 7731840034595727286, guid: f50a60f25e683dc4b892854299d91101, type: 3}
       propertyPath: boardCells.Array.size
       value: 40
@@ -17231,8 +18407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gold: 40
   Silver: 40
-  Bronze: 40
-  ShinyPennies: 50
+  Bronze: 0
+  ShinyPennies: 0
   Turnips: 0
   RoundTurnips: 0
   isInShortage: 0
@@ -17249,6 +18425,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellType: 4
+  cellAudioSource: {fileID: 1531464216}
+  sfxVolume: 0.065
+  normalClip: {fileID: 0}
+  communityChestClip: {fileID: 0}
+  luckyLoanLenderClip: {fileID: 0}
+  royalMintClip: {fileID: 8300000, guid: dec2223394d31564fa35b26c75d1fb07, type: 3}
+  resourceTokensClip: {fileID: 0}
+  suddenShortageClip: {fileID: 0}
+  stablesClip: {fileID: 8300000, guid: 5e568c647325352469946f4670654b85, type: 3}
+  quarryClip: {fileID: 0}
+  fisheryClip: {fileID: 0}
+  wheatFieldClip: {fileID: 0}
+  miningShaftClip: {fileID: 0}
+  thiefClip: {fileID: 0}
 --- !u!1001 &6739781501371348835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17789,6 +18979,7 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 4110889212737814631}
   - {fileID: 3546600004870137379}
+  - {fileID: 1421966712}
   - {fileID: 4660163167450345269}
   - {fileID: 4357447128380824193}
   - {fileID: 8997649176046392310}
@@ -17802,4 +18993,5 @@ SceneRoots:
   - {fileID: 558668827}
   - {fileID: 868967161}
   - {fileID: 1993480494}
+  - {fileID: 1493265282}
   - {fileID: 517384934}

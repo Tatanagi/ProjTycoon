@@ -87,7 +87,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void Notify() => OnChanged?.Invoke();
 
-    public void Initialize(int gold = 40, int silver = 40, int bronze = 40, int shinyPennies = 50)
+    public void Initialize(int gold = 0, int silver = 0, int bronze = 0, int shinyPennies = 0)
     {
         Gold = gold;
         Silver = silver;

@@ -16,19 +16,31 @@ public class PlayerController : MonoBehaviour
     private BoardCell[] boardCells;
     [SerializeField]
     private int startingCellIndex = 0;
-    public float moveSpeed = 2f;
+    [SerializeField]
+    private float moveSpeed = 2f;
     [SerializeField]
     private int currentCellIndex = -1;
     public bool IsFinishedMoving { get; private set; } = true;
-    public BoardCell currentCell { get; private set; }
+    public BoardCell CurrentCell { get; private set; }
 
-    //
-    bool TurnAround;
+    [Header("Audio")]
     [SerializeField]
-    int TempCellIndex;
+    private AudioSource stepAudioSource; // AudioSource for step SFX
+    [SerializeField]
+    private AudioClip stepSound; // Chess-like step sound
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float stepVolume = 0.5f; // Volume for subtle chess-like sound
+
+    [Header("Turn Management")]
+    [SerializeField]
+    private bool turnAround;
+    [SerializeField]
+    private int tempCellIndex;
 
     private void Awake()
     {
+        // Initialize inventory
         inventory = GetComponent<PlayerInventory>();
         if (!inventory)
         {
@@ -39,37 +51,62 @@ public class PlayerController : MonoBehaviour
             inventory.Initialize();
         }
 
+        // Validate board cells
         if (boardCells == null || boardCells.Length == 0)
         {
             Debug.LogError($"{name} has no board cells assigned! Assign the boardCells array in the Inspector.");
         }
         else if (startingCellIndex < 0 || startingCellIndex >= boardCells.Length)
         {
-            Debug.LogError($"{name} startingCellIndex ({startingCellIndex}) is out of range. Set a valid index (0 to {boardCells.Length - 1}).");
+            Debug.LogError($"{name} startingCellIndex ({startingCellIndex}) is out of range. Set to 0.");
             currentCellIndex = 0;
         }
         else
         {
             currentCellIndex = startingCellIndex;
-            currentCell = boardCells[currentCellIndex];
-            transform.position = currentCell.transform.position;
-            Debug.Log($"{name} initialized at {currentCell.cellType} (Index: {currentCellIndex}).");
+            CurrentCell = boardCells[currentCellIndex];
+            transform.position = CurrentCell.transform.position;
+            Debug.Log($"{name} initialized at {CurrentCell.cellType} (Index: {currentCellIndex}).");
         }
+
+        // Initialize AudioSource
+        if (stepAudioSource == null)
+        {
+            stepAudioSource = GetComponent<AudioSource>();
+            if (stepAudioSource == null)
+            {
+                stepAudioSource = gameObject.AddComponent<AudioSource>();
+                Debug.LogWarning($"{name} had no AudioSource. Added one automatically.");
+            }
+        }
+        stepAudioSource.playOnAwake = false;
+        stepAudioSource.loop = false;
+        stepAudioSource.spatialBlend = 0f; // 2D sound for board game
     }
 
     public BoardCell GetCurrentCell()
     {
-        if (currentCell == null)
+        if (CurrentCell == null)
         {
             Debug.LogWarning($"{name} current cell is null. This may indicate an initialization issue.");
         }
-        return currentCell;
+        return CurrentCell;
     }
 
     public void MovePlayer(int steps)
     {
-        if (IsFinishedMoving)
-            StartCoroutine(MoveSteps(steps));
+        if (!IsFinishedMoving)
+        {
+            Debug.LogWarning($"{name} is still moving. Cannot start new movement.");
+            return;
+        }
+        if (steps <= 0)
+        {
+            Debug.LogWarning($"{name} cannot move {steps} steps. Must be positive.");
+            IsFinishedMoving = true;
+            return;
+        }
+        StartCoroutine(MoveSteps(steps));
     }
 
     private IEnumerator MoveSteps(int steps)
@@ -86,9 +123,20 @@ public class PlayerController : MonoBehaviour
             }
 
             int nextIndex = (currentCellIndex + 1) % boardCells.Length;
-            TempCellIndex += 1;
+            tempCellIndex += 1;
             Vector3 nextPos = boardCells[nextIndex].transform.position;
 
+            // Play chess-like step sound
+            if (stepSound != null && stepAudioSource != null)
+            {
+                stepAudioSource.PlayOneShot(stepSound, stepVolume);
+            }
+            else
+            {
+                Debug.LogWarning($"{name} cannot play step sound: AudioClip or AudioSource is missing.");
+            }
+
+            // Move to next position
             while (Vector3.Distance(transform.position, nextPos) > 0.01f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed * Time.deltaTime);
@@ -96,24 +144,36 @@ public class PlayerController : MonoBehaviour
             }
 
             currentCellIndex = nextIndex;
-            yield return new WaitForSeconds(0.1f);
+            CurrentCell = boardCells[currentCellIndex];
+            Debug.Log($"{name} moved to: {CurrentCell.cellType} (Index: {currentCellIndex})");
+            yield return new WaitForSeconds(0.1f); // Brief pause for sound clarity
         }
-
-        currentCell = boardCells[currentCellIndex];
-        Debug.Log($"{name} landed on: {currentCell.cellType} (Index: {currentCellIndex})");
 
         IsFinishedMoving = true;
 
-        if (TempCellIndex >= 39)
+        // Handle turn-around logic
+        if (tempCellIndex >= 39)
         {
-            TurnAround = true;
-            TempCellIndex = currentCellIndex;
+            turnAround = true;
+            tempCellIndex = currentCellIndex;
+            Debug.Log($"{name} completed a board loop. Triggering turn-around.");
         }
 
-        if (TurnAround == true)
+        if (turnAround)
         {
             isInDebt = false;
-            TurnAround = false;
+            turnAround = false;
+            Debug.Log($"{name} turn-around: Debt cleared.");
+        }
+
+        // Trigger cell-specific action
+        if (CurrentCell != null && GameManager.Instance != null && GameManager.Instance.turnManager != null)
+        {
+            CurrentCell.OnPlayerLanded(this, GameManager.Instance.turnManager);
+        }
+        else
+        {
+            Debug.LogWarning($"{name} could not trigger OnPlayerLanded: CurrentCell or TurnManager is null.");
         }
     }
 
@@ -139,26 +199,51 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            isInDebt = false; // Reset debt status at round start
+            isInDebt = false;
             Debug.Log($"{name} starting new round with no debt penalty.");
         }
     }
 
     public void SetCurrentCell(BoardCell newCell)
     {
-        if (newCell != null)
-        {
-            currentCell = newCell;
-            currentCellIndex = System.Array.IndexOf(boardCells, newCell);
-            if (currentCellIndex < 0)
-            {
-                Debug.LogWarning($"{name} set to a cell not in boardCells array. Movement may be affected.");
-            }
-            transform.position = currentCell.transform.position;
-        }
-        else
+        if (newCell == null)
         {
             Debug.LogError($"{name} attempted to set null current cell.");
+            return;
         }
+
+        CurrentCell = newCell;
+        currentCellIndex = System.Array.IndexOf(boardCells, newCell);
+        if (currentCellIndex < 0)
+        {
+            Debug.LogWarning($"{name} set to a cell not in boardCells array. Movement may be affected.");
+            currentCellIndex = 0;
+            CurrentCell = boardCells[currentCellIndex];
+        }
+        transform.position = CurrentCell.transform.position;
+        Debug.Log($"{name} set to cell: {CurrentCell.cellType} (Index: {currentCellIndex})");
+    }
+
+    public void TakeLoan(int amount)
+    {
+        if (hasLoan)
+        {
+            Debug.LogWarning($"{name} already has a loan. Cannot take another.");
+            return;
+        }
+        if (amount <= 0)
+        {
+            Debug.LogWarning($"{name} cannot take a loan of {amount}. Must be positive.");
+            return;
+        }
+        hasLoan = true;
+        loanAmount = amount;
+        inventory.Add(ResourceType.ShinyPennies, amount);
+        Debug.Log($"{name} took a loan of {amount} shiny pennies.");
+    }
+
+    public int GetCurrentCellIndex()
+    {
+        return currentCellIndex;
     }
 }

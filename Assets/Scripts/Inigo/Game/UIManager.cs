@@ -51,6 +51,11 @@ public class UIManager : MonoBehaviour
     [Header("Fields")]
     public TurnManager TurnManager;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource buttonAudioSource; // AudioSource for button click SFX
+    [SerializeField] private AudioClip buttonClickClip; // Button click sound clip
+    [SerializeField][Range(0f, 1f)] private float buttonSfxVolume = 0.5f; // Volume for button click SFX
+
     private PlayerController popupPlayer;
     private PlayerController currentPlayer;
     private PlayerController mintingPlayer;
@@ -70,6 +75,26 @@ public class UIManager : MonoBehaviour
             Debug.Log("UIManager GameObject moved to root to support DontDestroyOnLoad.");
         }
         DontDestroyOnLoad(gameObject);
+
+        // Initialize AudioSource
+        if (buttonAudioSource == null)
+        {
+            buttonAudioSource = gameObject.AddComponent<AudioSource>();
+            buttonAudioSource.playOnAwake = false;
+            buttonAudioSource.loop = false;
+            buttonAudioSource.spatialBlend = 0f; // 2D sound for UI
+
+            // Assign SFX mixer group
+            AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+            if (audioManager != null && audioManager.GetMixer() != null)
+            {
+                buttonAudioSource.outputAudioMixerGroup = audioManager.GetMixer().FindMatchingGroups("SFX")[0];
+            }
+            else
+            {
+                Debug.LogWarning("UIManager could not find AudioManager or AudioMixer. Ensure AudioManager is in the scene and myMixer is assigned.");
+            }
+        }
     }
 
     private void Start()
@@ -165,6 +190,14 @@ public class UIManager : MonoBehaviour
             cellConfirmButton.onClick.RemoveAllListeners();
             cellConfirmButton.onClick.AddListener(() =>
             {
+                if (buttonAudioSource != null && buttonClickClip != null)
+                {
+                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
+                }
+                else
+                {
+                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
+                }
                 onConfirm?.Invoke();
                 if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                 HideCellAction();
@@ -213,6 +246,14 @@ public class UIManager : MonoBehaviour
             drawCardButton.onClick.RemoveAllListeners();
             drawCardButton.onClick.AddListener(() =>
             {
+                if (buttonAudioSource != null && buttonClickClip != null)
+                {
+                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
+                }
+                else
+                {
+                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
+                }
                 CommunityChest chest = FindFirstObjectByType<CommunityChest>();
                 if (chest != null)
                 {
@@ -270,6 +311,14 @@ public class UIManager : MonoBehaviour
             acceptLoanButton.onClick.RemoveAllListeners();
             acceptLoanButton.onClick.AddListener(() =>
             {
+                if (buttonAudioSource != null && buttonClickClip != null)
+                {
+                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
+                }
+                else
+                {
+                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
+                }
                 OnConfirmLoan();
                 onDecision?.Invoke();
                 if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
@@ -283,6 +332,14 @@ public class UIManager : MonoBehaviour
             cancelLoanButton.onClick.RemoveAllListeners();
             cancelLoanButton.onClick.AddListener(() =>
             {
+                if (buttonAudioSource != null && buttonClickClip != null)
+                {
+                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
+                }
+                else
+                {
+                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
+                }
                 onDecision?.Invoke();
                 if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                 HideLoanOffer();
@@ -324,6 +381,14 @@ public class UIManager : MonoBehaviour
             confirmPaymentButton.onClick.RemoveAllListeners();
             confirmPaymentButton.onClick.AddListener(() =>
             {
+                if (buttonAudioSource != null && buttonClickClip != null)
+                {
+                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
+                }
+                else
+                {
+                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
+                }
                 OnConfirmPay();
                 onDecision?.Invoke();
                 if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
@@ -337,6 +402,14 @@ public class UIManager : MonoBehaviour
             cancelPaymentButton.onClick.RemoveAllListeners();
             cancelPaymentButton.onClick.AddListener(() =>
             {
+                if (buttonAudioSource != null && buttonClickClip != null)
+                {
+                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
+                }
+                else
+                {
+                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
+                }
                 OnCancelPay();
                 onDecision?.Invoke();
                 if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
@@ -506,6 +579,14 @@ public class UIManager : MonoBehaviour
             confirmExchangeButton.onClick.RemoveAllListeners();
             confirmExchangeButton.onClick.AddListener(() =>
             {
+                if (buttonAudioSource != null && buttonClickClip != null)
+                {
+                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
+                }
+                else
+                {
+                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
+                }
                 ConfirmExchange();
                 onDecision?.Invoke();
                 if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
@@ -519,6 +600,14 @@ public class UIManager : MonoBehaviour
             cancelExchangeButton.onClick.RemoveAllListeners();
             cancelExchangeButton.onClick.AddListener(() =>
             {
+                if (buttonAudioSource != null && buttonClickClip != null)
+                {
+                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
+                }
+                else
+                {
+                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
+                }
                 onDecision?.Invoke();
                 if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
                 HideExchange();

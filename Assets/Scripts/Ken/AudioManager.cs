@@ -11,6 +11,12 @@ public class AudioManager : MonoBehaviour
         ApplySavedVolumes();
     }
 
+    // Public getter for myMixer
+    public AudioMixer GetMixer()
+    {
+        return myMixer;
+    }
+
     public void ApplySavedVolumes()
     {
         float musicVol = PlayerPrefs.GetFloat("musicVolume", 1f);

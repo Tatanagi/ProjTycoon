@@ -9,6 +9,11 @@ public class Dice : MonoBehaviour
     public GameObject diceObject;
     public Button rollButton;
     public TurnManager turnManager;
+    public AudioSource diceRollAudioSource; // AudioSource for dice roll and button SFX
+    public AudioClip diceRollClip; // Assign dice roll sound clip in Inspector
+    [SerializeField] private AudioClip buttonClickClip; // Button click sound clip
+    [SerializeField] private AudioClip diceRollingClip; // Rolling sound clip for animation
+    [SerializeField][Range(0f, 1f)] private float sfxVolume = 0.5f; // Volume for all dice SFX
 
     private PlayerController[] players;
     private bool coroutineAllowed = true;
@@ -30,6 +35,23 @@ public class Dice : MonoBehaviour
             return;
         }
         Instance = this;
+
+        // Ensure AudioSource is set up
+        if (diceRollAudioSource == null)
+        {
+            diceRollAudioSource = gameObject.AddComponent<AudioSource>();
+            diceRollAudioSource.playOnAwake = false;
+            // Assumes AudioMixer has an "SFX" group; set in Inspector or via code
+            AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+            if (audioManager != null && audioManager.GetMixer() != null)
+            {
+                diceRollAudioSource.outputAudioMixerGroup = audioManager.GetMixer().FindMatchingGroups("SFX")[0];
+            }
+            else
+            {
+                Debug.LogWarning("AudioManager or AudioMixer not found. Ensure AudioManager is in the scene and myMixer is assigned.");
+            }
+        }
     }
 
     void Start()
@@ -61,6 +83,19 @@ public class Dice : MonoBehaviour
         if (rollButton != null)
         {
             rollButton.onClick.AddListener(() => StartCoroutine(RollDice()));
+        }
+
+        if (diceRollClip == null)
+        {
+            Debug.LogWarning("Dice roll AudioClip not assigned in Inspector. Please assign a dice roll sound.");
+        }
+        if (buttonClickClip == null)
+        {
+            Debug.LogWarning("Button click AudioClip not assigned in Inspector. Please assign a button click sound.");
+        }
+        if (diceRollingClip == null)
+        {
+            Debug.LogWarning("Dice rolling AudioClip not assigned in Inspector. Please assign a dice rolling sound.");
         }
 
         Debug.Log("TurnManager starting at index: " + turnManager.GetCurrentPlayerIndex());
@@ -129,6 +164,28 @@ public class Dice : MonoBehaviour
         int diceRoll = testMode ? testDiceNumber : Random.Range(1, 7);
         Debug.Log("Player " + (currentPlayerIndex + 1) + " rolled: " + diceRoll + (testMode ? " (TEST MODE)" : ""));
 
+        // Play button click sound
+        if (diceRollAudioSource != null && buttonClickClip != null)
+        {
+            diceRollAudioSource.PlayOneShot(buttonClickClip, sfxVolume);
+        }
+        else
+        {
+            Debug.LogWarning("Cannot play button click sound: AudioSource or buttonClickClip is missing.");
+        }
+
+        yield return null; // Allow button sound to play briefly
+
+        // Play dice roll sound
+        if (diceRollAudioSource != null && diceRollClip != null)
+        {
+            diceRollAudioSource.PlayOneShot(diceRollClip, sfxVolume);
+        }
+        else
+        {
+            Debug.LogWarning("Cannot play dice roll sound: AudioSource or diceRollClip is missing.");
+        }
+
         yield return StartCoroutine(AnimateDiceRoll(diceRoll));
 
         currentPlayer.MovePlayer(diceRoll);
@@ -175,6 +232,16 @@ public class Dice : MonoBehaviour
         int steps = Mathf.FloorToInt(rollDuration / interval);
 
         Debug.Log("Starting dice roll animation...");
+
+        // Play rolling sound for the duration
+        if (diceRollAudioSource != null && diceRollingClip != null)
+        {
+            diceRollAudioSource.PlayOneShot(diceRollingClip, sfxVolume);
+        }
+        else
+        {
+            Debug.LogWarning("Cannot play dice rolling sound: AudioSource or diceRollingClip is missing.");
+        }
 
         for (int i = 0; i < steps; i++)
         {

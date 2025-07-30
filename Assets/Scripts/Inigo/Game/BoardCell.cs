@@ -22,10 +22,61 @@ public class BoardCell : MonoBehaviour
     public CellType cellType = CellType.Normal;
     private TurnManager turnManager; // Store the TurnManager reference
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource cellAudioSource; // AudioSource for cell landing SFX
+    [SerializeField][Range(0f, 1f)] private float sfxVolume = 0.5f; // Volume for cell landing SFX
+    [SerializeField] private AudioClip normalClip; // SFX for Normal cell
+    [SerializeField] private AudioClip communityChestClip; // SFX for CommunityChest cell
+    [SerializeField] private AudioClip luckyLoanLenderClip; // SFX for LuckyLoanLender cell
+    [SerializeField] private AudioClip royalMintClip; // SFX for RoyalMint cell
+    [SerializeField] private AudioClip resourceTokensClip; // SFX for ResourceTokens cell
+    [SerializeField] private AudioClip suddenShortageClip; // SFX for SuddenShortage cell
+    [SerializeField] private AudioClip stablesClip; // SFX for Stables cell
+    [SerializeField] private AudioClip quarryClip; // SFX for Quarry cell
+    [SerializeField] private AudioClip fisheryClip; // SFX for Fishery cell
+    [SerializeField] private AudioClip wheatFieldClip; // SFX for WheatField cell
+    [SerializeField] private AudioClip miningShaftClip; // SFX for MiningShaft cell
+    [SerializeField] private AudioClip thiefClip; // SFX for Thief cell
+
+    void Awake()
+    {
+        // Initialize AudioSource
+        if (cellAudioSource == null)
+        {
+            cellAudioSource = gameObject.AddComponent<AudioSource>();
+            cellAudioSource.playOnAwake = false;
+            cellAudioSource.loop = false;
+            cellAudioSource.spatialBlend = 0f; // 2D sound for board game
+
+            // Assign SFX mixer group
+            AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+            if (audioManager != null && audioManager.GetMixer() != null)
+            {
+                cellAudioSource.outputAudioMixerGroup = audioManager.GetMixer().FindMatchingGroups("SFX")[0];
+            }
+            else
+            {
+                Debug.LogWarning($"{name} could not find AudioManager or AudioMixer. Ensure AudioManager is in the scene and myMixer is assigned.");
+            }
+        }
+    }
+
     public void OnPlayerLanded(PlayerController player, TurnManager turnManager)
     {
         this.turnManager = turnManager; // Assign the passed TurnManager
         Debug.Log($"[BoardCell] Player {player.name} landed on {cellType}.");
+
+        // Play cell-specific landing sound
+        AudioClip clipToPlay = GetClipForCellType(cellType);
+        if (cellAudioSource != null && clipToPlay != null)
+        {
+            cellAudioSource.PlayOneShot(clipToPlay, sfxVolume);
+        }
+        else
+        {
+            Debug.LogWarning($"[BoardCell] Cannot play landing sound for {cellType}: AudioSource or AudioClip is missing.");
+        }
+
         Action onConfirm = null;
 
         if (turnManager == null)
@@ -125,6 +176,26 @@ public class BoardCell : MonoBehaviour
         }
     }
 
+    private AudioClip GetClipForCellType(CellType type)
+    {
+        switch (type)
+        {
+            case CellType.Normal: return normalClip;
+            case CellType.CommunityChest: return communityChestClip;
+            case CellType.LuckyLoanLender: return luckyLoanLenderClip;
+            case CellType.RoyalMint: return royalMintClip;
+            case CellType.ResourceTokens: return resourceTokensClip;
+            case CellType.SuddenShortage: return suddenShortageClip;
+            case CellType.Stables: return stablesClip;
+            case CellType.Quarry: return quarryClip;
+            case CellType.Fishery: return fisheryClip;
+            case CellType.WheatField: return wheatFieldClip;
+            case CellType.MiningShaft: return miningShaftClip;
+            case CellType.Thief: return thiefClip;
+            default: return null;
+        }
+    }
+
     public string GetCellActionTitle()
     {
         return cellType.ToString();
@@ -178,7 +249,7 @@ public class BoardCell : MonoBehaviour
             case CellType.ResourceTokens:
                 return "Confirm to receive +5 gold, +5 silver, and +5 bronze!";
             case CellType.SuddenShortage:
-                return "This round will be capped to 20 silver, gold, and bronze for all players!";
+                return "This round will be capped to 20 silver, gold, and bronze for all players!. If another player activates it can be activate once only";
             case CellType.LuckyLoanLender:
                 return "Would you like a loan worth 10% of your shiny pennies?";
             case CellType.Normal:
