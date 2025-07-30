@@ -8211,7 +8211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f30de24ed9ca748be37190624ab55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shinyPennyQuota: 5
+  shinyPennyQuota: 10
 --- !u!4 &994996999
 Transform:
   m_ObjectHideFlags: 0
@@ -18338,7 +18338,8 @@ MonoBehaviour:
   targetDropdown: {fileID: 1408885846}
   resourceTypeDropdown: {fileID: 1964321384}
   amountInput: {fileID: 2027681555}
-  cooldownTurns: 4
+  cooldownRounds: 1
+  turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
 --- !u!114 &4660163167450345275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18356,7 +18357,8 @@ MonoBehaviour:
   targetDropdown: {fileID: 1408885846}
   resourceTypeDropdown: {fileID: 1964321384}
   amountInput: {fileID: 2027681555}
-  cooldownTurns: 4
+  cooldownRounds: 1
+  turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
 --- !u!114 &4660163167450345276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18374,7 +18376,8 @@ MonoBehaviour:
   targetDropdown: {fileID: 1408885846}
   resourceTypeDropdown: {fileID: 1964321384}
   amountInput: {fileID: 2027681555}
-  cooldownTurns: 4
+  cooldownRounds: 1
+  turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
 --- !u!114 &4660163167450345277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18392,7 +18395,8 @@ MonoBehaviour:
   targetDropdown: {fileID: 1408885846}
   resourceTypeDropdown: {fileID: 1964321384}
   amountInput: {fileID: 2027681555}
-  cooldownTurns: 0
+  cooldownRounds: 1
+  turnManager: {fileID: 11400000, guid: b91d585d6e959c547b009eab5e754829, type: 2}
 --- !u!114 &4660163167450345283
 MonoBehaviour:
   m_ObjectHideFlags: 0
