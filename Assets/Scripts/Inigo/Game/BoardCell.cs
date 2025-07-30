@@ -249,7 +249,7 @@ public class BoardCell : MonoBehaviour
             case CellType.ResourceTokens:
                 return "Confirm to receive +5 gold, +5 silver, and +5 bronze!";
             case CellType.SuddenShortage:
-                return "This round will be capped to 20 silver, gold, and bronze for all players!. If another player activates it can be activate once only";
+                return "In this round, all resource tokens will be capped to 20 for all players! This can only activated once.";
             case CellType.LuckyLoanLender:
                 return "Would you like a loan worth 10% of your shiny pennies?";
             case CellType.Normal:

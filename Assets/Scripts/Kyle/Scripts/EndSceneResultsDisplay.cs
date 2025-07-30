@@ -73,7 +73,7 @@ public class EndSceneResultsDisplay : MonoBehaviour
         int turnips = PlayerPrefs.GetInt($"Player{playerNumber}_Turnips", 0);
         int shinyPennies = PlayerPrefs.GetInt($"Player{playerNumber}_ShinyPennies", 0);
 
-        return $"Player{playerNumber} Bronze: {bronze}, Silver: {silver}, Gold: {gold}, Turnips: {turnips}, Shiny Pennies: {shinyPennies}";
+        return $"Player {playerNumber}; Bronze: {bronze}, Silver: {silver}, Gold: {gold}, Turnips: {turnips}, Shiny Pennies: {shinyPennies}";
     }
 
     private void GoToMainMenu()
