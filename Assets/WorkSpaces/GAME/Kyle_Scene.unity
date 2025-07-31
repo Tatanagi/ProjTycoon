@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -5684,7 +5684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 9
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -5991,7 +5991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -6115,7 +6115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 9
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -7668,7 +7668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 11
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -7754,7 +7754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -7997,7 +7997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 11
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -8024,7 +8024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 11
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -9500,7 +9500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -9805,7 +9805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 5
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -10154,7 +10154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -10875,7 +10875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 2
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -11994,7 +11994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 7
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -12183,7 +12183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 8
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -12346,7 +12346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 8
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -12373,7 +12373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -12953,7 +12953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 6
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -12990,7 +12990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 8
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -13158,7 +13158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -13349,7 +13349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -13697,7 +13697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -14956,7 +14956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -15126,7 +15126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 11
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -15158,7 +15158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 11
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -15185,7 +15185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 6
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -15429,7 +15429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 3
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -15560,7 +15560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 7
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -15603,7 +15603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -15716,7 +15716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -15875,7 +15875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 10
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -16181,7 +16181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 10
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -16213,7 +16213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -16245,7 +16245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 11
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -16337,7 +16337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 7
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -16364,7 +16364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 9
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -16391,7 +16391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 5
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -16732,7 +16732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 6
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -17328,7 +17328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -17355,7 +17355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 0
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}
@@ -19485,7 +19485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 4
   cellAudioSource: {fileID: 1531464216}
-  sfxVolume: 0.239
+  sfxVolume: 0.125
   normalClip: {fileID: 0}
   communityChestClip: {fileID: 8300000, guid: d4345f335b4f78a44ab552e0a119abc3, type: 3}
   luckyLoanLenderClip: {fileID: 0}

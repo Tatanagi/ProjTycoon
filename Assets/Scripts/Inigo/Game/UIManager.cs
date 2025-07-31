@@ -549,7 +549,6 @@ public class UIManager : MonoBehaviour
         {
             isWrongCurrencyActive = true;
             devaluedResource = WrongCurrency.Instance.GetDevaluedResource().ToString();
-            description += $"\nWrong Currency: {devaluedResource} is worthless and cannot be used for exchange this round!";
         }
 
         if (!canAfford || !canExchangeWithShortage)
