@@ -520,10 +520,7 @@ public class UIManager : MonoBehaviour
         }
 
         string description = "Royal Fickle Mint\nExchange 1 Bronze, 3 Silver, 6 Gold for 1 Shiny Penny.";
-        if (RoyalDecree.Instance != null)
-        {
-            description += $"\nRoyal Decree: {RoyalDecree.Instance.favoredType} is worth x{RoyalDecree.Instance.multiplier}!";
-        }
+        
 
         var inv = mintingPlayer.inventory;
         if (inv == null)
