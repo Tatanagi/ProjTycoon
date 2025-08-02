@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/WorkSpaces/Inigo/MainMenu.unity
     guid: 864321378ca166f43821291871a3a90e
-  - enabled: 1
+  - enabled: 0
     path: Assets/WorkSpaces/Inigo/Game.unity
     guid: 9869f8712982cb34f95b1e17f2bbd4ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/WorkSpaces/Ken/Game Workspace.unity
     guid: df3ccf556a371e1468b62bc66ed5f29d
   - enabled: 0

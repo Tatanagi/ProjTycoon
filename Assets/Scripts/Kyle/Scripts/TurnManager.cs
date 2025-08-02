@@ -20,7 +20,6 @@ public class TurnManager : ScriptableObject
         {
             currentRound++;
             Debug.Log($"Starting Round {currentRound}");
-
             // Reset previous round effect and show CA panel
             RandomEffectRounds randomEffects = FindFirstObjectByType<RandomEffectRounds>();
             if (randomEffects != null)
@@ -31,6 +30,19 @@ public class TurnManager : ScriptableObject
             else
             {
                 Debug.LogWarning("RandomEffectRounds not found in scene!");
+            }
+        }
+        else
+        {
+            // Update UI for the next player immediately if not starting a new round
+            UIManager uiManager = FindFirstObjectByType<UIManager>();
+            if (uiManager != null && uiManager.turnController != null)
+            {
+                uiManager.turnController.UpdateTurnUI();
+            }
+            else
+            {
+                Debug.LogWarning("UIManager or TurnUIController not found to update turn UI!");
             }
         }
         Debug.Log($"Now it's Player {(currentPlayerIndex + 1)}'s turn.");

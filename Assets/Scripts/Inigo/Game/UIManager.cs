@@ -1,30 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
-
     [Header("Panels")]
     public GameObject CAPanel;
     public GameObject CCPanel;
+    public GameObject CCPanelCards;
     public GameObject LOPanel;
     public GameObject REPanel;
     public GameObject LOPanelPayment;
-
     [Header("Cell Action Panel")]
     public TextMeshProUGUI cellTitleText;
     public TextMeshProUGUI cellDescriptionText;
     public Button cellConfirmButton;
-
     [Header("Community Chest")]
     public TextMeshProUGUI cardTitleText;
     public TextMeshProUGUI cardDescriptionText;
     public Button drawCardButton;
-
+    [Header("Community Chest Card")]
+    public TextMeshProUGUI cardNameText;
+    public TextMeshProUGUI cardDescriptionCardText;
+    public TextMeshProUGUI cardCostText;
+    public Button yesButton;
+    public Button noButton;
+    public Image cardImage;
     [Header("Lucky Loan Lender")]
     public TextMeshProUGUI loanTitleText;
     public TextMeshProUGUI loanDescriptionText;
@@ -36,7 +41,6 @@ public class UIManager : MonoBehaviour
     public TMP_InputField paymentAmountInput;
     public Button confirmPaymentButton;
     public Button cancelPaymentButton;
-
     [Header("Royal Fickle Mint")]
     public TextMeshProUGUI exchangeTitleText;
     public TextMeshProUGUI bronzeInput;
@@ -44,21 +48,22 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI goldInput;
     public Button confirmExchangeButton;
     public Button cancelExchangeButton;
-
     [Header("Turn UI Controller")]
     public TurnUIController turnController;
-
     [Header("Fields")]
     public TurnManager TurnManager;
-
     [Header("Audio")]
-    [SerializeField] private AudioSource buttonAudioSource; // AudioSource for button click SFX
-    [SerializeField] private AudioClip buttonClickClip; // Button click sound clip
-    [SerializeField][Range(0f, 1f)] private float buttonSfxVolume = 0.5f; // Volume for button click SFX
-
-    private PlayerController popupPlayer;
+    [SerializeField] private AudioSource buttonAudioSource;
+    [SerializeField] private AudioClip buttonClickClip; // For general buttons
+    [SerializeField] private AudioClip drawCardClip; // SFX for DrawCard
+    [SerializeField] private AudioClip confirmBuyClip; // SFX for ConfirmBuy
+    [SerializeField] private AudioClip cancelBuyClip; // SFX for CancelBuy
+    [SerializeField][Range(0f, 1f)] private float buttonSfxVolume = 0.5f;
     private PlayerController currentPlayer;
+    private PlayerController popupPlayer;
     private PlayerController mintingPlayer;
+    private CommunityChest.CommunityCard _currentCard;
+    private List<PlayerController> _otherPlayers;
 
     private void Awake()
     {
@@ -68,23 +73,18 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
-
         if (transform.parent != null)
         {
             transform.SetParent(null);
             Debug.Log("UIManager GameObject moved to root to support DontDestroyOnLoad.");
         }
         DontDestroyOnLoad(gameObject);
-
-        // Initialize AudioSource
         if (buttonAudioSource == null)
         {
             buttonAudioSource = gameObject.AddComponent<AudioSource>();
             buttonAudioSource.playOnAwake = false;
             buttonAudioSource.loop = false;
-            buttonAudioSource.spatialBlend = 0f; // 2D sound for UI
-
-            // Assign SFX mixer group
+            buttonAudioSource.spatialBlend = 0f;
             AudioManager audioManager = FindFirstObjectByType<AudioManager>();
             if (audioManager != null && audioManager.GetMixer() != null)
             {
@@ -103,20 +103,20 @@ public class UIManager : MonoBehaviour
         else Debug.LogWarning("CAPanel is not assigned in UIManager!");
         if (CCPanel != null) CCPanel.SetActive(false);
         else Debug.LogWarning("CCPanel is not assigned in UIManager!");
+        if (CCPanelCards != null) CCPanelCards.SetActive(false);
+        else Debug.LogWarning("CCPanelCards is not assigned in UIManager!");
         if (LOPanel != null) LOPanel.SetActive(false);
         else Debug.LogWarning("LOPanel is not assigned in UIManager!");
         if (LOPanelPayment != null) LOPanelPayment.SetActive(false);
         else Debug.LogWarning("LOPanelPayment is not assigned in UIManager!");
         if (REPanel != null) REPanel.SetActive(false);
         else Debug.LogWarning("REPanel is not assigned in UIManager!");
-
         if (turnController == null)
         {
             turnController = FindFirstObjectByType<TurnUIController>();
             if (turnController == null)
                 Debug.LogWarning("TurnUIController not found in scene!");
         }
-
         SetupLoanInput();
         SetupPaymentInput();
     }
@@ -157,7 +157,6 @@ public class UIManager : MonoBehaviour
     private void OnPaymentInputChanged(string input)
     {
         if (currentPlayer == null) return;
-
         int debtAmount = currentPlayer.loanAmount * 2;
         if (int.TryParse(input, out int amount))
         {
@@ -172,19 +171,15 @@ public class UIManager : MonoBehaviour
     public void ShowCellAction(string title, string description, PlayerController player = null, Action onConfirm = null)
     {
         popupPlayer = player;
-
         if (CAPanel == null)
         {
             Debug.LogWarning("CAPanel is not assigned in UIManager!");
             return;
         }
-
         if (cellTitleText != null) cellTitleText.text = title;
         else Debug.LogWarning("cellTitleText is not assigned in UIManager!");
-
         if (cellDescriptionText != null) cellDescriptionText.text = description;
         else Debug.LogWarning("cellDescriptionText is not assigned in UIManager!");
-
         if (cellConfirmButton != null)
         {
             cellConfirmButton.onClick.RemoveAllListeners();
@@ -208,7 +203,6 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("cellConfirmButton is not assigned in UIManager!");
             StartCoroutine(HideCellActionAfterDelay(5f, onConfirm));
         }
-
         CAPanel.SetActive(true);
     }
 
@@ -225,53 +219,173 @@ public class UIManager : MonoBehaviour
         if (CAPanel != null) CAPanel.SetActive(false);
     }
 
-    public void ShowCommunityChestCard(PlayerController player, Action onDraw = null)
+    public void ShowCommunityChestCard(PlayerController player)
     {
         if (CCPanel == null)
         {
             Debug.LogWarning("CCPanel is not assigned in UIManager!");
             return;
         }
-
         currentPlayer = player;
-
         if (cardTitleText != null) cardTitleText.text = "Community Chest";
         else Debug.LogWarning("cardTitleText is not assigned in UIManager!");
-
         if (cardDescriptionText != null) cardDescriptionText.text = player != null ? $"{player.name}: Click to draw a random effect!" : "Click to draw a random effect!";
         else Debug.LogWarning("cardDescriptionText is not assigned in UIManager!");
-
-        if (drawCardButton != null)
-        {
-            drawCardButton.onClick.RemoveAllListeners();
-            drawCardButton.onClick.AddListener(() =>
-            {
-                if (buttonAudioSource != null && buttonClickClip != null)
-                {
-                    buttonAudioSource.PlayOneShot(buttonClickClip, buttonSfxVolume);
-                }
-                else
-                {
-                    Debug.LogWarning("Cannot play button click sound: AudioSource or AudioClip is missing.");
-                }
-                CommunityChest chest = FindFirstObjectByType<CommunityChest>();
-                if (chest != null)
-                {
-                    chest.DrawCard(currentPlayer, GameManager.Instance.GetAllPlayers());
-                    onDraw?.Invoke();
-                    if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
-                    HideCommunityChestCard();
-                }
-                else Debug.LogWarning("CommunityChest not found!");
-            });
-        }
-        else Debug.LogWarning("drawCardButton is not assigned in UIManager!");
-
         CCPanel.SetActive(true);
     }
 
-    public void HideCommunityChestCard()
+    [ContextMenu("Draw Card")]
+    public void DrawCard()
     {
+        if (CCPanelCards == null)
+        {
+            Debug.LogWarning("CCPanelCards is not assigned in UIManager!");
+            return;
+        }
+
+        if (currentPlayer == null)
+        {
+            Debug.LogWarning("No current player assigned!");
+            return;
+        }
+
+        CommunityChest chest = FindFirstObjectByType<CommunityChest>();
+        if (chest == null)
+        {
+            Debug.LogWarning("CommunityChest not found!");
+            return;
+        }
+
+        if (buttonAudioSource != null && drawCardClip != null)
+        {
+            buttonAudioSource.PlayOneShot(drawCardClip, buttonSfxVolume);
+        }
+        else
+        {
+            Debug.LogWarning("Cannot play DrawCard SFX: AudioSource or drawCardClip is missing.");
+        }
+
+        _otherPlayers = new List<PlayerController>(GameManager.Instance.GetAllPlayers()).FindAll(p => p != currentPlayer);
+        _currentCard = chest._deck[UnityEngine.Random.Range(0, chest._deck.Count)];
+
+        if (cardNameText != null) cardNameText.text = _currentCard.cardName;
+        if (cardDescriptionCardText != null) cardDescriptionCardText.text = _currentCard.description;
+        if (cardCostText != null) cardCostText.text = $"Cost: {_currentCard.cost} Shiny Pennies";
+        if (cardImage != null)
+        {
+            cardImage.sprite = _currentCard.cardImage; // Set the card's sprite
+            if (_currentCard.cardImage == null)
+                Debug.LogWarning($"No sprite assigned for card: {_currentCard.cardName}");
+        }
+        else Debug.LogWarning("cardImage is not assigned in UIManager!");
+
+        if (yesButton != null)
+        {
+            yesButton.interactable = currentPlayer.inventory.CanAfford(ResourceType.ShinyPennies, _currentCard.cost);
+        }
+        else
+        {
+            Debug.LogWarning("yesButton is not assigned in UIManager!");
+        }
+
+        CCPanelCards.SetActive(true);
+    }
+
+    /// <summary>
+    /// Transforms the position of the card image in the Community Chest Card panel.
+    /// </summary>
+    /// <param name="newPosition">The new local position for the card image.</param>
+    public void TransformCardImage(Vector2 newPosition)
+    {
+        if (cardImage == null)
+        {
+            Debug.LogWarning("cardImage is not assigned in UIManager!");
+            return;
+        }
+
+        cardImage.rectTransform.anchoredPosition = newPosition;
+        Debug.Log($"Card image position set to: {newPosition}");
+    }
+
+    public void publicConfirmBuy()
+    {
+        if (buttonAudioSource != null && confirmBuyClip != null)
+        {
+            buttonAudioSource.PlayOneShot(confirmBuyClip, buttonSfxVolume);
+        }
+        else
+        {
+            Debug.LogWarning("Cannot play ConfirmBuy SFX: AudioSource or confirmBuyClip is missing.");
+        }
+        if (_currentCard != null && currentPlayer != null)
+        {
+            currentPlayer.inventory.Spend(ResourceType.ShinyPennies, _currentCard.cost);
+            ApplyCardEffect();
+        }
+        else
+        {
+            Debug.LogWarning("Cannot confirm buy: currentCard or currentPlayer is null!");
+        }
+        HideCommunityChestCardDetails();
+        if (TurnManager.GetCurrentPlayerIndex() == TurnManager.totalPlayers - 1)
+        {
+            // Show Round Effect CA panel for Player 4
+            RandomEffectRounds randomEffects = FindFirstObjectByType<RandomEffectRounds>();
+            if (randomEffects != null)
+            {
+                randomEffects.ApplyRandomEffectWithPanel(TurnManager.GetCurrentRound());
+            }
+        }
+        else
+        {
+            if (turnController != null) turnController.UpdateTurnUI();
+        }
+        if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
+    }
+
+    public void publicCancelBuy()
+    {
+        if (buttonAudioSource != null && cancelBuyClip != null)
+        {
+            buttonAudioSource.PlayOneShot(cancelBuyClip, buttonSfxVolume);
+        }
+        else
+        {
+            Debug.LogWarning("Cannot play CancelBuy SFX: AudioSource or cancelBuyClip is missing.");
+        }
+        HideCommunityChestCardDetails();
+        if (TurnManager.GetCurrentPlayerIndex() == TurnManager.totalPlayers - 1)
+        {
+            // Show Round Effect CA panel for Player 4
+            RandomEffectRounds randomEffects = FindFirstObjectByType<RandomEffectRounds>();
+            if (randomEffects != null)
+            {
+                randomEffects.ApplyRandomEffectWithPanel(TurnManager.GetCurrentRound());
+            }
+        }
+        else
+        {
+            if (turnController != null) turnController.UpdateTurnUI();
+        }
+        if (Dice.Instance != null) Dice.Instance.OnActionConfirmed();
+    }
+
+    private void ApplyCardEffect()
+    {
+        CommunityChest chest = FindFirstObjectByType<CommunityChest>();
+        if (chest != null && _currentCard != null && currentPlayer != null)
+        {
+            _currentCard.effect.Invoke(currentPlayer, _otherPlayers);
+        }
+        else
+        {
+            Debug.LogWarning("Cannot apply card effect: CommunityChest, currentCard, or currentPlayer is null!");
+        }
+    }
+
+    public void HideCommunityChestCardDetails()
+    {
+        if (CCPanelCards != null) CCPanelCards.SetActive(false);
         if (CCPanel != null) CCPanel.SetActive(false);
     }
 
@@ -282,30 +396,24 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("LOPanel is not assigned in UIManager!");
             return;
         }
-
         currentPlayer = player;
-
         if (player.hasLoan)
         {
             ShowPaymentPanel(player, onDecision);
             return;
         }
-
         if (loanTitleText != null) loanTitleText.text = "Lucky Loan Lender";
         else Debug.LogWarning("loanTitleText is not assigned in UIManager!");
-
         if (loanDescriptionText != null)
             loanDescriptionText.text = player != null ?
-                $"{player.name}: Enter 1-5 Shiny Pennies to borrow (repay double next round)!" :
-                "Enter 1-5 Shiny Pennies to borrow (repay double next round)!";
+            $"{player.name}: Enter 1-5 Shiny Pennies to borrow (repay double next round)!" :
+            "Enter 1-5 Shiny Pennies to borrow (repay double next round)!";
         else Debug.LogWarning("loanDescriptionText is not assigned in UIManager!");
-
         if (loanAmountInput != null)
         {
             loanAmountInput.text = "";
             acceptLoanButton.interactable = false;
         }
-
         if (acceptLoanButton != null)
         {
             acceptLoanButton.onClick.RemoveAllListeners();
@@ -326,7 +434,6 @@ public class UIManager : MonoBehaviour
             });
         }
         else Debug.LogWarning("acceptLoanButton is not assigned in UIManager!");
-
         if (cancelLoanButton != null)
         {
             cancelLoanButton.onClick.RemoveAllListeners();
@@ -346,7 +453,6 @@ public class UIManager : MonoBehaviour
             });
         }
         else Debug.LogWarning("cancelLoanButton is not assigned in UIManager!");
-
         LOPanel.SetActive(true);
     }
 
@@ -357,25 +463,20 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("LOPanelPayment is not assigned in UIManager!");
             return;
         }
-
         currentPlayer = player;
         int debtAmount = player.loanAmount * 2;
-
         if (paymentTitleText != null) paymentTitleText.text = "Repay Your Loan";
         else Debug.LogWarning("paymentTitleText is not assigned in UIManager!");
-
         if (paymentDescriptionText != null)
             paymentDescriptionText.text = player != null ?
-                $"{player.name}: You owe {debtAmount} Shiny Pennies. Enter amount to repay." :
-                $"You owe {debtAmount} Shiny Pennies. Enter amount to repay.";
+            $"{player.name}: You owe {debtAmount} Shiny Pennies. Enter amount to repay." :
+            $"You owe {debtAmount} Shiny Pennies. Enter amount to repay.";
         else Debug.LogWarning("paymentDescriptionText is not assigned in UIManager!");
-
         if (paymentAmountInput != null)
         {
             paymentAmountInput.text = "";
             confirmPaymentButton.interactable = false;
         }
-
         if (confirmPaymentButton != null)
         {
             confirmPaymentButton.onClick.RemoveAllListeners();
@@ -396,7 +497,6 @@ public class UIManager : MonoBehaviour
             });
         }
         else Debug.LogWarning("confirmPaymentButton is not assigned in UIManager!");
-
         if (cancelPaymentButton != null)
         {
             cancelPaymentButton.onClick.RemoveAllListeners();
@@ -417,7 +517,6 @@ public class UIManager : MonoBehaviour
             });
         }
         else Debug.LogWarning("cancelPaymentButton is not assigned in UIManager!");
-
         LOPanelPayment.SetActive(true);
     }
 
@@ -431,7 +530,6 @@ public class UIManager : MonoBehaviour
                 if (loanLender != null)
                 {
                     loanLender.OfferLoan(currentPlayer, amount);
-                    // Ensure hasLoan is true (already handled in OfferLoan, but confirming)
                     if (!currentPlayer.hasLoan)
                     {
                         Debug.LogWarning($"{currentPlayer.name}'s hasLoan was not set to true in OfferLoan!");
@@ -455,7 +553,6 @@ public class UIManager : MonoBehaviour
             if (loanLender != null)
             {
                 loanLender.RepayLoan(currentPlayer, 0);
-                // Ensure isInDebt is true (already handled in RepayLoan, but confirming)
                 if (!currentPlayer.isInDebt)
                 {
                     Debug.LogWarning($"{currentPlayer.name}'s isInDebt was not set to true in RepayLoan!");
@@ -503,7 +600,6 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("REPanel is not assigned in UIManager!");
             return;
         }
-
         string currentPlayerTag = "Player" + (TurnManager.GetCurrentPlayerIndex() + 1);
         GameObject playerObject = GameObject.FindGameObjectWithTag(currentPlayerTag);
         if (playerObject == null)
@@ -511,27 +607,22 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning($"Player GameObject with tag '{currentPlayerTag}' not found.");
             return;
         }
-
         mintingPlayer = playerObject.GetComponent<PlayerController>();
         if (mintingPlayer == null)
         {
             Debug.LogWarning("PlayerController component not found on player GameObject.");
             return;
         }
-
         string description = "Royal Fickle Mint\nExchange 1 Bronze, 3 Silver, 6 Gold for 1 Shiny Penny.";
-        
-
         var inv = mintingPlayer.inventory;
         if (inv == null)
         {
             Debug.LogWarning("Player inventory not found!");
             return;
         }
-
         bool canAfford = inv.CanAfford(ResourceType.Bronze, 1) &&
-                         inv.CanAfford(ResourceType.Silver, 3) &&
-                         inv.CanAfford(ResourceType.Gold, 6);
+        inv.CanAfford(ResourceType.Silver, 3) &&
+        inv.CanAfford(ResourceType.Gold, 6);
         bool canExchangeWithShortage = true;
         if (inv.IsInShortage)
         {
@@ -540,35 +631,30 @@ public class UIManager : MonoBehaviour
             int totalGold = inv.GoldValue - 6;
             canExchangeWithShortage = totalBronze <= 20 && totalSilver <= 20 && totalGold <= 20;
         }
-
         bool isWrongCurrencyActive = false;
         string devaluedResource = "";
-        if (WrongCurrency.Instance != null && WrongCurrency.Instance.IsResourceDevalued(ResourceType.Bronze) ||
-            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Silver) ||
-            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Gold))
+        if (WrongCurrency.Instance != null && (WrongCurrency.Instance.IsResourceDevalued(ResourceType.Bronze) ||
+        WrongCurrency.Instance.IsResourceDevalued(ResourceType.Silver) ||
+        WrongCurrency.Instance.IsResourceDevalued(ResourceType.Gold)))
         {
             isWrongCurrencyActive = true;
             devaluedResource = WrongCurrency.Instance.GetDevaluedResource().ToString();
         }
-
         if (!canAfford || !canExchangeWithShortage)
         {
             description += "\nInvalid Resources: You lack the required resources or exceed shortage limits!";
         }
-
         if (exchangeTitleText != null)
         {
             exchangeTitleText.text = description;
         }
         else Debug.LogWarning("exchangeTitleText is not assigned in UIManager!");
-
         if (bronzeInput != null) bronzeInput.text = "1 Bronze";
         else Debug.LogWarning("bronzeInput is not assigned in UIManager!");
         if (silverInput != null) silverInput.text = "3 Silver";
         else Debug.LogWarning("silverInput is not assigned in UIManager!");
         if (goldInput != null) goldInput.text = "6 Gold";
         else Debug.LogWarning("goldInput is not assigned in UIManager!");
-
         if (confirmExchangeButton != null)
         {
             confirmExchangeButton.interactable = canAfford && canExchangeWithShortage && !isWrongCurrencyActive;
@@ -590,7 +676,6 @@ public class UIManager : MonoBehaviour
             });
         }
         else Debug.LogWarning("confirmExchangeButton is not assigned in UIManager!");
-
         if (cancelExchangeButton != null)
         {
             cancelExchangeButton.onClick.RemoveAllListeners();
@@ -618,7 +703,6 @@ public class UIManager : MonoBehaviour
             });
         }
         else Debug.LogWarning("cancelExchangeButton is not assigned in UIManager!");
-
         REPanel.SetActive(true);
     }
 
@@ -630,7 +714,6 @@ public class UIManager : MonoBehaviour
             HideExchange();
             return;
         }
-
         var inv = mintingPlayer.inventory;
         if (inv == null)
         {
@@ -638,20 +721,17 @@ public class UIManager : MonoBehaviour
             HideExchange();
             return;
         }
-
         int bronzeToSpend = 1;
         int silverToSpend = 3;
         int goldToSpend = 6;
         int shinyPenniesToGain = 1;
-
         if (!inv.CanAfford(ResourceType.Bronze, bronzeToSpend) ||
-            !inv.CanAfford(ResourceType.Silver, silverToSpend) ||
-            !inv.CanAfford(ResourceType.Gold, goldToSpend))
+        !inv.CanAfford(ResourceType.Silver, silverToSpend) ||
+        !inv.CanAfford(ResourceType.Gold, goldToSpend))
         {
             Debug.LogWarning($"{mintingPlayer.name} cannot afford to exchange 1 Bronze, 3 Silver, and 6 Gold!");
             return;
         }
-
         if (inv.IsInShortage)
         {
             int totalBronze = inv.BronzeValue - bronzeToSpend;
@@ -663,23 +743,19 @@ public class UIManager : MonoBehaviour
                 return;
             }
         }
-
         if (WrongCurrency.Instance != null && (
-            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Bronze) ||
-            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Silver) ||
-            WrongCurrency.Instance.IsResourceDevalued(ResourceType.Gold)))
+        WrongCurrency.Instance.IsResourceDevalued(ResourceType.Bronze) ||
+        WrongCurrency.Instance.IsResourceDevalued(ResourceType.Silver) ||
+        WrongCurrency.Instance.IsResourceDevalued(ResourceType.Gold)))
         {
             Debug.LogWarning($"{mintingPlayer.name} cannot exchange due to Wrong Currency effect!");
             return;
         }
-
         inv.Spend(ResourceType.Bronze, bronzeToSpend);
         inv.Spend(ResourceType.Silver, silverToSpend);
         inv.Spend(ResourceType.Gold, goldToSpend);
         inv.Add(ResourceType.ShinyPennies, shinyPenniesToGain);
-
         Debug.Log($"{mintingPlayer.name} exchanged 1 Bronze, 3 Silver, 6 Gold for 1 Shiny Penny.");
-
         if (turnController != null)
         {
             turnController.UpdateTurnUI();
